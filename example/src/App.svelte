@@ -1,7 +1,7 @@
 <script>
 	import Example from './Example.svelte'
-	// import LocalExample from './LocalExample.svelte'
+	// import Dev from './Dev.svelte'
 </script>
 
 <Example/>
-<!-- <LocalExample/> -->
+<!-- <Dev/> -->

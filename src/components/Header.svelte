@@ -13,10 +13,12 @@
     })
     const sort = (th) => {
         if (th.className.length === 0 || th.className === 'asc') {
+            Array.from(th.parentNode.children).forEach(item => item.className = '')
             th.className = 'desc'
             data.sortDesc(th.dataset.key)
             state.setPage(1)
         } else {
+            Array.from(th.parentNode.children).forEach(item => item.className = '')
             th.className = 'asc'
             data.sortAsc(th.dataset.key)
             state.setPage(1)
