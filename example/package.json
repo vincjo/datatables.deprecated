@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "sirv-cli": "^0.4.4",
-    "svelte-simple-datatables": "^0.0.2"
+    "svelte-simple-datatables": ">0.0.2"
   }
 }
