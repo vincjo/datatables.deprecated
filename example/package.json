@@ -9,7 +9,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^12.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
-    "rollup": "^2.3.4",
+    "rollup": "^2.19.0",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "sirv-cli": "^0.4.4",
-    "svelte-simple-datatables": "0.0.1"
+    "svelte-simple-datatables": "^0.0.2"
   }
 }

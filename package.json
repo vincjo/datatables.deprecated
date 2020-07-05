@@ -21,7 +21,7 @@
     "dist"
   ],
   "description": "Inspired by [fiduswriter/Simple-DataTables](https://github.com/fiduswriter/Simple-DataTables) and [jQuery DataTables](https://datatables.net/)",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "directories": {
     "example": "example"
   },
