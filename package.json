@@ -1,5 +1,5 @@
 {
-  "name": "SvelteComponent",
+  "name": "svelte-simple-datatables",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -19,5 +19,21 @@
   "files": [
     "src",
     "dist"
-  ]
+  ],
+  "description": "Inspired by [fiduswriter/Simple-DataTables](https://github.com/fiduswriter/Simple-DataTables) and [jQuery DataTables](https://datatables.net/)",
+  "version": "0.0.1",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincjo/svelte-simple-datatables.git"
+  },
+  "author": "vincjo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vincjo/svelte-simple-datatables/issues"
+  },
+  "homepage": "https://github.com/vincjo/svelte-simple-datatables#readme"
 }
