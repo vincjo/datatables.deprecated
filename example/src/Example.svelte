@@ -1,7 +1,6 @@
 <script>
-    import Datatable from '../../src/Datatable.svelte'
     import { data } from './data.example.js' 
-    import { rows } from '../../src/store.js'
+    import { Datatable, rows } from 'svelte-simple-datatables'
 
     const settings = {
         sortable: true,
