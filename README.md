@@ -50,3 +50,12 @@ If filtering options are chosen,
 </Datatable>
 ````
 See result [here](https://geoflux.io/vincjo/svelte-simple-datatables) 
+
+The Datatable includes 3 optional components
+- PaginationButtons
+- PaginationRowCount
+- SearchInput
+
+These can be imported separately and placed anywhere
+
+
