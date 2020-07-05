@@ -1,8 +1,8 @@
 # Simple-DataTables for Svelte
-Development in progress
+Development in progress.
 
 Inspired by [fiduswriter/Simple-DataTables](https://github.com/fiduswriter/Simple-DataTables)
-and [jQuery DataTables](https://datatables.net/)
+and [DataTables](https://datatables.net/)
 
 See demo [here](https://geoflux.io/vincjo/svelte-simple-datatables)
 
@@ -12,8 +12,8 @@ npm install svelte-simple-datatables
 ````
 
 # Sample code
-If filtering options are chosen,
- you must indicate the key of each column in the `<th>` tag
+ You must indicate the key of each column in the `<th>` tag.<br>
+ Settings definition is optionnal.
 ````html
 <script>
     import { data } from './data.example.js'  
@@ -59,4 +59,23 @@ The Datatable includes 3 optional components
 
 These can be imported separately and placed anywhere
 
-
+# i18n
+Labels can be defined in the settings :
+````js
+const settings = {
+    sortable: true,
+    pagination: true,
+    rowPerPage: 50,
+    rowCount: true,
+    search: true,
+    columnFilter: true,
+    labels: {
+        search: 'Search...',    // search input placeholer
+        filter: 'Filter',       // filter inputs placeholder
+        noRows: 'No entries to found',
+        info: 'Showing {start} to {end} of {rows} entries',
+        previous: 'Previous',
+        next: 'Next',       
+    }
+}
+````
