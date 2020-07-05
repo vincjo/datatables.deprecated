@@ -1,18 +1,63 @@
 <script>
-    import Header from './thead.js'
-    import Table from './table.js'
-    import { onMount, tick } from 'svelte'
-    export let options
-    onMount( async () => {
-        await tick()
-        const header = document.querySelector('header.datatable-thead')
-        const myTable = new Table( document.querySelector('table'), header, options )
-        myTable.set()
+    import { data, state, options, labels, filters } from '../store.js'
+    import Header from './header.js'
+    import { onMount } from 'svelte'
+    $: columns = []
+    let height = '40px'
+    let header
+    onMount( () => {
+        header = new Header
+        columns = header.getColumns()
+        header.removeOriginalThead($options.columnFilter)
+        height = header.height
     })
+    const sort = (th) => {
+        if (th.className.length === 0 || th.className === 'asc') {
+            th.className = 'desc'
+            data.sortDesc(th.dataset.key)
+            state.setPage(1)
+        } else {
+            th.className = 'asc'
+            data.sortAsc(th.dataset.key)
+            state.setPage(1)
+        }
+        header.redraw()
+    }
+
+    const filter = (e) => {
+        state.setPage(1)
+        filters.setColumnFilter(e.target.dataset.key, e.target.value)
+        state.updateRowCount()
+        header.redraw()
+    }
 </script>
 
-<header class="datatable-thead" class:sortable={options.sortable === true}>
-
+<header class="datatable-thead" class:sortable={$options.sortable === true} style="height:{height}px">
+    <thead>
+        <tr>
+        {#each columns as th}
+            <th 
+                style="width:{th.width}" 
+                on:click={(e) => sort(e.target)}
+                data-key={th.key}
+            >{@html th.html}</th>
+        {/each}        
+        </tr>
+        <tr>
+        {#if $options.columnFilter === true}
+        {#each columns as th}
+            <th class="filter" style="width:{th.width};height:25px;">
+                <input 
+                    type="text" 
+                    placeholder="{$labels.filter}" 
+                    data-key={th.key}
+                    on:input={(e) => filter(e)}
+                />
+            </th>
+        {/each}
+        {/if}
+        </tr>
+    </thead>
 </header>
 
 <style>

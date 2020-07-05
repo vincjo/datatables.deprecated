@@ -1,9 +1,11 @@
 .datatable th{padding:10px 15px;background-color:#fff;border-bottom:1px solid #eee;}
+.datatable thead tr:last-child{border-bottom:2px solid #eee;}
 .datatable .sortable th{background-image:url('./assets/sort.svg');background-position:95% 50%;background-size:12px;background-repeat:no-repeat;cursor:pointer;}
 .datatable .sortable th.asc{background-image:url('./assets/asc.svg');}
 .datatable .sortable th.desc{background-image:url('./assets/desc.svg');}
 .datatable td{padding:3px;}
 .datatable tbody tr:hover{background:#fafafa;}
-.datatable th.filter{padding:0;background-image:none;background-color:#fff;}
-.datatable th.filter input{padding:0;margin:0;height:25px;width:100%;border:1px solid #fafafa;text-align:center;outline:none;border-radius:0;font-size:14px;}
+.datatable th.filter{padding:0;background-image:none;background-color:#fff;border:1px solid #fafafa;}
+.datatable th.filter input{padding:0;margin:0;height:25px;width:100%;border:none;border-bottom:1px solid #e0e0e0;text-align:center;outline:none;border-radius:0;font-size:14px;}
 .datatable th.filter input::placeholder {color:#e0e0e0;font-style:italic;font-size:13px;}
+/* .datatable th, .datatable td{border:1px solid #eee;} */

@@ -22,10 +22,10 @@ export default class Thead{
         this.thead.style.visibility = 'hidden'
     }
 
-    redraw(tbody) {
+    redraw(tr) {
         let i = 0
-        Array.from(tbody.children[0]).forEach(column => {
-            this.header.children[0].width = column.getBoundingClientRect().width + 'px'
+        tr.forEach(td => {
+            this.header.children[0].children[i].width = column.getBoundingClientRect().width + 'px'
             i++
         })
     }

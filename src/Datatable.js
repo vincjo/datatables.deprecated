@@ -1,6 +1,6 @@
 import {data, options, labels} from './store.js'
 
-export default class SimpleDatatables {
+export default class Datatable {
     constructor(data, options = {}) {
         this.setRows(data)
         this.setOptions(options)

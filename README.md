@@ -1,4 +1,5 @@
 # Simple-DataTables for Svelte
+Development in progress
 
 Inspired by [fiduswriter/Simple-DataTables](https://github.com/fiduswriter/Simple-DataTables)
 and [jQuery DataTables](https://datatables.net/)
