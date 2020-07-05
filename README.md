@@ -1,35 +1,52 @@
-*Psst — looking for an app template? Go here --> [sveltejs/template](https://github.com/sveltejs/template)*
+# Simple-DataTables for Svelte
 
----
+Inspired by [fiduswriter/Simple-DataTables](https://github.com/fiduswriter/Simple-DataTables)
+and [jQuery DataTables](https://datatables.net/)
 
-# component-template
+See demo [here](https://geoflux.io/vincjo/svelte-simple-datatables)
 
-A base for building shareable Svelte components. Clone it with [degit](https://github.com/Rich-Harris/degit):
+# Install
+````apache
+npm install svelte-simple-datatables
+````
 
-```bash
-npx degit sveltejs/component-template my-new-component
-cd my-new-component
-npm install # or yarn
-```
+# Sample code
+If filtering options are chosen,
+ you must indicate the key of each column in the `<th>` tag
+````html
+<script>
+    import { data } from './data.example.js'  
+    import { Datatable, rows } from 'svelte-simple-datatables'
 
-Your component's source code lives in `src/Component.svelte`.
+    const settings = {
+        sortable: true,
+        pagination: true,
+        rowPerPage: 50,
+        rowCount: true,
+        search: true,
+        columnFilter: true,
+    }
+</script>
 
-You can create a package that exports multiple components by adding them to the `src` directory and editing `src/index.js` to reexport them as named exports.
-
-TODO
-
-* [ ] some firm opinions about the best way to test components
-* [ ] update `degit` so that it automates some of the setup work
-
-
-## Setting up
-
-* Run `npm init` (or `yarn init`)
-* Replace this README with your own
-
-
-## Consuming components
-
-Your package.json has a `"svelte"` field pointing to `src/index.js`, which allows Svelte apps to import the source code directly, if they are using a bundler plugin like [rollup-plugin-svelte](https://github.com/sveltejs/rollup-plugin-svelte) or [svelte-loader](https://github.com/sveltejs/svelte-loader) (where [`resolve.mainFields`](https://webpack.js.org/configuration/resolve/#resolve-mainfields) in your webpack config includes `"svelte"`). **This is recommended.**
-
-For everyone else, `npm run build` will bundle your component's source code into a plain JavaScript module (`dist/index.mjs`) and a UMD script (`dist/index.js`). This will happen automatically when you publish your component to npm, courtesy of the `prepublishOnly` hook in package.json.
+<Datatable settings={settings} data={data}>
+    <thead>
+        <th data-key="id">ID</th>
+        <th data-key="first_name">First Name</th>
+        <th data-key="last_name">Last Name</th>
+        <th data-key="email">Email</th>
+        <th data-key="ip_address">IP Adress</th>
+    </thead>
+    <tbody>
+    {#each $rows as row}
+        <tr>
+            <td>{row.id}</td>
+            <td>{row.first_name}</td>
+            <td>{row.last_name}</td>
+            <td>{row.email}</td>
+            <td>{row.ip_address}</td>
+        </tr>
+    {/each}
+    </tbody>
+</Datatable>
+````
+See result [here](https://geoflux.io/vincjo/svelte-simple-datatables) 
