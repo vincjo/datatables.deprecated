@@ -7,7 +7,7 @@
         if (page < 5) {
             return arr.slice( 0, 5 )
         }
-        else if (page > arr.length - 5) {
+        else if (page > arr.length - 4) {
             return arr.slice( arr.length - 5, arr.length )
         }
         return arr.slice( page - 2, page + 1 )
@@ -41,7 +41,7 @@
         {/if}
     {/each}
 
-    {#if $state.pageNumber < pageCount.length - 4}
+    {#if $state.pageNumber <= pageCount.length - 4}
         <button class="ellipse">...</button>
     {/if}
 
