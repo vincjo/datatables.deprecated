@@ -20,21 +20,21 @@ export default class Datatable {
 
     setOptions(opt) {
         options.set({
-            sortable:     opt.sortable     ? opt.sortable     : true,
-            pagination:   opt.pagination   ? opt.pagination   : true,
-            rowCount:     opt.rowCount     ? opt.rowCount     : true,
-            search:       opt.search       ? opt.search       : true,
-            rowPerPage:   opt.rowPerPage   ? opt.rowPerPage   : 50,
-            columnFilter: opt.columnFilter ? opt.columnFilter : false, 
+            sortable:     typeof opt.sortable     === 'boolean' ? opt.sortable     : true,
+            pagination:   typeof opt.pagination   === 'boolean' ? opt.pagination   : true,
+            rowCount:     typeof opt.rowCount     === 'boolean' ? opt.rowCount     : true,
+            search:       typeof opt.search       === 'boolean' ? opt.search       : true,
+            rowPerPage:   typeof opt.rowPerPage   === 'number'  ? opt.rowPerPage   : 50,
+            columnFilter: typeof opt.columnFilter === 'boolean' ? opt.columnFilter : false, 
         })
         if (opt.labels) {
             labels.set({
-                search:   opt.labels.search   ? opt.labels.search   : 'Search...',
-                filter:   opt.labels.filter   ? opt.labels.filter   : 'Filter',
-                noRows:   opt.labels.noRows   ? opt.labels.noRows   : 'No entries to found',
-                info:     opt.labels.info     ? opt.labels.info     : 'Showing {start} to {end} of {rows} entries',
-                previous: opt.labels.previous ? opt.labels.previous : 'Previous',
-                next:     opt.labels.next     ? opt.labels.next     : 'Next',                
+                search:   typeof opt.labels.search   === 'string' ? opt.labels.search   : 'Search...',
+                filter:   typeof opt.labels.filter   === 'string' ? opt.labels.filter   : 'Filter',
+                noRows:   typeof opt.labels.noRows   === 'string' ? opt.labels.noRows   : 'No entries to found',
+                info:     typeof opt.labels.info     === 'string' ? opt.labels.info     : 'Showing {start} to {end} of {rows} entries',
+                previous: typeof opt.labels.previous === 'string' ? opt.labels.previous : 'Previous',
+                next:     typeof opt.labels.next     === 'string' ? opt.labels.next     : 'Next',                
             })     
         }
     }

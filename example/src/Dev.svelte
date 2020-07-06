@@ -8,13 +8,13 @@
         pagination: true,
         rowPerPage: 50,
         rowCount: true,
-        search: true,
-        columnFilter: true,
+        search: false,
+        columnFilter: false,
     }
 </script>
 
 <section>
-    <Datatable data={data}>
+    <Datatable settings={settings} data={data}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>

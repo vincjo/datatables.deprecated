@@ -12,6 +12,9 @@
         height = header.height
     })
     const sort = (th) => {
+        if($options.sortable !== true) {
+            return
+        }
         if (th.className.length === 0 || th.className === 'asc') {
             Array.from(th.parentNode.children).forEach(item => item.className = '')
             th.className = 'desc'

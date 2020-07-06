@@ -1,5 +1,6 @@
 <script>
     import {state, options, labels} from './store.js'
+    state.updateRowCount()
     $: start = $state.pageNumber * $options.rowPerPage - $options.rowPerPage + 1
     $: end = Math.min($state.pageNumber * $options.rowPerPage, $state.rowCount)
     $: rows = $state.rowCount
