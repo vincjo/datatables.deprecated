@@ -15,7 +15,7 @@
     $: buttons = slice(pageCount, $state.pageNumber)
 </script>
 
-<section>
+<section class="dt-pagination">
     <button 
         class="text"
         class:disabled={$state.pageNumber === 1}
@@ -59,13 +59,3 @@
         {@html $labels.next}
     </button>
 </section>
-
-<style>
-    section{display:flex;flex-direction:row;justify-content: center;}
-    button{height:30px;width:30px;background:#fff;color:#616161;font-size:13px;margin:0;padding:0;transition:all, .2s;border-radius:0;line-height:30px;}
-    button:not(.active):hover{background:#e0e0e0;cursor:pointer;}
-    button.text{min-width:70px;cursor:pointer;}
-    button.ellipse:hover{background:#fff;cursor: default;}
-    button.active{background:#eee;}
-    button.disabled:hover{background:#fff;cursor: default;}
-</style>

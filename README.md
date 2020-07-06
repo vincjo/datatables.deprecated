@@ -79,3 +79,9 @@ const settings = {
     }
 }
 ````
+# Style / CSS
+Here is an example of CSS, the one used in the demo :<br>
+[./example/public/datatable.css](./example/public/datatable.css)
+
+SVG-icons :<br>
+[./example/public/assets](./example/public/assets)

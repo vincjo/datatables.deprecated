@@ -21,7 +21,7 @@
     {#if $options.search === true}
         <Search/>
     {/if}
-    <section>
+    <section class="table-container">
         <Header options={$options}/>
         <table>
             <slot></slot>
@@ -34,12 +34,7 @@
 
 
 <style>
-    main{position:relative;}
-    section{height:100%;overflow:auto;border-bottom:1px solid #eee;}
+    main{position:relative;} 
+    section{height:100%;overflow:auto;}
     table{width:100%;border-collapse: collapse;}
-    section::-webkit-scrollbar {width: 10px;height:10px;}
-    section::-webkit-scrollbar-track {background:#fafafa;}
-    section::-webkit-scrollbar-thumb {background:#eee;}
-    section::-webkit-scrollbar-thumb:hover {background: #e0e0e0;}
-    section::-webkit-scrollbar-track-piece:start {top:40px;}
 </style>

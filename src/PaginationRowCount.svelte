@@ -7,14 +7,10 @@
 </script>
 
 
-<aside>
+<aside class="dt-rowcount">
     {#if rows > 0}
         {@html info}
     {:else}
         {@html $labels.noRows}
     {/if}
 </aside>
-
-<style>
-    aside{line-height:30px;font-size:14px;}
-</style>

@@ -1,11 +1,40 @@
+.datatable .table-container{border-bottom:1px solid #eee;}
+.datatable .table-container::-webkit-scrollbar {width: 10px;height:10px;}
+.datatable .table-container::-webkit-scrollbar-track {background:#fafafa;}
+.datatable .table-container::-webkit-scrollbar-thumb {background:#eee;}
+.datatable .table-container::-webkit-scrollbar-thumb:hover {background: #e0e0e0;}
+.datatable .table-container::-webkit-scrollbar-track-piece:start {top:40px;}
+
+
 .datatable th{padding:10px 15px;background-color:#fff;border-bottom:1px solid #eee;}
 .datatable thead tr:last-child{border-bottom:2px solid #eee;}
 .datatable .sortable th{background-image:url('./assets/sort.svg');background-position:95% 50%;background-size:12px;background-repeat:no-repeat;cursor:pointer;}
 .datatable .sortable th.asc{background-image:url('./assets/asc.svg');}
 .datatable .sortable th.desc{background-image:url('./assets/desc.svg');}
-.datatable td{padding:3px;}
-.datatable tbody tr:hover{background:#fafafa;}
 .datatable th.filter{padding:0;background-image:none;background-color:#fff;border:1px solid #fafafa;}
 .datatable th.filter input{padding:0;margin:0;height:25px;width:100%;border:none;border-bottom:1px solid #e0e0e0;text-align:center;outline:none;border-radius:0;font-size:14px;}
 .datatable th.filter input::placeholder {color:#e0e0e0;font-style:italic;font-size:13px;}
-/* .datatable th, .datatable td{border:1px solid #eee;} */
+.datatable tbody tr:hover{background:#fafafa;}
+.datatable td{padding:3px;}
+
+/*
+ * Bottom right elements (pagination) :
+**/
+.datatable .dt-pagination{display:flex;flex-direction:row;justify-content: center;}
+.datatable .dt-pagination button{height:30px;width:30px;background:#fff;color:#616161;font-size:13px;margin:0;padding:0;transition:all, .2s;border-radius:0;line-height:30px;}
+.datatable .dt-pagination button:not(.active):hover{background:#e0e0e0;cursor:pointer;}
+.datatable .dt-pagination button.text{min-width:70px;cursor:pointer;}
+.datatable .dt-pagination button.ellipse:hover{background:#fff;cursor: default;}
+.datatable .dt-pagination button.active{background:#eee;}
+.datatable .dt-pagination button.disabled:hover{background:#fff;cursor: default;}
+
+/*
+ * Bottom left elements (rows count)
+**/
+.datatable .dt-rowcount{line-height:30px;font-size:14px;}
+
+/*
+ * Top left elements (search input)
+**/
+.datatable .dt-search{margin-bottom:10px;}
+.datatable .dt-search input{border:1px solid #eee;outline:none;padding:2px 10px;margin:0;height:28px;}
