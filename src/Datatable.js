@@ -20,21 +20,21 @@ export default class Datatable {
 
     setOptions(opt) {
         options.set({
-            sortable:     opt.sortable     ?? true,
-            pagination:   opt.pagination   ?? true,
-            rowCount:     opt.rowCount     ?? true,
-            search:       opt.search       ?? true,
-            rowPerPage:   opt.rowPerPage   ?? 50,
-            columnFilter: opt.columnFilter ?? false, 
+            sortable:     opt.sortable     ? opt.sortable     : true,
+            pagination:   opt.pagination   ? opt.pagination   : true,
+            rowCount:     opt.rowCount     ? opt.rowCount     : true,
+            search:       opt.search       ? opt.search       : true,
+            rowPerPage:   opt.rowPerPage   ? opt.rowPerPage   : 50,
+            columnFilter: opt.columnFilter ? opt.columnFilter : false, 
         })
         if (opt.labels) {
             labels.set({
-                search:   opt.labels.search   ?? 'Search...',
-                filter:   opt.labels.filter   ?? 'Filter',
-                noRows:   opt.labels.noRows   ?? 'No entries to found',
-                info:     opt.labels.info     ?? 'Showing {start} to {end} of {rows} entries',
-                previous: opt.labels.previous ?? 'Previous',
-                next:     opt.labels.next     ?? 'Next',                
+                search:   opt.labels.search   ? opt.labels.search   : 'Search...',
+                filter:   opt.labels.filter   ? opt.labels.filter   : 'Filter',
+                noRows:   opt.labels.noRows   ? opt.labels.noRows   : 'No entries to found',
+                info:     opt.labels.info     ? opt.labels.info     : 'Showing {start} to {end} of {rows} entries',
+                previous: opt.labels.previous ? opt.labels.previous : 'Previous',
+                next:     opt.labels.next     ? opt.labels.next     : 'Next',                
             })     
         }
     }

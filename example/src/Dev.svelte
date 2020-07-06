@@ -14,7 +14,7 @@
 </script>
 
 <section>
-    <Datatable settings={settings} data={data}>
+    <Datatable data={data}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>

@@ -45,8 +45,8 @@
             >{@html th.html}</th>
         {/each}        
         </tr>
-        <tr>
         {#if $options.columnFilter === true}
+        <tr>
         {#each columns as th}
             <th class="filter" style="width:{th.width};height:25px;">
                 <input 
@@ -57,8 +57,8 @@
                 />
             </th>
         {/each}
-        {/if}
         </tr>
+        {/if}
     </thead>
 </header>
 
