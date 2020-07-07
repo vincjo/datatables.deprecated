@@ -1,6 +1,6 @@
 <script>
     import { filters, state, options } from './store.js'
-    import Header from './components/header.js'
+    import Header from './components/Header.js'
     const header = new Header
     const search = (value) => {
         state.setPage(1)
