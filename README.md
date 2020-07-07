@@ -62,12 +62,6 @@ See result [here](https://geoflux.io/vincjo/svelte-simple-datatables)
 Labels can be defined in the settings :
 ````js
 const settings = {
-    sortable: true,
-    pagination: true,
-    rowPerPage: 50,
-    rowCount: true,
-    search: true,
-    columnFilter: true,
     labels: {
         search: 'Search...',    // search input placeholer
         filter: 'Filter',       // filter inputs placeholder
