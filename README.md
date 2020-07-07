@@ -89,11 +89,7 @@ These can be disabled in the settings, imported as components and placed anywher
 ````html
 <script>
     import { data } from './data.example.js' 
-    import { Datatable, rows, 
-        SearchInput, 
-        PaginationButtons, 
-        PaginationRowCount 
-    } from 'svelte-simple-datatables'
+    import { SearchInput, PaginationButtons, PaginationRowCount, Datatable, rows } from 'svelte-simple-datatables'
 
     const settings = {
         blocks: {
