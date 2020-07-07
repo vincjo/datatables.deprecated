@@ -80,16 +80,20 @@ const settings = {
 ````
 
 # Optional blocks
-The Datatable includes 3 optional components
+The Datatable includes 3 optional blocks
 - PaginationButtons
 - PaginationRowCount
 - SearchInput
 
-These can be disabled in the settings, imported separately and placed anywhere :
+These can be disabled in the settings, imported as components and placed anywhere :
 ````html
 <script>
     import { data } from './data.example.js' 
-    import { Datatable, rows, searchInput, paginationButtons, paginationRowCount } from 'svelte-simple-datatables'
+    import { Datatable, rows, 
+        SearchInput, 
+        PaginationButtons, 
+        PaginationRowCount 
+    } from 'svelte-simple-datatables'
 
     const settings = {
         blocks: {
@@ -100,13 +104,11 @@ These can be disabled in the settings, imported separately and placed anywhere :
     }
 </script>
 
-<paginationButtons/>
-<Datatable settings={settings} data={data}>
-    ...
-</Datatable>
-<searchInput/>
+<SearchInput/>
+<PaginationButtons/>
+<PaginationRowCount/>
 
-<paginationRowCount/>
+<Datatable settings={settings} data={data}>...</Datatable>
 ````
 
 # Style / CSS
