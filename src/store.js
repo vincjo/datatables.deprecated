@@ -3,19 +3,22 @@ import { writable, derived } from 'svelte/store'
 export const options = writable({
 	sortable: true,
 	pagination: true,
-	rowCount: true,
 	search: true,
 	rowPerPage: 50,
 	columnFilter: false,
-})
-
-export const labels = writable({
-	search: 'Search...',
-	filter: 'Filter',
-	noRows: 'No entries to found',
-	info: 'Showing {start} to {end} of {rows} entries',
-	previous: 'Previous',
-	next: 'Next',
+	labels: {
+		search: 'Search...',
+		filter: 'Filter',
+		noRows: 'No entries to found',
+		info: 'Showing {start} to {end} of {rows} entries',
+		previous: 'Previous',
+		next: 'Next',
+	},
+	blocks: {
+		searchInput: true, 
+		paginationButtons: true,
+		paginationRowCount: true,
+	}
 })
 
 const createState = () => {

@@ -1,10 +1,16 @@
 # Simple-DataTables for Svelte
-Development in progress.
-
+Development in progress...<br>
 Inspired by [fiduswriter/Simple-DataTables](https://github.com/fiduswriter/Simple-DataTables)
 and [DataTables](https://datatables.net/)
-
+<br><br>
 See demo [here](https://geoflux.io/vincjo/svelte-simple-datatables)
+<br><br>
+`Datatable` component behavior :
+- Fits in its container
+- The table has fixed header
+- Scrolls vertically
+
+
 
 # Install
 ````apache
@@ -52,13 +58,6 @@ npm install svelte-simple-datatables
 ````
 See result [here](https://geoflux.io/vincjo/svelte-simple-datatables) 
 
-The Datatable includes 3 optional components
-- PaginationButtons
-- PaginationRowCount
-- SearchInput
-
-These can be imported separately and placed anywhere
-
 # i18n
 Labels can be defined in the settings :
 ````js
@@ -79,9 +78,46 @@ const settings = {
     }
 }
 ````
+
+# Optional blocks
+The Datatable includes 3 optional components
+- PaginationButtons
+- PaginationRowCount
+- SearchInput
+
+These can be disabled in the settings, imported separately and placed anywhere :
+````html
+<script>
+    import { data } from './data.example.js' 
+    import { Datatable, rows, searchInput, paginationButtons, paginationRowCount } from 'svelte-simple-datatables'
+
+    const settings = {
+        blocks: {
+            searchInput: false, 
+            paginationButtons: false,
+            paginationRowCount: false,
+        }
+    }
+</script>
+
+<paginationButtons/>
+<Datatable settings={settings} data={data}>
+    ...
+</Datatable>
+<searchInput/>
+
+<paginationRowCount/>
+````
+
 # Style / CSS
 Here is an example of CSS, the one used in the demo :<br>
 [./example/public/datatable.css](./example/public/datatable.css)
 
 SVG-icons :<br>
 [./example/public/assets](./example/public/assets)
+
+# Todo 
+- horizontal scroll
+- disable functionality for columns without `data-key`
+- add option to disable scrolling
+- import server side data 

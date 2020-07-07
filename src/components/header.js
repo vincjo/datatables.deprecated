@@ -1,6 +1,3 @@
-import Thead from './thead.js'
-import { data, filters, state, labels } from '../store.js'
-
 export default class Header {
 
     getColumns() {
@@ -27,40 +24,6 @@ export default class Header {
         }
         elem.parentNode.style.marginTop = '-' + originHeight + 'px'
         elem.style.visibility = 'hidden'
-    }
-
-    setHeader() {
-        const thead = new Thead(this.thead, this.header)
-        thead.createStickyHeader()
-        this.columns = this.setColumns()
-        if (this.options.columnFilter === true) {
-            this.setColumnFilter()
-        }
-    }
-
-    filter(e) {
-        const height = parseFloat(this.header.style.height.replace('px', ''))
-        this.header.style.height = height + 25 + 'px'
-        const thead = this.header.children[0].cloneNode(true)
-        thead.style.height = '25px'  
-        Array.from(thead.children).forEach(th => {
-            const input = document.createElement('input')
-            input.type = 'text'
-            input.dataset.key = th.dataset.key
-            input.style.width = th.style.width 
-            let $labels 
-            labels.subscribe(store => $labels = store)
-            input.placeholder = $labels.filter
-            th.className = 'filter'
-            th.innerText = ''
-            input.addEventListener('input', (e) => {
-                state.setPage(1)
-                filters.setColumnFilter(input.dataset.key, e.target.value)
-                state.updateRowCount()
-            })
-            th.append(input)
-        })
-        this.header.append(thead)   
     }
 
     redraw() {

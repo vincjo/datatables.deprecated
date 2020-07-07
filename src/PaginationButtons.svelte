@@ -1,6 +1,8 @@
 
 <script>
-    import {state , options, labels} from './store.js'
+    import {state , options} from './store.js'
+    import Header from './components/Header.js'
+    const header = new Header
     state.updateRowCount()
     $: pageCount = Array.from( Array( Math.ceil($state.rowCount / $options.rowPerPage)).keys() )
     const slice = (arr, page) => {
@@ -13,17 +15,21 @@
         return arr.slice( page - 2, page + 1 )
     }
     $: buttons = slice(pageCount, $state.pageNumber)
+    const setPage = (number) => {
+        header.redraw()
+        state.setPage(number)
+    }
 </script>
 
-<section class="dt-pagination">
+<section class="dt-pagination-buttons">
     <button 
         class="text"
         class:disabled={$state.pageNumber === 1}
-        on:click={() => state.setPage($state.pageNumber - 1)}
+        on:click={() => setPage($state.pageNumber - 1)}
     >
-        {@html $labels.previous}
+        {@html $options.labels.previous}
     </button>
-    <button class:active={$state.pageNumber === 1} on:click={() => state.setPage(1)}>
+    <button class:active={$state.pageNumber === 1} on:click={() => setPage(1)}>
         1
     </button>  
     {#if $state.pageNumber >= 5}
@@ -34,7 +40,7 @@
         {#if n > 0 && n < pageCount.length - 1}
         <button 
             class:active={$state.pageNumber === n + 1}
-            on:click={() => state.setPage(n + 1)}
+            on:click={() => setPage(n + 1)}
         >
             {n + 1}
         </button>
@@ -46,7 +52,7 @@
     {/if}
 
     {#if pageCount.length > 1}
-        <button class:active={$state.pageNumber === pageCount.length} on:click={() => state.setPage(pageCount.length)}>
+        <button class:active={$state.pageNumber === pageCount.length} on:click={() => setPage(pageCount.length)}>
             {pageCount.length}
         </button>
     {/if}
@@ -54,8 +60,8 @@
     <button 
         class="text"
         class:disabled={$state.pageNumber === pageCount.length}
-        on:click={() => state.setPage($state.pageNumber + 1)}
+        on:click={() => setPage($state.pageNumber + 1)}
     >
-        {@html $labels.next}
+        {@html $options.labels.next}
     </button>
 </section>

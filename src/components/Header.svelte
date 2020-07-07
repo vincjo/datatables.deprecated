@@ -1,6 +1,6 @@
 <script>
-    import { data, state, options, labels, filters } from '../store.js'
-    import Header from './header.js'
+    import { data, state, options, filters } from '../store.js'
+    import Header from './Header.js'
     import { onMount } from 'svelte'
     $: columns = []
     let height = '40px'
@@ -54,7 +54,7 @@
             <th class="filter" style="width:{th.width};height:25px;">
                 <input 
                     type="text" 
-                    placeholder="{$labels.filter}" 
+                    placeholder="{$options.labels.filter}" 
                     data-key={th.key}
                     on:input={(e) => filter(e)}
                 />

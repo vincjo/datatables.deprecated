@@ -8,8 +8,13 @@
         pagination: true,
         rowPerPage: 50,
         rowCount: true,
-        search: false,
-        columnFilter: false,
+        search: true,
+        columnFilter: true,
+        blocks: {
+            searchInput: true, 
+            paginationButtons: true,
+            paginationRowCount: true,
+        }
     }
 </script>
 
@@ -37,6 +42,8 @@
 </section>
 
 <style>
-    section{width:75%;margin:30px auto;height:70%;}
+    section{position:absolute;top:64px;left:10%;width:80%;bottom:10%;padding:20px;background:#fff;border-radius:4px;
+    -webkit-box-shadow: 0 4px 5px 0 rgba(189,189,189, 0.14), 0 1px 10px 0 rgba(189,189,189, 0.12), 0 2px 4px -1px rgba(189,189,189, 0.3);box-shadow: 0 4px 5px 0 rgba(189,189,189, 0.14), 0 1px 10px 0 rgba(189,189,189, 0.12), 0 2px 4px -1px rgba(189,189,189, 0.3);}
+    /* section{width:80%;height:70%;margin:30px auto 0 auto;padding:20px;border-radius:4px;background:#fff;-webkit-box-shadow: 0 4px 5px 0 rgba(189,189,189, 0.14), 0 1px 10px 0 rgba(189,189,189, 0.12), 0 2px 4px -1px rgba(189,189,189, 0.3);box-shadow: 0 4px 5px 0 rgba(189,189,189, 0.14), 0 1px 10px 0 rgba(189,189,189, 0.12), 0 2px 4px -1px rgba(189,189,189, 0.3);} */
     tbody td{text-align:center;}
 </style>

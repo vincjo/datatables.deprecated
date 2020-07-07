@@ -7,13 +7,13 @@
     import { onMount } from 'svelte'
     export let data = []
     export let settings = {}
-    const datatable = new Datatable(data, settings)
+    const datatable = new Datatable
+    datatable.init(data, settings)
     onMount( () => {
-        const elem = document.querySelector('main.datatable')
-        const table = document.querySelector('main.datatable table')
-        const dims = elem.parentNode.getBoundingClientRect()
-        elem.style.width = dims.width + 'px'
-        elem.style.height = dims.height + 'px'
+        datatable.resize()
+    })
+    window.addEventListener('resize', () => {
+        datatable.resize()
     })
 </script>
 
@@ -21,8 +21,8 @@
     {#if $options.search === true}
         <Search/>
     {/if}
-    <section class="table-container">
-        <Header options={$options}/>
+    <section class="dt-table">
+        <Header/>
         <table>
             <slot></slot>
         </table>
@@ -34,7 +34,7 @@
 
 
 <style>
-    main{position:relative;} 
-    section{height:100%;overflow:auto;}
+    main{position:relative;background:#fff;} 
+    section{overflow:auto;}
     table{width:100%;border-collapse: collapse;}
 </style>

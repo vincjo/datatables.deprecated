@@ -1,17 +1,17 @@
 <script>
-    import {state, options, labels} from './store.js'
+    import {state, options} from './store.js'
     state.updateRowCount()
     $: start = $state.pageNumber * $options.rowPerPage - $options.rowPerPage + 1
     $: end = Math.min($state.pageNumber * $options.rowPerPage, $state.rowCount)
     $: rows = $state.rowCount
-    $: info = $labels.info.replace('{start}', start).replace('{end}', end).replace('{rows}', rows)
+    $: info = $options.labels.info.replace('{start}', start).replace('{end}', end).replace('{rows}', rows)
 </script>
 
 
-<aside class="dt-rowcount">
+<aside class="dt-pagination-rowcount">
     {#if rows > 0}
         {@html info}
     {:else}
-        {@html $labels.noRows}
+        {@html $options.labels.noRows}
     {/if}
 </aside>

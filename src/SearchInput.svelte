@@ -1,5 +1,5 @@
 <script>
-    import { filters, state, labels } from './store.js'
+    import { filters, state, options } from './store.js'
     import Header from './components/header.js'
     const header = new Header
     const search = (value) => {
@@ -10,4 +10,6 @@
     }
 </script>
 
-<input type="text" placeholder="{$labels.search}" on:input={(e) => search(e.target.value)}/>
+<div class="dt-search-input">
+    <input type="text" placeholder="{$options.labels.search}" on:input={(e) => search(e.target.value)}/>
+</div>

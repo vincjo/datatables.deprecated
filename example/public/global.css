@@ -7,8 +7,9 @@ html, body {
 button{border:none;outline:none;}
 body {
 	color: #333;
+	background:#fafafa;
 	margin: 0;
-	padding: 8px;
+	padding: 0;
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
