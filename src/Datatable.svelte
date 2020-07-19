@@ -11,6 +11,7 @@
     datatable.init(data, settings)
     onMount( () => {
         datatable.resize()
+        datatable.addEventScrollX()
     })
     window.addEventListener('resize', () => {
         datatable.resize()
@@ -18,7 +19,7 @@
 </script>
 
 <main class="datatable">
-    {#if $options.search === true}
+    {#if $options.blocks.searchInput === true}
         <Search/>
     {/if}
     <section class="dt-table">
@@ -27,7 +28,7 @@
             <slot></slot>
         </table>
     </section>
-    {#if $options.rowCount === true || $options.pagination === true}
+    {#if $options.blocks.paginationRowCount === true || $options.blocks.paginationButtons === true}
         <Pagination/>
     {/if}
 </main>
@@ -35,6 +36,6 @@
 
 <style>
     main{position:relative;background:#fff;} 
-    section{overflow:auto;}
-    table{width:100%;border-collapse: collapse;}
+    section{position:relative;overflow:auto;width:100%;}
+    table{width:100%;border-collapse:collapse;overflow:hidden;}
 </style>

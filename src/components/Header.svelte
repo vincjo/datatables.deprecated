@@ -3,26 +3,24 @@
     import Header from './Header.js'
     import { onMount } from 'svelte'
     $: columns = []
-    let height = '40px'
     let header
     onMount( () => {
         header = new Header
         columns = header.getColumns()
         header.removeOriginalThead($options.columnFilter)
-        height = header.height
     })
     const sort = (th) => {
-        if($options.sortable !== true) {
+        if($options.sortable !== true || typeof th.dataset.key === 'undefined') {
             return
         }
-        if (th.className.length === 0 || th.className === 'asc') {
-            Array.from(th.parentNode.children).forEach(item => item.className = '')
-            th.className = 'desc'
+        if (th.className === 'sortable' || th.className === 'sortable asc') {
+            Array.from(th.parentNode.children).forEach(item => item.dataset.key ? item.className = 'sortable' : item.className = '')
+            th.className = 'sortable desc'
             data.sortDesc(th.dataset.key)
             state.setPage(1)
         } else {
-            Array.from(th.parentNode.children).forEach(item => item.className = '')
-            th.className = 'asc'
+            Array.from(th.parentNode.children).forEach(item => item.dataset.key ? item.className = 'sortable' : item.className = '')
+            th.className = 'sortable asc'
             data.sortAsc(th.dataset.key)
             state.setPage(1)
         }
@@ -37,7 +35,7 @@
     }
 </script>
 
-<header class="datatable-thead" class:sortable={$options.sortable === true} style="height:{height}px">
+<header class="datatable-thead" class:sortable={$options.sortable === true}>
     <thead>
         <tr>
         {#each columns as th}
@@ -45,6 +43,7 @@
                 style="width:{th.width}" 
                 on:click={(e) => sort(e.target)}
                 data-key={th.key}
+                class:sortable={th.key && $options.sortable === true}
             >{@html th.html}</th>
         {/each}        
         </tr>
@@ -55,6 +54,7 @@
                 <input 
                     type="text" 
                     placeholder="{$options.labels.filter}" 
+                    class="browser-default"
                     data-key={th.key}
                     on:input={(e) => filter(e)}
                 />
@@ -66,5 +66,5 @@
 </header>
 
 <style>
-    header{position:sticky;top:0;left:0;}
+    header{position:-webkit-sticky;position:sticky;top:0;left:0;}
 </style>

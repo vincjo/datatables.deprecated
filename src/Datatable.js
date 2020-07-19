@@ -39,8 +39,6 @@ export default class Datatable {
         this.options = {
             sortable:     typeof opt.sortable     === 'boolean' ? opt.sortable     : true,
             pagination:   typeof opt.pagination   === 'boolean' ? opt.pagination   : true,
-            rowCount:     typeof opt.rowCount     === 'boolean' ? opt.rowCount     : true,
-            search:       typeof opt.search       === 'boolean' ? opt.search       : true,
             rowPerPage:   typeof opt.rowPerPage   === 'number'  ? opt.rowPerPage   : 50,
             columnFilter: typeof opt.columnFilter === 'boolean' ? opt.columnFilter : false, 
             labels: labels,
@@ -70,7 +68,6 @@ export default class Datatable {
         const size = this.getSize()
         const tableContainer = document.querySelector('main.datatable .dt-table')
         tableContainer.style.height = this.getTableContainerHeight(size.parentHeight * size.height) + 'px'
-        tableContainer.style.minWidth = tableContainer.querySelector('table').getBoundingClientRect().width + 'px'
         this.getHeader().redraw()
     }
 
@@ -89,5 +86,11 @@ export default class Datatable {
 
     getHeader() {
         return new Header
+    }
+
+    addEventScrollX() {
+        document.querySelector('main.datatable .dt-table').addEventListener('scroll', (e) => {
+            document.querySelector('.datatable-thead').style.left = (-1 * e.target.scrollLeft ) + 'px'
+        })
     }
 }

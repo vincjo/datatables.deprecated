@@ -8,7 +8,6 @@ export default class Header {
                 key: th.dataset.key,
                 sort: null,
                 className: '',
-                width: th.getBoundingClientRect().width + 'px'
             })
         })
         return columns       
@@ -17,11 +16,6 @@ export default class Header {
     removeOriginalThead(columnFilter = false) {
         const elem = document.querySelector('.datatable table thead')
         const originHeight = elem.getBoundingClientRect().height
-        if (columnFilter) {
-            this.height = originHeight + 25
-        } else {
-            this.height = originHeight
-        }
         elem.parentNode.style.marginTop = '-' + originHeight + 'px'
         elem.style.visibility = 'hidden'
     }
@@ -36,7 +30,9 @@ export default class Header {
             thead.forEach(tr => {
                 let i = 0
                 Array.from(tbody.children).forEach(td => {
-                    tr.children[i].style.width = td.getBoundingClientRect().width + 'px' 
+                    const width = td.getBoundingClientRect().width + 'px' 
+                    tr.children[i].style.minWidth = width
+                    tr.children[i].style.maxWidth = width
                     i++
                 })
             })

@@ -3,7 +3,6 @@ import { writable, derived } from 'svelte/store'
 export const options = writable({
 	sortable: true,
 	pagination: true,
-	search: true,
 	rowPerPage: 50,
 	columnFilter: false,
 	labels: {
@@ -38,7 +37,7 @@ const createState = () => {
 		setPage: (pageNumber) => update(store => {
 			let rowPerPage
 			options.subscribe(store => rowPerPage = store.rowPerPage)
-			if (pageNumber >= 1 && pageNumber <= store.rowCount / rowPerPage) {
+			if ( pageNumber >= 1 && pageNumber <= Math.ceil(store.rowCount / rowPerPage) ) {
 				store.pageNumber = parseInt(pageNumber)
 			}
 			return store

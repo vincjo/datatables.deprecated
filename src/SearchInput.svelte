@@ -11,5 +11,5 @@
 </script>
 
 <div class="dt-search-input">
-    <input type="text" placeholder="{$options.labels.search}" on:input={(e) => search(e.target.value)}/>
+    <input type="text" placeholder="{$options.labels.search}" on:input={(e) => search(e.target.value)} class="browser-default"/>
 </div>

@@ -20,8 +20,8 @@
     "src",
     "dist"
   ],
-  "description": "Inspired by [fiduswriter/Simple-DataTables](https://github.com/fiduswriter/Simple-DataTables) and [jQuery DataTables](https://datatables.net/)",
-  "version": "0.1.0",
+  "description": "Datatable component for Svelte",
+  "version": "0.1.2",
   "directories": {
     "example": "example"
   },

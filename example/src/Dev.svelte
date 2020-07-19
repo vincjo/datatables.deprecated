@@ -7,8 +7,6 @@
         sortable: true,
         pagination: true,
         rowPerPage: 50,
-        rowCount: true,
-        search: true,
         columnFilter: true,
         blocks: {
             searchInput: true, 

@@ -8,7 +8,7 @@ See demo [here](https://geoflux.io/vincjo/svelte-simple-datatables)
 `Datatable` component behavior :
 - Fits in its container
 - The table has fixed header
-- Scrolls vertically
+- Scrolls vertically and hozizontally
 
 
 
@@ -18,7 +18,7 @@ npm install svelte-simple-datatables
 ````
 
 # Sample code
- You must indicate the key of each column in the `<th>` tag.<br>
+ To enable the filter and sort functions, you have to specify the data-key in the `<th>` tag.<br>
  Settings definition is optionnal.
 ````html
 <script>
@@ -29,8 +29,6 @@ npm install svelte-simple-datatables
         sortable: true,
         pagination: true,
         rowPerPage: 50,
-        rowCount: true,
-        search: true,
         columnFilter: true,
     }
 </script>
@@ -109,7 +107,6 @@ SVG-icons :<br>
 [./example/public/assets](./example/public/assets)
 
 # Todo 
-- horizontal scroll
-- disable functionality for columns without `data-key`
+- add option to show / hide columns dynamically
 - add option to disable scrolling
 - import server side data 
