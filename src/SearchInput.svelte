@@ -1,12 +1,10 @@
 <script>
-    import { filters, state, options } from './store.js'
-    import Header from './components/Header.js'
-    const header = new Header
+    import { filters, state, options, columns } from './store.js'
     const search = (value) => {
         state.setPage(1)
         filters.setGlobal(value)
         state.updateRowCount()
-        header.redraw()
+        columns.redraw()
     }
 </script>
 

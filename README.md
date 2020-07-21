@@ -8,7 +8,7 @@ See demo [here](https://geoflux.io/vincjo/svelte-simple-datatables)
 `Datatable` component behavior :
 - Fits in its container
 - The table has fixed header
-- Scrolls vertically and hozizontally
+- Scrolls vertically and horizontally
 
 
 

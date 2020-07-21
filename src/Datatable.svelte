@@ -12,6 +12,7 @@
     onMount( () => {
         datatable.resize()
         datatable.addEventScrollX()
+        datatable.addEventUpdateData()
     })
     window.addEventListener('resize', () => {
         datatable.resize()

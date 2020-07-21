@@ -1,4 +1,4 @@
-import {data, options} from './store.js'
+import {data, options, columns} from './store.js'
 import Header from './components/Header.js'
 
 export default class Datatable {
@@ -68,7 +68,7 @@ export default class Datatable {
         const size = this.getSize()
         const tableContainer = document.querySelector('main.datatable .dt-table')
         tableContainer.style.height = this.getTableContainerHeight(size.parentHeight * size.height) + 'px'
-        this.getHeader().redraw()
+        columns.redraw()
     }
 
     getTableContainerHeight(height) {
@@ -84,13 +84,15 @@ export default class Datatable {
         document.querySelector('main.datatable .dt-table').style.height = height - calc.reduce(sum) + 'px'
     }
 
-    getHeader() {
-        return new Header
-    }
-
     addEventScrollX() {
         document.querySelector('main.datatable .dt-table').addEventListener('scroll', (e) => {
             document.querySelector('.datatable-thead').style.left = (-1 * e.target.scrollLeft ) + 'px'
         })
+    }
+
+    addEventUpdateData() {
+        document.querySelector('main.datatable table tbody').addEventListener('change', (e) => {
+            console.log('changed')
+        })       
     }
 }

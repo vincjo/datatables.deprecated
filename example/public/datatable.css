@@ -20,7 +20,9 @@
 .datatable th.filter input{padding:0;margin:0;height:25px;width:100%;border:none;;text-align:center;outline:none;border-radius:0;font-size:14px;}
 .datatable th.filter input::placeholder {color:#e0e0e0;font-style:italic;font-size:13px;}
 .datatable tbody tr:hover{background:#fafafa;}
-.datatable td{padding:3px;}
+.datatable td{padding:5px;}
+.datatable tbody td.hidden, 
+.datatable table th.hidden{display:none !important;}
 
 .datatable .dt-search{height:38px;padding-bottom:10px;}
 /** top-LEFT elements (search input) **/

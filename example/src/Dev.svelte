@@ -1,8 +1,8 @@
 <script>
     import { data } from './data.example.js' 
     import Datatable from '../../src/Datatable.svelte'
-    import { rows } from '../../src/store.js'
-
+    import { rows, columns } from '../../src/store.js'
+    let visible = false
     const settings = {
         sortable: true,
         pagination: true,

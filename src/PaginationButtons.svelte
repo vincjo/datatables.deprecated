@@ -1,8 +1,6 @@
 
 <script>
-    import {state , options} from './store.js'
-    import Header from './components/Header.js'
-    const header = new Header
+    import {state , options, columns} from './store.js'
     state.updateRowCount()
     $: pageCount = Array.from( Array( Math.ceil($state.rowCount / $options.rowPerPage)).keys() )
     const slice = (arr, page) => {
@@ -16,7 +14,7 @@
     }
     $: buttons = slice(pageCount, $state.pageNumber)
     const setPage = (number) => {
-        header.redraw()
+        columns.redraw()
         state.setPage(number)
     }
 </script>

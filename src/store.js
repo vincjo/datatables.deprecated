@@ -71,8 +71,69 @@ const createData = () => {
 }
 export const data = createData()
 
+const createColumns = () => {
+	const { subscribe, set, update } = writable([])
+	return {
+		subscribe, set, update,
+		get: () => {
+			let $columns
+			columns.subscribe(store => $columns = store)
+			return $columns
+		},
+		redraw: () => {
+			setTimeout(() => {
+				const tbody = document.querySelector('.datatable table tbody tr')
+				if (tbody === null) return
+				const thead = document.querySelectorAll('.datatable header thead tr')
+				thead.forEach(tr => {
+					let i = 0
+					Array.from(tbody.children).forEach(td => {
+						const width = td.getBoundingClientRect().width + 'px' 
+						tr.children[i].style.minWidth = width
+						tr.children[i].style.maxWidth = width
+						i++
+					})
+				})
+			}, 50)			
+		},
+		setVisible: (index, visible) => {
+			if ( !Array.isArray(index) ) {
+				index = [index]
+			}
+			let $columns = columns.get()
+			index.forEach(i => {
+				$columns[i].visible = !$columns[i].visible
+				columns.update(store => store = $columns)
+				if (visible) {
+					document.querySelectorAll(`.datatable tbody tr td:nth-child(${i +1})`).forEach(cell => {
+						cell.classList.remove('hidden')
+					})
+				}
+				else {
+					document.querySelectorAll(`.datatable tbody tr td:nth-child(${i +1}), .datatable table thead th:nth-child(${i +1})`).forEach(cell => {
+						cell.classList.add('hidden')
+					})
+				}
+
+			})
+			columns.redraw()
+		},
+		hide: () => {
+			console.log('hide()')
+			columns.get().filter(column => column.visible === false).map(column => {
+				document.querySelectorAll(
+					`.datatable tbody tr td:nth-child(${column.index +1})`
+				).forEach(cell => {
+					cell.classList.add('hidden')
+				})				
+			})
+		}
+	}
+}
+export const columns = createColumns()
+
 const createFilters = () => {
-	const { subscribe, set, update } = writable({column: [], gloabl: null})
+	const { subscribe, set, update } = writable({column: [], global: null})
 	return {
 		subscribe, set,
 		setColumnFilter: (key, value) => update(store => {
