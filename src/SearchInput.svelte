@@ -1,5 +1,7 @@
 <script>
     import { filters, state, options, columns } from './store.js'
+    export let ref = ''
+    export let classList = ''
     const search = (value) => {
         state.setPage(1)
         filters.setGlobal(value)
@@ -8,6 +10,11 @@
     }
 </script>
 
-<div class="dt-search-input">
-    <input type="text" placeholder="{$options.labels.search}" on:input={(e) => search(e.target.value)} class="browser-default"/>
-</div>
+<input 
+    class="dt-search-input {classList}" 
+    type="text" 
+    placeholder="{$options.labels.search}" 
+    on:input={(e) => search(e.target.value)} 
+    {ref}
+/>
+

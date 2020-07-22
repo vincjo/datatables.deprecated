@@ -12,7 +12,6 @@
     onMount( () => {
         datatable.resize()
         datatable.addEventScrollX()
-        datatable.addEventUpdateData()
     })
     window.addEventListener('resize', () => {
         datatable.resize()
@@ -36,7 +35,7 @@
 
 
 <style>
-    main{position:relative;background:#fff;} 
+    main{position:relative;} 
     section{position:relative;overflow:auto;width:100%;}
     table{width:100%;border-collapse:collapse;overflow:hidden;}
 </style>

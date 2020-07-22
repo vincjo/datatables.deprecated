@@ -12,7 +12,6 @@ export default class Header {
                 key: th.dataset.key,
                 sort: null,
                 classList: th.classList,
-                visible: true,
             })
             i++
         })
@@ -20,10 +19,14 @@ export default class Header {
         return columnList       
     }
 
-    removeOriginalThead(columnFilter = false) {
+    removeOriginalThead() {
         const elem = document.querySelector('.datatable table thead')
         const originHeight = elem.getBoundingClientRect().height
         elem.parentNode.style.marginTop = '-' + originHeight + 'px'
         elem.style.visibility = 'hidden'
+    }
+
+    getOrginalHeaderClassList() {
+        return document.querySelector('.datatable table thead').classList
     }
 }

@@ -1,6 +1,8 @@
 
 <script>
     import {state , options, columns} from './store.js'
+    export let ref = ''
+    export let classList = ''
     state.updateRowCount()
     $: pageCount = Array.from( Array( Math.ceil($state.rowCount / $options.rowPerPage)).keys() )
     const slice = (arr, page) => {
@@ -19,7 +21,7 @@
     }
 </script>
 
-<section class="dt-pagination-buttons">
+<section class="dt-pagination-buttons {classList}" {ref}>
     <button 
         class="text"
         class:disabled={$state.pageNumber === 1}

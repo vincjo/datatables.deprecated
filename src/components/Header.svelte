@@ -2,10 +2,12 @@
     import { data, state, options, filters, columns } from '../store.js'
     import Header from './Header.js'
     import { onMount } from 'svelte'
+    let theadClassList
     onMount( () => {
         const header = new Header
         header.getColumns()
-        header.removeOriginalThead($options.columnFilter)
+        header.removeOriginalThead()
+        theadClassList = header.getOrginalHeaderClassList()
     })
     const sort = (th) => {
         if($options.sortable !== true || typeof th.dataset.key === 'undefined') {
@@ -34,7 +36,7 @@
 </script>
 
 <header class="datatable-thead" class:sortable={$options.sortable === true}>
-    <thead>
+    <thead class="{theadClassList}">
         <tr>
         {#each $columns as th}
             <th 
@@ -42,7 +44,6 @@
                 on:click={(e) => sort(e.target)}
                 data-key={th.key}
                 class={th.classList}
-                class:hidden={!th.visible}
                 class:sortable={th.key && $options.sortable === true}
             >{@html th.html}</th>
         {/each}        
@@ -50,7 +51,7 @@
         {#if $options.columnFilter === true}
         <tr>
         {#each $columns as th}
-            <th class="filter" style="width:{th.width};height:25px;" class:hidden={!th.visible}>
+            <th class="filter" style="width:{th.width};height:25px;">
                 <input 
                     type="text" 
                     placeholder="{$options.labels.filter}" 
@@ -67,5 +68,4 @@
 
 <style>
     header{position:-webkit-sticky;position:sticky;top:0;left:0;z-index:6;}
-    th.hidden{display:none;}
 </style>

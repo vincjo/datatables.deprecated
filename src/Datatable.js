@@ -89,10 +89,4 @@ export default class Datatable {
             document.querySelector('.datatable-thead').style.left = (-1 * e.target.scrollLeft ) + 'px'
         })
     }
-
-    addEventUpdateData() {
-        document.querySelector('main.datatable table tbody').addEventListener('change', (e) => {
-            console.log('changed')
-        })       
-    }
 }
