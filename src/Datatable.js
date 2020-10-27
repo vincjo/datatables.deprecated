@@ -65,6 +65,9 @@ export default class Datatable {
     }
 
     resize() {
+        if (!document.querySelector('main.datatable')) {
+            return
+        }
         const size = this.getSize()
         const tableContainer = document.querySelector('main.datatable .dt-table')
         tableContainer.style.height = this.getTableContainerHeight(size.parentHeight * size.height) + 'px'

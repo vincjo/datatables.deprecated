@@ -12,6 +12,9 @@
     onMount( () => {
         datatable.resize()
         datatable.addEventScrollX()
+        new ResizeObserver( mutations => {
+            mutations.forEach( mutation => datatable.resize() )
+        }).observe( document.querySelector('main.datatable').parentElement )
     })
     window.addEventListener('resize', () => {
         datatable.resize()
