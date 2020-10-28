@@ -1,12 +1,6 @@
 import {data, options, columns} from './store.js'
-import Header from './components/Header.js'
 
 export default class Datatable {
-
-    init(data = [], options = {}) {
-        this.setRows(data)
-        this.setOptions(options)
-    }
 
     setRows(arr) {
         arr.forEach( (item) => {

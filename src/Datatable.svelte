@@ -8,16 +8,14 @@
     export let data = []
     export let settings = {}
     const datatable = new Datatable
-    datatable.init(data, settings)
+    datatable.setOptions(settings)
+    $: { datatable.setRows(data) }
     onMount( () => {
         datatable.resize()
         datatable.addEventScrollX()
         new ResizeObserver( mutations => {
             mutations.forEach( mutation => datatable.resize() )
         }).observe( document.querySelector('main.datatable').parentElement )
-    })
-    window.addEventListener('resize', () => {
-        datatable.resize()
     })
 </script>
 
