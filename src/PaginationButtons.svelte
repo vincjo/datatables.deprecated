@@ -32,7 +32,7 @@
     <button class:active={$state.pageNumber === 1} on:click={() => setPage(1)}>
         1
     </button>  
-    {#if $state.pageNumber >= 5}
+    {#if pageCount.length > 6 && $state.pageNumber >= 5}
         <button class="ellipse">...</button>
     {/if}
 
@@ -47,7 +47,7 @@
         {/if}
     {/each}
 
-    {#if $state.pageNumber <= pageCount.length - 4}
+    {#if pageCount.length > 6 && $state.pageNumber <= pageCount.length - 4}
         <button class="ellipse">...</button>
     {/if}
 
