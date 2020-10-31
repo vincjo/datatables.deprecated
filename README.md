@@ -96,7 +96,7 @@ These can be disabled in the settings, imported as components and placed anywher
 <PaginationButtons/>
 <PaginationRowCount/>
 
-<Datatable settings={settings} data={data}>...</Datatable>
+<Datatable {settings} {data}>...</Datatable>
 ````
 
 # Style
