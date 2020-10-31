@@ -98,7 +98,10 @@ These can be disabled in the settings, imported as components and placed anywher
 <PaginationButtons/>
 <PaginationRowCount/>
 
-<Datatable {settings} {data}>...</Datatable>
+<Datatable {settings} {data}>
+    (...)
+</Datatable>
+
 ````
 
 # <a name="expression"></a> Use of expressions in `key` dataset
@@ -106,7 +109,6 @@ These can be disabled in the settings, imported as components and placed anywher
 <script>
     import { data } from './data.example.js'  
     import { Datatable, rows } from 'svelte-simple-datatables'
-
 </script>
 
 <Datatable {data}>
@@ -114,7 +116,7 @@ These can be disabled in the settings, imported as components and placed anywher
         <th data-key="id">ID</th>
 
         <!-- Expression that will be used for sorting and filtering -->
-        <th data-key="{x => x.first_name + ' ' + x.last_name}">User</th>
+        <th data-key="{(x) => `${x.first_name} ${x.last_name}`}">User</th>
 
         <th data-key="email">Email</th>
         <th data-key="ip_address">IP Adress</th>
@@ -123,7 +125,7 @@ These can be disabled in the settings, imported as components and placed anywher
     {#each $rows as row}
         <tr>
             <td>{row.id}</td>
-            
+
             <!-- This allows for example to concatenate values -->
             <td>{row.first_name} {row.last_name}</td>
 
