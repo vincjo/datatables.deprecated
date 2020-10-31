@@ -21,5 +21,5 @@
 />
 
 <style>
-    input{border:1px solid #e0e0e0;outline:none;padding:2px 10px;margin:0;height:28px;background:transparent}
+    input{border:1px solid #e0e0e0;outline:none;padding:2px 10px;margin:0;height:24px;background:transparent;border-radius:3px;transition:all, 0.5s}
 </style>

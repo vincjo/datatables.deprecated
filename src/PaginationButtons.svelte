@@ -17,8 +17,8 @@
     }
     $: buttons = slice(pageCount, $pageNumber)
     const setPage = (number) => {
-        columns.redraw()
         pageNumber.set(number)
+        columns.redraw()
     }
 </script>
 
@@ -61,18 +61,21 @@
     <button 
         class="text"
         class:disabled={$pageNumber === pageCount.length}
-        on:click={() => pageNumber.set($pageNumber + 1)}
+        on:click={() => setPage($pageNumber + 1)}
     >
         {@html $options.labels.next}
     </button>
 </section>
 
 <style>
-    section{display:flex;flex-direction:row;height:30px;}
-    button{outline:none;border:none;height:30px;width:30px;background:inherit;color:#616161;font-size:13px;margin:0;padding:0;transition:all, .2s;border-radius:2px;line-height:30px;}
-    button:not(.active):hover{background:#e0e0e0;cursor:pointer;}
+    section{display:flex;flex-direction:row;height:32px;margin-right:8px;}
+    button{height:32px;width:32px;background:inherit;color:#616161;font-size:13px;margin:0;padding:0;transition:all, .2s;line-height:32px;border:1px solid #e0e0e0;border-right:none;outline:none;}
+    button:first-child{border-radius:4px 0 0 4px;}
+    button:last-child{border-right:1px solid #e0e0e0;border-radius:0 4px 0 4px;}
+    button:not(.active):hover{background:#eee;cursor:pointer;}
     button.text{min-width:70px;cursor:pointer;}
     button.ellipse:hover{background:inherit;cursor: default;}
-    button.active{background:#eee;}
+    button.active{background:#eee;font-weight:bold;}
     button.disabled:hover{background:inherit;cursor: default;}
+    /* button.disabled{color:#9e9e9e;} */
 </style>

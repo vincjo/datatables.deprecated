@@ -18,5 +18,5 @@
 {/if}
 
 <style>
-    section{display:flex;flex-direction:row;height:35px;padding-top:5px;justify-content:space-between;}
+    section{display:flex;flex-direction:row;height:40px;padding-top:8px;justify-content:space-between;}
 </style>

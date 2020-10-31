@@ -15,3 +15,7 @@
         {@html $options.labels.noRows}
     {/if}
 </aside>
+
+<style>
+    aside{margin-left:8px;font-size:14px;line-height:32px;}
+</style>
