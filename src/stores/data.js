@@ -10,20 +10,20 @@ const createData = () => {
 		subscribe, set,
 		sortAsc: (key) => update(store => {
 			try {
-				store.sort( (a, b) => b[key].localeCompare(a[key]) )
+				store.sort( (a, b) => key(b).localeCompare(key(a)) )
 			} catch (e) {
-				return store.sort( (a, b) => parseFloat(b[key]) - parseFloat(a[key]))
+				return store.sort( (a, b) => parseFloat(key(b)) - parseFloat(key(a)))
 			}
-			return store.sort( (a, b) => b[key].localeCompare(a[key]) )
+			return store.sort( (a, b) => key(b).localeCompare(key(a)) )
 			
 		}),
 		sortDesc: (key) => update(store => {
 			try {
-				store.sort( (a, b) => a[key].localeCompare(b[key]) )
+				store.sort( (a, b) => key(a).localeCompare(key(b)) )
 			} catch (e) {
-				return store.sort( (a, b) => parseFloat(a[key]) - parseFloat(b[key]))
+				return store.sort( (a, b) => parseFloat(key(a)) - parseFloat(key(b)))
 			}
-			return store.sort( (a, b) => a[key].localeCompare(b[key]) )
+			return store.sort( (a, b) => key(a).localeCompare(key(b)) )
 		}),
 	}
 }
@@ -41,7 +41,7 @@ export const filtered = derived(
 		}
 		if ($local.length > 0) {
 			$local.forEach(filter => {
-				return $data = $data.filter( item => item[filter.key].toString().toLowerCase().indexOf(filter.value.toString().toLowerCase()) > -1)
+				return $data = $data.filter( item => filter.key(item).toString().toLowerCase().indexOf(filter.value.toString().toLowerCase()) > -1)
 			})
 		}
 		rowCount.set($data.length)

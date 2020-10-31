@@ -5,8 +5,9 @@ and [DataTables](https://datatables.net/)
 <br><br>
 See demo [here](https://geoflux.io/vincjo/svelte-simple-datatables)
 <br><br>
-`Datatable` component behavior :
+`svelte-simple-datatables` component behavior :
 - Fits in its container
+- Inherit background-color
 - The table has fixed header
 - Scrolls vertically and horizontally
 
@@ -18,7 +19,8 @@ npm install svelte-simple-datatables
 ````
 
 # Sample code
- To enable the filter and sort functions, you have to specify the data-key in the `<th>` tag.<br>
+ To enable the filter and sort functions, you have to specify the *`data-key`* in the `<th>` tag. 
+ You can set [an expression in plain javascript](#expression).<br>
  Settings definition is optionnal.
 ````html
 <script>
@@ -97,6 +99,38 @@ These can be disabled in the settings, imported as components and placed anywher
 <PaginationRowCount/>
 
 <Datatable {settings} {data}>...</Datatable>
+````
+
+# <a name="expression"></a> Use of expressions in `key` dataset
+````svelte
+<script>
+    import { data } from './data.example.js'  
+    import { Datatable, rows } from 'svelte-simple-datatables'
+
+</script>
+
+<Datatable {data}>
+    <thead>
+        <th data-key="id">ID</th>
+        <!-- Expression that will be used for sorting and filtering -->
+        <th data-key="{x => x.first_name + ' ' + x.last_name}">User</th>
+        <!-- -->
+        <th data-key="email">Email</th>
+        <th data-key="ip_address">IP Adress</th>
+    </thead>
+    <tbody>
+    {#each $rows as row}
+        <tr>
+            <td>{row.id}</td>
+            <!-- This allows for example to concatenate values -->
+            <td>{row.first_name} {row.last_name}</td>
+            <!-- -->
+            <td>{row.email}</td>
+            <td>{row.ip_address}</td>
+        </tr>
+    {/each}
+    </tbody>
+</Datatable>
 ````
 
 # Style

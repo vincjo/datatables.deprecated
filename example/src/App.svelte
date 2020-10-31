@@ -2,7 +2,6 @@
     import { data } from './data.example.js' 
     import Datatable from '../../src/Datatable.svelte'
     import { rows } from '../../src/stores/data.js'
-    let visible = false
     const settings = {
         sortable: true,
         pagination: true,
@@ -42,5 +41,5 @@
 <style>
     section{position:absolute;top:64px;left:15%;width:70%;bottom:10%;padding:20px;background:#fff;border-radius:4px;-webkit-box-shadow: 0 4px 5px 0 rgba(189,189,189, 0.14), 0 1px 10px 0 rgba(189,189,189, 0.12), 0 2px 4px -1px rgba(189,189,189, 0.3);box-shadow: 0 4px 5px 0 rgba(189,189,189, 0.14), 0 1px 10px 0 rgba(189,189,189, 0.12), 0 2px 4px -1px rgba(189,189,189, 0.3);}
     /* section{background:#fff;width:70%;height:70%;margin:8% auto 0 auto;padding:20px;border-radius:4px;-webkit-box-shadow: 0 4px 5px 0 rgba(189,189,189, 0.14), 0 1px 10px 0 rgba(189,189,189, 0.12), 0 2px 4px -1px rgba(189,189,189, 0.3);box-shadow: 0 4px 5px 0 rgba(189,189,189, 0.14), 0 1px 10px 0 rgba(189,189,189, 0.12), 0 2px 4px -1px rgba(189,189,189, 0.3);} */
-    tbody td{text-align:center;}
+    tbody td{text-align:center;padding-right:16px;}
 </style>

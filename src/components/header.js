@@ -8,14 +8,19 @@ export const header = {
             columnList.push({
                 index: i,
                 html: th.innerHTML,
-                key: th.dataset.key,
+                key: header.getKey(th.dataset.key),
                 sort: null,
                 classList: th.classList,
             })
             i++
         })
         columns.set(columnList)
-        return columnList       
+    },
+    getKey: (key) => {
+        if (key && key.indexOf('=>') > 0) {
+            return Function(`'use strict';return (${key})`)()
+        }
+        return (x) => x[key]
     },
     removeOriginalThead: () => {
         const elem = document.querySelector('.datatable table thead')

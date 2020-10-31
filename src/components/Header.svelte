@@ -12,27 +12,27 @@
         header.removeOriginalThead()
         theadClassList = header.getOrginalHeaderClassList()
     })
-    const sort = (th) => {
-        if($options.sortable !== true || typeof th.dataset.key === 'undefined') {
+    const sort = (element, key) => {
+        if($options.sortable !== true || typeof key === 'undefined') {
             return
         }
-        if ( th.classList.contains('sortable') && th.classList.contains('asc') ) {
-            Array.from(th.parentNode.children).forEach(item => item.classList.remove('asc'))
-            th.classList.add('desc')
-            data.sortDesc(th.dataset.key)
+        if ( element.classList.contains('sortable') && element.classList.contains('asc') ) {
+            Array.from(element.parentNode.children).forEach(item => item.classList.remove('asc'))
+            element.classList.add('desc')
+            data.sortDesc(key)
             pageNumber.set(1)
         } else {
-            Array.from(th.parentNode.children).forEach(item => item.classList.remove('desc'))
-            th.classList.add('asc')
-            data.sortAsc(th.dataset.key)
+            Array.from(element.parentNode.children).forEach(item => item.classList.remove('desc'))
+            element.classList.add('asc')
+            data.sortAsc(key)
             pageNumber.set(1)
         }
         columns.redraw()
     }
 
-    const filter = (e) => {
+    const filter = (key, value) => {
         pageNumber.set(1)
-        local.add(e.target.dataset.key, e.target.value)
+        local.add(key, value)
         columns.redraw()
     }
 </script>
@@ -43,8 +43,7 @@
         {#each $columns as th}
             <th nowrap
                 style="width:{th.width}" 
-                on:click={(e) => sort(e.target)}
-                data-key={th.key}
+                on:click={(e) => sort(e.target, th.key)}
                 class={th.classList}
                 class:sortable={th.key && $options.sortable === true}
             >{@html th.html}<span></span></th>
@@ -59,8 +58,7 @@
                     type="text" 
                     placeholder="{$options.labels.filter}" 
                     class="browser-default"
-                    data-key={th.key}
-                    on:input={(e) => filter(e)}
+                    on:input={(e) => filter(th.key, e.target.value)}
                 />
                 {/if}
             </th>
@@ -72,11 +70,11 @@
 
 <style>
     section{position:-webkit-sticky;position:sticky;top:0;left:0;z-index:6;background:inherit;border-bottom:1px solid #eee;}
-    th{padding:10px 15px;text-align:center;border-bottom:1px solid #eee;}
+    th{padding:10px 0px;text-align:center;border-bottom:1px solid #eee;}
     th.sortable{cursor:pointer;}
-    th.sortable span{padding-right: 18px;position: relative;}
+    th.sortable span{padding-right:16px;position:relative;}
     th.sortable span:before,
-    th.sortable span:after {border: 4px solid transparent;content: "";display: block;height: 0;right: 0;top: 50%;position: absolute;width: 0;}
+    th.sortable span:after {border:4px solid transparent;content:"";display:block;height:0;right:0;top:50%;position:absolute;width:0;}
     th.sortable span:before {border-bottom-color: #e0e0e0;margin-top: -9px;}
     th.sortable span:after {border-top-color: #e0e0e0;margin-top: 1px;}
     th.sortable.asc span:before{border-bottom-color: #9e9e9e;}

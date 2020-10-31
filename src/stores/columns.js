@@ -13,7 +13,7 @@ const createColumns = () => {
 			setTimeout(() => {
 				const tbody = document.querySelector('.datatable table tbody tr')
 				if (tbody === null) return
-				const thead = document.querySelectorAll('.datatable header thead tr')
+				const thead = document.querySelectorAll('.datatable-thead thead tr')
 				thead.forEach(tr => {
 					let i = 0
 					Array.from(tbody.children).forEach(td => {

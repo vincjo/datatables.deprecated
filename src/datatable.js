@@ -32,9 +32,7 @@ export const datatable = {
         }
     },
     resize: () => {
-        if (!document.querySelector('main.datatable')) {
-            return
-        }
+        if ( !document.querySelector('main.datatable') ) return
         const size = datatable.getSize()
         const tableContainer = document.querySelector('main.datatable .dt-table')
         tableContainer.style.height = datatable.getTableContainerHeight(size.parentHeight * size.height) + 'px'
