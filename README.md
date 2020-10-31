@@ -22,7 +22,7 @@ npm install svelte-simple-datatables
  To enable the filter and sort functions, you have to specify the *`data-key`* in the `<th>` tag. 
  You can set [an expression in plain javascript](#expression).<br>
  Settings definition is optionnal.
-````html
+````svelte
 <script>
     import { data } from './data.example.js'  
     import { Datatable, rows } from 'svelte-simple-datatables'
@@ -80,7 +80,7 @@ The Datatable includes 3 optional blocks
 - SearchInput
 
 These can be disabled in the settings, imported as components and placed anywhere :
-````html
+````svelte
 <script>
     import { data } from './data.example.js' 
     import { SearchInput, PaginationButtons, PaginationRowCount, Datatable, rows } from 'svelte-simple-datatables'
@@ -112,9 +112,10 @@ These can be disabled in the settings, imported as components and placed anywher
 <Datatable {data}>
     <thead>
         <th data-key="id">ID</th>
+
         <!-- Expression that will be used for sorting and filtering -->
         <th data-key="{x => x.first_name + ' ' + x.last_name}">User</th>
-        <!-- -->
+
         <th data-key="email">Email</th>
         <th data-key="ip_address">IP Adress</th>
     </thead>
@@ -122,9 +123,10 @@ These can be disabled in the settings, imported as components and placed anywher
     {#each $rows as row}
         <tr>
             <td>{row.id}</td>
+            
             <!-- This allows for example to concatenate values -->
             <td>{row.first_name} {row.last_name}</td>
-            <!-- -->
+
             <td>{row.email}</td>
             <td>{row.ip_address}</td>
         </tr>
