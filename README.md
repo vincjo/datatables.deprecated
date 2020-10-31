@@ -96,17 +96,9 @@ These can be disabled in the settings, imported as components and placed anywher
 <PaginationButtons/>
 <PaginationRowCount/>
 
-<Datatable settings={settings} data={data}>...</Datatable>
+<Datatable {settings} {data}>...</Datatable>
 ````
 
-# Style / CSS
-Here is an example of CSS, the one used in the demo :<br>
-[./example/public/datatable.css](./example/public/datatable.css)
-
-SVG-icons :<br>
-[./example/public/assets](./example/public/assets)
-
-# Todo 
-- add option to show / hide columns dynamically
-- add option to disable scrolling
-- import server side data 
+# Style
+If need to override the CSS of the component : 
+[datatable.css](./example/public/datatable.css)
