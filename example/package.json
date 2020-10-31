@@ -8,15 +8,14 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^12.0.0",
-    "@rollup/plugin-node-resolve": "^8.0.0",
-    "rollup": "^2.19.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "rollup": "^2.32.1",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
-    "rollup-plugin-terser": "^5.1.2",
-    "svelte": "^3.0.0"
+    "rollup-plugin-terser": "^5.3.1",
+    "svelte": "^3.29.4"
   },
   "dependencies": {
-    "sirv-cli": "^0.4.4",
-    "svelte-simple-datatables": "0.0.4"
+    "sirv-cli": "^0.4.4"
   }
 }
