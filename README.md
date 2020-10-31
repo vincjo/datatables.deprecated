@@ -116,7 +116,7 @@ These can be disabled in the settings, imported as components and placed anywher
         <th data-key="id">ID</th>
 
         <!-- Expression that will be used for sorting and filtering -->
-        <th data-key="{(x) => `${x.first_name} ${x.last_name}`}">User</th>
+        <th data-key="{(x) => x.first_name + ' ' + x.last_name}">User</th>
 
         <th data-key="email">Email</th>
         <th data-key="ip_address">IP Adress</th>
