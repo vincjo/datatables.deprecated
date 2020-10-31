@@ -1,8 +1,7 @@
-import { columns } from '../store.js'
+import { columns } from '../stores/columns.js'
 
-export default class Header {
-
-    getColumns() {
+export const header = {
+    getColumns: () => {
         const columnList = []
         let i = 0
         document.querySelectorAll('.datatable table thead th').forEach(th => {
@@ -17,16 +16,14 @@ export default class Header {
         })
         columns.set(columnList)
         return columnList       
-    }
-
-    removeOriginalThead() {
+    },
+    removeOriginalThead: () => {
         const elem = document.querySelector('.datatable table thead')
         const originHeight = elem.getBoundingClientRect().height
         elem.parentNode.style.marginTop = '-' + originHeight + 'px'
         elem.style.visibility = 'hidden'
-    }
-
-    getOrginalHeaderClassList() {
+    },
+    getOrginalHeaderClassList: () => {
         return document.querySelector('.datatable table thead').classList
     }
 }

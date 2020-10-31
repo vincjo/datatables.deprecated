@@ -1,9 +1,9 @@
 <script>
-    import {state, options} from './store.js'
-    state.updateRowCount()
-    $: start = $state.pageNumber * $options.rowPerPage - $options.rowPerPage + 1
-    $: end = Math.min($state.pageNumber * $options.rowPerPage, $state.rowCount)
-    $: rows = $state.rowCount
+    import { options } from './stores/options.js'
+    import { pageNumber, rowCount } from './stores/state.js'
+    $: start = $pageNumber * $options.rowPerPage - $options.rowPerPage + 1
+    $: end = Math.min($pageNumber * $options.rowPerPage, $rowCount)
+    $: rows = $rowCount
     $: info = $options.labels.info.replace('{start}', start).replace('{end}', end).replace('{rows}', rows)
 </script>
 

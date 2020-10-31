@@ -1,10 +1,13 @@
 <script>
-    import { data, state, options, filters, columns } from '../store.js'
-    import Header from './Header.js'
+    import { options } from '../stores/options.js'
+    import { pageNumber } from '../stores/state.js'
+    import { columns } from '../stores/columns.js'
+    import { local } from '../stores/filters.js'
+    import { data } from '../stores/data.js'
+    import { header } from './header.js'
     import { onMount } from 'svelte'
     let theadClassList
     onMount( () => {
-        const header = new Header
         header.getColumns()
         header.removeOriginalThead()
         theadClassList = header.getOrginalHeaderClassList()
@@ -17,20 +20,19 @@
             Array.from(th.parentNode.children).forEach(item => item.classList.remove('asc'))
             th.classList.add('desc')
             data.sortDesc(th.dataset.key)
-            state.setPage(1)
+            pageNumber.set(1)
         } else {
             Array.from(th.parentNode.children).forEach(item => item.classList.remove('desc'))
             th.classList.add('asc')
             data.sortAsc(th.dataset.key)
-            state.setPage(1)
+            pageNumber.set(1)
         }
         columns.redraw()
     }
 
     const filter = (e) => {
-        state.setPage(1)
-        filters.setColumnFilter(e.target.dataset.key, e.target.value)
-        state.updateRowCount()
+        pageNumber.set(1)
+        local.add(e.target.dataset.key, e.target.value)
         columns.redraw()
     }
 </script>
@@ -39,19 +41,20 @@
     <thead class="{theadClassList}">
         <tr>
         {#each $columns as th}
-            <th 
+            <th nowrap
                 style="width:{th.width}" 
                 on:click={(e) => sort(e.target)}
                 data-key={th.key}
                 class={th.classList}
                 class:sortable={th.key && $options.sortable === true}
-            >{@html th.html}</th>
+            >{@html th.html}<span></span></th>
         {/each}        
         </tr>
         {#if $options.columnFilter === true}
         <tr>
         {#each $columns as th}
             <th class="filter" style="width:{th.width};height:25px;">
+                {#if th.key}
                 <input 
                     type="text" 
                     placeholder="{$options.labels.filter}" 
@@ -59,6 +62,7 @@
                     data-key={th.key}
                     on:input={(e) => filter(e)}
                 />
+                {/if}
             </th>
         {/each}
         </tr>
@@ -67,5 +71,17 @@
 </header>
 
 <style>
-    header{position:-webkit-sticky;position:sticky;top:0;left:0;z-index:6;}
+    header{position:-webkit-sticky;position:sticky;top:0;left:0;z-index:6;background:inherit;border-bottom:1px solid #eee;}
+    th{padding:10px 15px;text-align:center;border-bottom:1px solid #eee;}
+    th.sortable{cursor:pointer;}
+    th.sortable span{padding-right: 18px;position: relative;}
+    th.sortable span:before,
+    th.sortable span:after {border: 4px solid transparent;content: "";display: block;height: 0;right: 0;top: 50%;position: absolute;width: 0;}
+    th.sortable span:before {border-bottom-color: #e0e0e0;margin-top: -9px;}
+    th.sortable span:after {border-top-color: #e0e0e0;margin-top: 1px;}
+    th.sortable.asc span:before{border-bottom-color: #9e9e9e;}
+    th.sortable.desc span:after{border-top-color: #9e9e9e;}
+    th.filter{padding:0;margin:0;background-image:none;border:1px solid #fafafa;}
+    th.filter input{background:transparent;padding:0;margin:0;height:25px;width:100%;border:none;;text-align:center;outline:none;border-radius:0;font-size:14px;}
+    th.filter input::placeholder {color:#bdbdbd;font-style:italic;font-size:13px;}
 </style>

@@ -1,5 +1,5 @@
 <script>
-    import { options } from '../store.js'
+    import { options } from '../stores/options.js'
     import SearchInput from '../SearchInput.svelte'
 </script>
 
