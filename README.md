@@ -15,7 +15,7 @@ See demo [here](https://geoflux.io/vincjo/svelte-simple-datatables)
 
 # Install
 ````apache
-npm install svelte-simple-datatables
+npm i -D svelte-simple-datatables
 ````
 
 # Sample code
@@ -136,7 +136,3 @@ These can be disabled in the settings, imported as components and placed anywher
     </tbody>
 </Datatable>
 ````
-
-# Style
-If need to override the CSS of the component : 
-[datatable.css](./example/public/datatable.css)

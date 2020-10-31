@@ -37,7 +37,7 @@
 <style>
     main{position:relative;background:inherit;} 
     section{position:relative;overflow:auto;width:100%;background:inherit;border-bottom:1px solid #e0e0e0;}
-    section::-webkit-scrollbar {width: 10px;height:10px;}
+    section::-webkit-scrollbar {width:8px;height:8px;}
     section::-webkit-scrollbar-track {background:#f5f5f5;}
     section::-webkit-scrollbar-thumb {background:#e0e0e0;}
     section::-webkit-scrollbar-thumb:hover {background: #bdbdbd;}
