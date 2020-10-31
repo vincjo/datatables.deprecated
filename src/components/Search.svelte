@@ -10,5 +10,5 @@
 {/if}
 
 <style>
-    section{height:32px;margin-left:8px;}
+    section{height:32px;margin-left:16px;}
 </style>
