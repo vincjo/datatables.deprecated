@@ -37,7 +37,7 @@
     }
 </script>
 
-<header class="datatable-thead" class:sortable={$options.sortable === true}>
+<section class="datatable-thead" class:sortable={$options.sortable === true}>
     <thead class="{theadClassList}">
         <tr>
         {#each $columns as th}
@@ -68,10 +68,10 @@
         </tr>
         {/if}
     </thead>
-</header>
+</section>
 
 <style>
-    header{position:-webkit-sticky;position:sticky;top:0;left:0;z-index:6;background:inherit;border-bottom:1px solid #eee;}
+    section{position:-webkit-sticky;position:sticky;top:0;left:0;z-index:6;background:inherit;border-bottom:1px solid #eee;}
     th{padding:10px 15px;text-align:center;border-bottom:1px solid #eee;}
     th.sortable{cursor:pointer;}
     th.sortable span{padding-right: 18px;position: relative;}
