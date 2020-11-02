@@ -3,7 +3,6 @@
 	<p align="center">
 		<h1 align="center" style="font-size:32px;margin:0;border:none;">svelte-simple-datatables</h1>
 		<img src="https://img.shields.io/npm/v/svelte-simple-datatables?color=%23ff3e00" alt="npm version"/>
-		<!-- <img src="https://img.shields.io/github/last-commit/vincjo/svelte-simple-datatables?color=%23ff3e00&logo=github" alt="last commit"/> -->
 		<img src="https://img.shields.io/github/license/vincjo/svelte-simple-datatables?color=ff3e00" alt="last commit"/>
 	</p>
 </div>
@@ -20,7 +19,7 @@ Development in progress...
 
 Todo : SSR support
 
-<!-- ## [Live Demo](https://vincjo.fr/svelte-simple-datatables) -->
+## [Live Demo](https://vincjo.fr/svelte-simple-datatables)
 <br>
 
 
@@ -69,7 +68,7 @@ npm i -D svelte-simple-datatables
     </tbody>
 </Datatable>
 ````
-<!-- See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/column-filter)  -->
+See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/column-filter) 
 
 # i18n
 Labels can be defined in the settings :
@@ -117,7 +116,7 @@ These can be disabled in the settings, imported as components and placed anywher
 </Datatable>
 
 ````
-<!-- See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/blocks)  -->
+See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/blocks) 
 
 # <a name="expression"></a> Use of expressions in `key` dataset
 ````svelte
@@ -131,7 +130,7 @@ These can be disabled in the settings, imported as components and placed anywher
         <th data-key="id">ID</th>
 
         <!-- Function that will be used for sorting and filtering -->
-        <th data-key="{(x) => x.first_name + ' ' + x.last_name}">User</th>
+        <th data-key="(x) => x.first_name + ' ' + x.last_name">User</th>
 
         <th data-key="email">Email</th>
         <th data-key="ip_address">IP Adress</th>
@@ -151,4 +150,4 @@ These can be disabled in the settings, imported as components and placed anywher
     </tbody>
 </Datatable>
 ````
-<!-- See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/expression)  -->
+See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/expression) 
