@@ -18,7 +18,7 @@ export const header = {
     },
     getKey: (key) => {
         if (key && key.indexOf('=>') > 0) {
-            return new Function(`'use strict';return (${key.toString()})`)()
+            return new Function(`'use strict';return (${key})`)()
         }
         return (x) => x[key]
     },
