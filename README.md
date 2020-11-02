@@ -1,22 +1,35 @@
-# Simple-DataTables for Svelte
-Development in progress...<br>
+<div align="center">
+	<img align="center" src="./example/public/logo.svg" alt="logo" width="172"/>
+	<p align="center">
+		<h1 align="center" style="font-size:32px;margin:0;border:none;">svelte-simple-datatables</h1>
+		<img src="https://img.shields.io/npm/v/svelte-simple-datatables?color=%23ff3e00" alt="npm version"/>
+		<!-- <img src="https://img.shields.io/github/last-commit/vincjo/svelte-simple-datatables?color=%23ff3e00&logo=github" alt="last commit"/> -->
+		<img src="https://img.shields.io/github/license/vincjo/svelte-simple-datatables?color=ff3e00" alt="last commit"/>
+	</p>
+</div>
+
+# Presentation
 Inspired by [fiduswriter/Simple-DataTables](https://github.com/fiduswriter/Simple-DataTables)
-and [DataTables](https://datatables.net/)
-<br><br>
-See demo [here](https://geoflux.io/vincjo/svelte-simple-datatables)
-<br><br>
+and [DataTables](https://datatables.net/)<br>
+Development in progress...
+
 `svelte-simple-datatables` component behavior :
 - Fits in its container
-- Inherit background-color
 - The table has fixed header
 - Scrolls vertically and horizontally
 
+Todo : SSR support
+
+<!-- ## [Live Demo](https://vincjo.fr/svelte-simple-datatables) -->
+<br>
 
 
 # Install
+:warning: There is no SSR support at the moment. The component must be installed in DevDependencies (`-D`)
 ````apache
 npm i -D svelte-simple-datatables
 ````
+
 
 # Sample code
  To enable the filter and sort functions, you have to specify the *`data-key`* in the `<th>` tag. 
@@ -56,7 +69,7 @@ npm i -D svelte-simple-datatables
     </tbody>
 </Datatable>
 ````
-See result [here](https://geoflux.io/vincjo/svelte-simple-datatables) 
+<!-- See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/column-filter)  -->
 
 # i18n
 Labels can be defined in the settings :
@@ -72,6 +85,7 @@ const settings = {
     }
 }
 ````
+See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/i18n) 
 
 # Optional blocks
 The Datatable includes 3 optional blocks
@@ -103,6 +117,7 @@ These can be disabled in the settings, imported as components and placed anywher
 </Datatable>
 
 ````
+<!-- See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/blocks)  -->
 
 # <a name="expression"></a> Use of expressions in `key` dataset
 ````svelte
@@ -115,7 +130,7 @@ These can be disabled in the settings, imported as components and placed anywher
     <thead>
         <th data-key="id">ID</th>
 
-        <!-- Expression that will be used for sorting and filtering -->
+        <!-- Function that will be used for sorting and filtering -->
         <th data-key="{(x) => x.first_name + ' ' + x.last_name}">User</th>
 
         <th data-key="email">Email</th>
@@ -136,3 +151,4 @@ These can be disabled in the settings, imported as components and placed anywher
     </tbody>
 </Datatable>
 ````
+<!-- See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/expression)  -->

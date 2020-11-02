@@ -1,6 +1,7 @@
 import { data } from './stores/data.js'
 import { options } from './stores/options.js'
 import { columns } from './stores/columns.js'
+import { global, local } from './stores/filters.js'
 
 
 export const datatable = {
@@ -54,5 +55,9 @@ export const datatable = {
         document.querySelector('main.datatable .dt-table').addEventListener('scroll', (e) => {
             document.querySelector('.datatable-thead').style.left = (-1 * e.target.scrollLeft ) + 'px'
         })
+    },
+    removeFilters: () => {
+        global.remove()
+        local.remove()
     }
 }

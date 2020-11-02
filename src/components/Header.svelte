@@ -70,7 +70,7 @@
 
 <style>
     section{position:-webkit-sticky;position:sticky;top:0;left:0;z-index:6;background:inherit;border-bottom:1px solid #eee;}
-    th{padding:10px 0px;text-align:center;border-bottom:1px solid #eee;}
+    th{padding:10px 0px;text-align:center;border-bottom:1px solid #eee;background:inherit;}
     th.sortable{cursor:pointer;}
     th.sortable span{padding-right:16px;position:relative;}
     th.sortable span:before,
@@ -80,6 +80,6 @@
     th.sortable.asc span:before{border-bottom-color: #9e9e9e;}
     th.sortable.desc span:after{border-top-color: #9e9e9e;}
     th.filter{padding:0;margin:0;background-image:none;border:1px solid #fafafa;}
-    th.filter input{background:transparent;padding:0;margin:0;height:25px;width:100%;border:none;;text-align:center;outline:none;border-radius:0;font-size:14px;}
+    th.filter input{background:transparent;padding:0 16px 0 0;margin:0;height:24px;width:100%;border:none;;text-align:center;outline:none;border-radius:0;font-size:14px;}
     th.filter input::placeholder {color:#bdbdbd;font-style:italic;font-size:13px;}
 </style>

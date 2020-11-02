@@ -4,7 +4,7 @@
     $: start = $pageNumber * $options.rowPerPage - $options.rowPerPage + 1
     $: end = Math.min($pageNumber * $options.rowPerPage, $rowCount)
     $: rows = $rowCount
-    $: info = $options.labels.info.replace('{start}', start).replace('{end}', end).replace('{rows}', rows)
+    $: info = $options.labels.info.replace('{start}', `<b>${start}</b>`).replace('{end}', `<b>${end}</b>`).replace('{rows}', `<b>${rows}</b>`)
 </script>
 
 
@@ -17,5 +17,5 @@
 </aside>
 
 <style>
-    aside{margin-left:8px;font-size:14px;line-height:32px;}
+    aside{margin-left:16px;font-size:14px;line-height:32px;color:#616161}
 </style>

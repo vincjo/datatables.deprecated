@@ -48,7 +48,7 @@
         {/if}
     {/each}
 
-    {#if pageCount.length > 6 && $pageNumber <= pageCount.length - 4}
+    {#if pageCount.length > 6 && $pageNumber <= pageCount.length - 3}
         <button class="ellipse">...</button>
     {/if}
 
@@ -68,7 +68,7 @@
 </section>
 
 <style>
-    section{display:flex;flex-direction:row;height:32px;margin-right:8px;}
+    section{display:flex;flex-direction:row;height:32px;margin-right:16px;}
     button{height:32px;width:32px;background:inherit;color:#616161;font-size:13px;margin:0;padding:0;transition:all, .2s;line-height:32px;border:1px solid #e0e0e0;border-right:none;outline:none;}
     button:first-child{border-radius:4px 0 0 4px;}
     button:last-child{border-right:1px solid #e0e0e0;border-radius:0 4px 0 4px;}
