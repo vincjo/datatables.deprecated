@@ -17,9 +17,12 @@ Development in progress...
 - The table has fixed header
 - Scrolls vertically and horizontally
 
-Todo : SSR support
+:point_right: **[Live Demo](https://vincjo.fr/svelte-simple-datatables)**
 
-## [Live Demo](https://vincjo.fr/svelte-simple-datatables)
+Todo : 
+- SSR support
+- Responsive design
+
 <br>
 
 
