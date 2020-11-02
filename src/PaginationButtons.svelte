@@ -71,7 +71,7 @@
     section{display:flex;flex-direction:row;height:32px;margin-right:16px;}
     button{height:32px;width:32px;background:inherit;color:#616161;font-size:13px;margin:0;padding:0;transition:all, .2s;line-height:32px;border:1px solid #e0e0e0;border-right:none;outline:none;}
     button:first-child{border-radius:4px 0 0 4px;}
-    button:last-child{border-right:1px solid #e0e0e0;border-radius:0 4px 0 4px;}
+    button:last-child{border-right:1px solid #e0e0e0;border-radius:0 4px 4px 0;}
     button:not(.active):hover{background:#eee;cursor:pointer;}
     button.text{min-width:70px;cursor:pointer;}
     button.ellipse:hover{background:inherit;cursor: default;}

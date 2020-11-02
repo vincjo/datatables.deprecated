@@ -7,7 +7,7 @@
 </script>
 
 <section>
-    <h2>Basic Example</h2>
+    <h2>No settings</h2>
     <Demo {code} {data}>
         <Datatable data={JSON.parse(data)}>
             <thead>

@@ -35,7 +35,7 @@
 	header li.github{display:flex;margin-right:0;float:right;}
 	header li.github img{float:right;padding:16px 8px;width:40px;}
 
-	ul.demo{margin:24px 0;display:flex;flex-wrap:wrap;padding:0;list-style-type:none;}
+	ul.demo{margin:24px 0 0 0;display:flex;flex-wrap:wrap;padding:0;list-style-type:none;}
     ul.demo li{display:block;margin:8px;border:1px solid #eee;border-radius:8px;}
     ul.demo li:first-child{margin-left:0;}
     ul.demo li.active{font-weight:bold;color:#40b3ff;border:2px solid #40b3ff;}
