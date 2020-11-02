@@ -42,7 +42,7 @@ export const code = (merged) => {
 <Datatable {settings} {data}>
     <thead>
         <!-- Here is a function passed in key dataset -->
-        <th data-key="{(x) => x.first_name + ' ' + x.last_name}">Firstname + Lastname</th>
+        <th data-key="(x) => x.first_name + ' ' + x.last_name">Firstname + Lastname</th>
         <th data-key="email">Email</th>
     </thead>
     <tbody>

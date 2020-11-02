@@ -17,7 +17,7 @@
     {#if merged}
         <Datatable {settings} data={JSON.parse(data)}>
             <thead>
-                <th data-key="{(x) => x.first_name + ' ' + x.last_name}">Firstname + Lastname</th>
+                <th data-key="(x) => x.first_name + ' ' + x.last_name">Firstname + Lastname</th>
                 <th data-key="email">Email</th>
             </thead>
             <tbody>
