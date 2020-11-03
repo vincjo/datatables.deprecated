@@ -11,6 +11,7 @@ export const header = {
                 key: header.getKey(th.dataset.key),
                 sort: null,
                 classList: th.classList,
+                minWidth: th.getBoundingClientRect().width + 'px'
             })
             i++
         })
@@ -24,12 +25,14 @@ export const header = {
         return (x) => x[key]
     },
     removeOriginalThead: () => {
-        const elem = document.querySelector('.datatable table thead')
-        const originHeight = elem.getBoundingClientRect().height
-        elem.parentNode.style.marginTop = '-' + originHeight + 'px'
-        elem.style.visibility = 'hidden'
+        const table = document.querySelector('.datatable table thead')
+        const originHeight = table.getBoundingClientRect().height
+        const tableContainer = document.querySelector('main.datatable .dt-table')
+        const scrollXHeight = tableContainer.offsetHeight - tableContainer.clientHeight
+        table.parentNode.style.marginTop = '-' + (originHeight - (scrollXHeight > 5 ? scrollXHeight + 10 : 1)) + 'px'
+        table.style.visibility = 'hidden'
     },
-    getOrginalHeaderClassList: () => {
+    getOrginalTHeadClassList: () => {
         return document.querySelector('.datatable table thead').classList
     }
 }

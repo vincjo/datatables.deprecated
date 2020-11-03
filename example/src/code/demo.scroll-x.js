@@ -1,13 +1,13 @@
+export const code = () => {
+    return 
+`
 <script>
-    import Demo from 'components/Demo.svelte'
-    import { code } from 'code/demo.scroll-x.js'
-    import { data } from 'app/data.large.js'
-	import Datatable from '../../../../src/Datatable.svelte'
-    import { rows } from '../../../../src/stores/data.js'
-    const settings = { columnFilter: true }
+    import { data } from './data.example.js'  
+    import { Datatable, rows } from 'svelte-simple-datatables'
+    settings = { columnFilter: true }
 </script>
 
-<Demo code={code()} {data}>
+<Demo code={code(columnFilter)} {data}>
     <Datatable {settings} data={JSON.parse(data)}>
         <thead>
             <th data-key="id">ID</th>
@@ -46,5 +46,7 @@
 
 <style>
     th:first-child{width:56px;}
-    td{text-align:center;padding:4px 8px;white-space:nowrap}
+    td{text-align:center;padding:4px 8px;white-space:nowrap;}
 </style>
+`
+}

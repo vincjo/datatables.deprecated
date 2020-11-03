@@ -110,6 +110,6 @@ Disabling blocks does'nt change datatable's config. The aim is to import them se
     /* 40b3ff     ff3e00    676778*/
     strong{color:#676778}
     h2{font-size:24px;color:#676778;font-weight:400;margin:16px 0 8px 0;}
-    td:first-child{min-width:64px;}
-    td{text-align:center;padding:4px 16px 4px 0}
+    th:first-child{width:72px;}
+    td{text-align:center;padding:4px 0}
 </style>

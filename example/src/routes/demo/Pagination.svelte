@@ -53,7 +53,7 @@
     {/if}
 </Demo>
     
-    <style>
-        td:first-child{min-width:64px;}
-        td{text-align:center;padding:4px 16px 4px 0}
-    </style>
+<style>
+    th:first-child{width:72px;}
+    td{text-align:center;padding:4px 0}
+</style>

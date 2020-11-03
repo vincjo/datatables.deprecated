@@ -17,9 +17,17 @@ const createColumns = () => {
 				thead.forEach(tr => {
 					let i = 0
 					Array.from(tbody.children).forEach(td => {
-						const width = td.getBoundingClientRect().width + 'px' 
-						tr.children[i].style.minWidth = width
-						tr.children[i].style.maxWidth = width
+						let th = tr.children[i]
+						let thW = th.getBoundingClientRect().width
+						let tdW = td.getBoundingClientRect().width
+						if (tdW > thW) { 
+							th.style.minWidth = tdW + 'px'
+							th.style.maxWidth = tdW + 'px'
+						}
+						else {
+							td.style.minWidth = thW + 'px'
+							td.style.maxWidth = thW + 'px'
+						} 
 						i++
 					})
 				})

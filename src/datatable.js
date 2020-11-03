@@ -20,12 +20,12 @@ export const datatable = {
         const parent = document.querySelector('main.datatable').parentNode
         const style = getComputedStyle(parent)
         const rect = parent.getBoundingClientRect()
-        const getInt = (pxValue) => { return parseFloat(pxValue.replace('px', ''))  } 
+        const getNumber = (pxValue) => { return parseFloat(pxValue.replace('px', ''))  } 
         return {
             parentWidth: rect.width,
             parentHeight: rect.height,
-            width: (rect.width - getInt(style.paddingLeft) - getInt(style.paddingRight)) / rect.width,
-            height: (rect.height - getInt(style.paddingTop) - getInt(style.paddingBottom)) / rect.height,
+            width: (rect.width - getNumber(style.paddingLeft) - getNumber(style.paddingRight)) / rect.width,
+            height: (rect.height - getNumber(style.paddingTop) - getNumber(style.paddingBottom)) / rect.height,
             top: style.paddingTop,
             right: style.paddingRight,
             bottom: style.paddingBottom,

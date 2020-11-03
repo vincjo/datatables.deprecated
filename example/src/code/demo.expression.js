@@ -27,8 +27,8 @@ export const code = (merged) => {
 </Datatable>
 
 <style>
-    td{text-align:center;padding:4px 16px 4px 0}
-    td:first-child{min-width:64px;}
+    th:first-child{width:72px;}
+    td{text-align:center;padding:4px 0}
 </style>
 
 
@@ -62,8 +62,8 @@ export const code = (merged) => {
 </Datatable>
 
 <style>
-    td{text-align:center;padding:4px 16px 4px 0}
-    td:first-child{min-width:64px;}
+    th:first-child{width:72px;}
+    td{text-align:center;padding:4px 0}
 </style>
 
 
