@@ -24,7 +24,6 @@
     }
 </script>
 
-<section>
 <h2>Internationalization</h2>
 <aside class="i18n-form">
     <Textfield bind:value={noRows}   class="i18n tall"  label="No rows"                     spellcheck="false"/>
@@ -39,26 +38,28 @@
 <Demo code={code(search, filter, noRows, info, previous, next)} {data}>
     <Datatable {settings} data={JSON.parse(data)}>
         <thead>
+            <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
             <th data-key="last_name">Last Name</th>
             <th data-key="email">Email</th>
         </thead>
         <tbody>
             {#each $rows as row}
-                <tr>
+            <tr>
+                <td>{row.id}</td>
                 <td>{row.first_name}</td>
                 <td>{row.last_name}</td>
                 <td>{row.email}</td>
-                </tr>
+            </tr>
             {/each}
         </tbody>
     </Datatable>
 </Demo>
-</section>
 
 <style>
 	/* 40b3ff     ff3e00    676778*/
     h2{font-size:24px;color:#676778;font-weight:400;margin:16px 0 8px 0;}
     aside{display:flex;flex-wrap: wrap;}
+    td:first-child{min-width:64px;}
     td{text-align:center;padding:4px 16px 4px 0}
 </style>

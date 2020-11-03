@@ -19,9 +19,10 @@ Development in progress...
 
 :point_right: **[Live Demo](https://vincjo.fr/svelte-simple-datatables)**
 
-Todo : 
-- SSR support
+Todos : 
+- Sort columns programmatically
 - Responsive design
+- SSR support
 
 <br>
 
@@ -133,7 +134,7 @@ See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/blocks)
         <th data-key="id">ID</th>
 
         <!-- Function that will be used for sorting and filtering -->
-        <th data-key="(x) => x.first_name + ' ' + x.last_name">User</th>
+        <th data-key="(row) => row.first_name + ' ' + row.last_name">User</th>
 
         <th data-key="email">Email</th>
         <th data-key="ip_address">IP Adress</th>

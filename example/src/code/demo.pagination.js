@@ -8,6 +8,7 @@ export const code = (pagination) => {
 
 <Datatable {settings} {data}>
     <thead>
+        <th data-key="id">ID</th>
         <th data-key="first_name">First Name</th>
         <th data-key="last_name">Last Name</th>
         <th data-key="email">Email</th>
@@ -15,6 +16,7 @@ export const code = (pagination) => {
     <tbody>
         {#each $rows as row}
         <tr>
+            <td>{row.id}</td>
             <td>{row.first_name}</td>
             <td>{row.last_name}</td>
             <td>{row.email}</td>
@@ -25,6 +27,7 @@ export const code = (pagination) => {
 
 <style>
     td{text-align:center;padding:4px 16px 4px 0}
+    td:first-child{min-width:64px;}
 </style>
 
 

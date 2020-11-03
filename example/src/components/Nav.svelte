@@ -16,12 +16,13 @@
 
 {#if $location.indexOf('demo')  > 0}
 	<ul class="demo">
-		<li class:active={demo === `#/demo`} on:click={() => demo = "#/demo"}><a href="#/demo">Basic</a></li>
-		<li class:active={demo === `#/demo/pagination`} on:click={() => demo = "#/demo/pagination"}><a href="#/demo/pagination">Pagination</a></li>
-		<li class:active={demo === `#/demo/column-filter`} on:click={() => demo = "#/demo/column-filter"}><a href="#/demo/column-filter">Column filter</a></li>
-		<li class:active={demo === `#/demo/i18n`} on:click={() => demo = "#/demo/i18n"}><a href="#/demo/i18n">i18n</a></li>
-		<li class:active={demo === `#/demo/blocks`} on:click={() => demo = "#/demo/blocks"}><a href="#/demo/blocks">Blocks</a></li>
-		<li class:active={demo === `#/demo/expression`} on:click={() => demo = "#/demo/expression"}><a href="#/demo/expression">JS Expression</a></li>
+		<li class:active={demo === `#/demo`} 				on:click={() => demo = "#/demo"}				><a href="#/demo">Basic</a></li>
+		<li class:active={demo === `#/demo/pagination`} 	on:click={() => demo = "#/demo/pagination"}		><a href="#/demo/pagination">Pagination</a></li>
+		<li class:active={demo === `#/demo/column-filter`} 	on:click={() => demo = "#/demo/column-filter"}	><a href="#/demo/column-filter">Column filter</a></li>
+		<li class:active={demo === `#/demo/i18n`} 			on:click={() => demo = "#/demo/i18n"}			><a href="#/demo/i18n">i18n</a></li>
+		<li class:active={demo === `#/demo/blocks`} 		on:click={() => demo = "#/demo/blocks"}			><a href="#/demo/blocks">Blocks</a></li>
+		<li class:active={demo === `#/demo/expression`} 	on:click={() => demo = "#/demo/expression"}		><a href="#/demo/expression">JS Expression</a></li>
+		<li class:active={demo === `#/demo/scroll-x`} 		on:click={() => demo = "#/demo/scroll-x"}		><a href="#/demo/scroll-x">Scroll X</a></li>
 	</ul>
 {/if}
 

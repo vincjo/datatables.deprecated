@@ -17,6 +17,7 @@ export const header = {
         columns.set(columnList)
     },
     getKey: (key) => {
+        if (!key)  return 
         if (key && key.indexOf('=>') > 0) {
             return new Function(`'use strict';return (${key})`)()
         }
