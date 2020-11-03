@@ -42,7 +42,7 @@
         <tr>
         {#each $columns as th}
             <th nowrap
-                style="min-width:{th.minWidth}" 
+                style="min-width:{th.minWidth}px" 
                 on:click={(e) => sort(e.target, th.key)}
                 class={th.classList}
                 class:sortable={th.key && $options.sortable === true}

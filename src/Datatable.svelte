@@ -8,16 +8,17 @@
     export let data = []
     export let settings = {}
     $: { 
-        datatable.setRows(data) 
+        datatable.setRows(data)  
         options.update(settings)
     }
     onMount( () => {
         datatable.addEventScrollX()
+        datatable.resize()
         new ResizeObserver( mutations => {
-             datatable.resize()
+            datatable.resize()
         }).observe( document.querySelector('main.datatable').parentElement )
     })
-    onDestroy( () => datatable.removeFilters() )
+    onDestroy( () => datatable.reset() )
 </script>
 
 <main class="datatable">
@@ -37,7 +38,7 @@
 
 
 <style>
-    main{position:relative;background:#fff;}
+    main{position:relative;background:#fff;height:160px;}
     main *{box-sizing:border-box;} 
     section{position:relative;overflow:auto;width:100%;background:inherit;border-bottom:1px solid #e0e0e0;}
     section::-webkit-scrollbar {width:8px;height:8px;}

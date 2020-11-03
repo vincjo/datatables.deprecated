@@ -8,6 +8,7 @@ import Expression from './routes/demo/Expression.svelte'
 import ScrollX from './routes/demo/ScrollX.svelte'
 import Responsive from './routes/demo/Responsive.svelte'
 import Settings from './routes/Settings.svelte'
+import GridLayout from './routes/test/GridLayout.svelte'
 import NotFound from './routes/NotFound.svelte'
 
 export const routes = {
@@ -22,5 +23,7 @@ export const routes = {
     '/demo/responsive': Responsive,
     '/demo/*': NotFound,
     '/settings': Settings,
+    '/test': GridLayout,
+    '/test/grid-layout': GridLayout,
     '/*': NotFound
 }

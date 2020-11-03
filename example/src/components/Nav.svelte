@@ -1,13 +1,15 @@
 <script>
 	import { location } from 'svelte-spa-router'
 	let demo = $location.indexOf('demo')  > 0 ? `#${$location}` : '#/demo'
+	let test = $location.indexOf('test')  > 0 ? `#${$location}` : '#/test'
 </script>
 
 <header>
 	<ul>
 		<li><a class:active={$location === '/'} href="#/">home</a></li>
-		<li><a class:active="{$location.indexOf('demo')  > 0 ? true : false}" href="{demo}">demo</a></li>
+		<li><a class:active={$location.indexOf('demo')  > 0 ? true : false} href="{demo}">demo</a></li>
 		<li><a class:active={$location === '/settings'} href="#/settings">settings</a></li>
+		<li><a class:active={$location.indexOf('test')  > 0 ? true : false} href="{test}">test</a></li>
 		<li class="github"><a href="https://github.com/vincjo/svelte-simple-datatables#readme">
 			<img alt="github logo" src="github.svg"/><span>&#10149; Github</span>
 		</a></li>
@@ -24,6 +26,12 @@
 		<li class:active={demo === `#/demo/expression`} 	on:click={() => demo = "#/demo/expression"}		><a href="#/demo/expression">JS Expression</a></li>
 		<li class:active={demo === `#/demo/scroll-x`} 		on:click={() => demo = "#/demo/scroll-x"}		><a href="#/demo/scroll-x">Scroll X</a></li>
 		<li class:active={demo === `#/demo/responsive`} 	on:click={() => demo = "#/demo/responsive"}		><a href="#/demo/responsive">Responsive</a></li>
+	</ul>
+{/if}
+
+{#if $location.indexOf('test')  > 0}
+	<ul class="demo">
+		<li class:active={test === `#/test`} 				on:click={() => test = "#/test"}				><a href="#/test">Grid layout</a></li>
 	</ul>
 {/if}
 

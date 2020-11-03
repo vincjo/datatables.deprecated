@@ -11,11 +11,12 @@ export const header = {
                 key: header.getKey(th.dataset.key),
                 sort: null,
                 classList: th.classList,
-                minWidth: th.getBoundingClientRect().width + 'px'
+                minWidth: th.getBoundingClientRect().width
             })
             i++
         })
         columns.set(columnList)
+        columns.draw()
     },
     getKey: (key) => {
         if (!key)  return 
@@ -25,12 +26,14 @@ export const header = {
         return (x) => x[key]
     },
     removeOriginalThead: () => {
-        const table = document.querySelector('.datatable table thead')
-        const originHeight = table.getBoundingClientRect().height
-        const tableContainer = document.querySelector('main.datatable .dt-table')
-        const scrollXHeight = tableContainer.offsetHeight - tableContainer.clientHeight
-        table.parentNode.style.marginTop = '-' + (originHeight - (scrollXHeight > 5 ? scrollXHeight + 10 : 1)) + 'px'
-        table.style.visibility = 'hidden'
+        setTimeout(() => {
+            const thead = document.querySelector('.datatable table thead')
+            const originHeight = thead.getBoundingClientRect().height
+            const tableContainer = document.querySelector('main.datatable .dt-table')
+            const scrollXHeight = tableContainer.offsetHeight - tableContainer.clientHeight
+            thead.parentNode.style.marginTop = '-' + (originHeight - (scrollXHeight > 5 ? scrollXHeight + 10 : 1)) + 'px'
+            thead.style.visibility = 'hidden'
+        }, 50)
     },
     getOrginalTHeadClassList: () => {
         return document.querySelector('.datatable table thead').classList

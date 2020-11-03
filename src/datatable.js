@@ -1,7 +1,7 @@
 import { data } from './stores/data.js'
 import { options } from './stores/options.js'
 import { columns } from './stores/columns.js'
-import { datatableWidth } from './stores/state.js'
+import { datatableWidth, pageNumber } from './stores/state.js'
 import { global, local } from './stores/filters.js'
 
 
@@ -25,8 +25,8 @@ export const datatable = {
         return {
             parentWidth: rect.width,
             parentHeight: rect.height,
-            width: (rect.width - getNumber(style.paddingLeft) - getNumber(style.paddingRight)) / rect.width,
-            height: (rect.height - getNumber(style.paddingTop) - getNumber(style.paddingBottom)) / rect.height,
+            width: (rect.width - getNumber(style.paddingLeft) - getNumber(style.paddingRight) - getNumber(style.borderLeftWidth) - getNumber(style.borderRightWidth)) / rect.width,
+            height: (rect.height - getNumber(style.paddingTop) - getNumber(style.paddingBottom) - getNumber(style.borderTopWidth) - getNumber(style.borderBottomWidth)) / rect.height,
             top: style.paddingTop,
             right: style.paddingRight,
             bottom: style.paddingBottom,
@@ -58,8 +58,10 @@ export const datatable = {
             document.querySelector('.datatable-thead').style.left = (-1 * e.target.scrollLeft ) + 'px'
         })
     },
-    removeFilters: () => {
+    reset: () => {
+        pageNumber.update(store => store = 1)
         global.remove()
         local.remove()
+        columns.set([])
     }
 }
