@@ -8,11 +8,8 @@
 </div>
 
 # Presentation
-Inspired by [fiduswriter/Simple-DataTables](https://github.com/fiduswriter/Simple-DataTables)
-and [DataTables](https://datatables.net/)<br>
-Development in progress...
 
-`svelte-simple-datatables` component behavior :
+`Datatable` component behavior :
 - Fits in its container
 - The table has fixed header
 - Scrolls vertically and horizontally
@@ -28,7 +25,7 @@ Todos :
 
 
 # Install
-:warning: There is no SSR support at the moment. The component must be installed in DevDependencies (`-D`)
+:warning: No SSR support : to work properly with Sapper, the component is installed in DevDependencies 
 ````apache
 npm i -D svelte-simple-datatables
 ````
