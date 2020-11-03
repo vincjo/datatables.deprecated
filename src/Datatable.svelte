@@ -40,11 +40,11 @@
 <style>
     main{position:relative;background:#fff;height:160px;}
     main *{box-sizing:border-box;} 
-    section{position:relative;overflow:auto;width:100%;background:inherit;border-bottom:1px solid #e0e0e0;}
-    section::-webkit-scrollbar {width:8px;height:8px;}
+    section{position:relative;overflow:auto;width:100%;background:inherit;border-bottom:1px solid #e0e0e0;scrollbar-width:thin;}
+    section::-webkit-scrollbar {width:6px;height:6px;}
     section::-webkit-scrollbar-track {background:#f5f5f5;}
-    section::-webkit-scrollbar-thumb {background:#e0e0e0;}
-    section::-webkit-scrollbar-thumb:hover {background: #bdbdbd;}
+    section::-webkit-scrollbar-thumb {background:#c2c2c2;}
+    section::-webkit-scrollbar-thumb:hover {background: #9e9e9e;}
     section::-webkit-scrollbar-track-piece:start {top:40px;}
-    table{width:100%;border-collapse:collapse;overflow:hidden;}
+    table{width:100%;border-collapse:collapse;overflow:hidden;margin-bottom:6px;}
 </style>

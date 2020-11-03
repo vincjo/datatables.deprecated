@@ -29,9 +29,10 @@ export const header = {
         setTimeout(() => {
             const thead = document.querySelector('.datatable table thead')
             const originHeight = thead.getBoundingClientRect().height
-            const tableContainer = document.querySelector('main.datatable .dt-table')
-            const scrollXHeight = tableContainer.offsetHeight - tableContainer.clientHeight
-            thead.parentNode.style.marginTop = '-' + (originHeight - (scrollXHeight > 5 ? scrollXHeight + 10 : 1)) + 'px'
+            // const tableContainer = document.querySelector('main.datatable .dt-table')
+            // const scrollXHeight = tableContainer.offsetHeight - tableContainer.clientHeight
+            // - (scrollXHeight > 5 ? scrollXHeight + 10 : 1)
+            thead.parentNode.style.marginTop = '-' + (originHeight) + 'px'
             thead.style.visibility = 'hidden'
         }, 50)
     },
