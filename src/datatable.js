@@ -1,6 +1,7 @@
 import { data } from './stores/data.js'
 import { options } from './stores/options.js'
 import { columns } from './stores/columns.js'
+import { datatableWidth } from './stores/state.js'
 import { global, local } from './stores/filters.js'
 
 
@@ -38,6 +39,7 @@ export const datatable = {
         const tableContainer = document.querySelector('main.datatable .dt-table')
         tableContainer.style.height = datatable.getTableContainerHeight(size.parentHeight * size.height) + 'px'
         columns.redraw()
+        datatableWidth.set( size.parentWidth * size.width )
     },
     getTableContainerHeight: (height) => {
         let paginationBlock

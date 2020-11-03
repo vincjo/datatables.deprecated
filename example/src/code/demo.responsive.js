@@ -1,11 +1,12 @@
-
-export const code = `
+export const code = () => {
+    return `
 <script>
     import { data } from './data.example.js'  
     import { Datatable, rows } from 'svelte-simple-datatables'
+    const settings = { columnFilter: true }
 </script>
 
-<Datatable {data}>
+<Datatable {settings} {data}>
     <thead>
         <th data-key="id">ID</th>
         <th data-key="first_name">First Name</th>
@@ -26,8 +27,9 @@ export const code = `
 
 <style>
     th:first-child{width:72px;}
-    td{text-align:center;padding:4px 0;}
+    td{text-align:center;padding:4px 0} 
 </style>
 
 
 `
+}

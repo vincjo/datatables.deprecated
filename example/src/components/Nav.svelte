@@ -23,6 +23,7 @@
 		<li class:active={demo === `#/demo/blocks`} 		on:click={() => demo = "#/demo/blocks"}			><a href="#/demo/blocks">Blocks</a></li>
 		<li class:active={demo === `#/demo/expression`} 	on:click={() => demo = "#/demo/expression"}		><a href="#/demo/expression">JS Expression</a></li>
 		<li class:active={demo === `#/demo/scroll-x`} 		on:click={() => demo = "#/demo/scroll-x"}		><a href="#/demo/scroll-x">Scroll X</a></li>
+		<li class:active={demo === `#/demo/responsive`} 	on:click={() => demo = "#/demo/responsive"}		><a href="#/demo/responsive">Responsive</a></li>
 	</ul>
 {/if}
 

@@ -7,8 +7,10 @@
     import { onMount, onDestroy } from 'svelte'
     export let data = []
     export let settings = {}
-    options.update(settings)
-    $: { datatable.setRows(data) }
+    $: { 
+        datatable.setRows(data) 
+        options.update(settings)
+    }
     onMount( () => {
         datatable.addEventScrollX()
         new ResizeObserver( mutations => {

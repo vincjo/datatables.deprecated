@@ -3,6 +3,7 @@
     import { fade } from 'svelte/transition'
     import { Highlight, HighlightSvelte } from 'svelte-highlight'
     import { json } from 'svelte-highlight/languages'
+    export let tableWidth = 'auto'
     export let data
     export let code
     let current = 'result' 
@@ -16,7 +17,7 @@
     </ul>
     <section class:code={current === 'code' || current === 'data'} class:table={current === 'result'}>
         {#if current === 'result'}
-            <div class="table z-depth-2" in:fade={{ duration:200 }} >
+            <div class="table z-depth-2" in:fade={{ duration:200 }} style="width:{tableWidth}">
                 <slot></slot>
             </div>
         {:else if current === 'code'}
@@ -42,6 +43,6 @@
     section::-webkit-scrollbar-thumb {background:#9e9e9e;}
     section::-webkit-scrollbar-track-piece:start {top:40px;}
     section.table{background:#eee;padding:0 10%;border-radius:8px;height:488px;}
-    div.table{background:#fff;padding:8px 0;border:1px solid #eee;height:432px;border-radius:8px;margin-top:24px}
+    div.table{background:#fff;padding:8px 0;height:432px;border-radius:8px;margin:24px auto 0 auto;}
     div.code{padding:0 16px;}
 </style>

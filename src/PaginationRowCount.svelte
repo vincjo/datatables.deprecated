@@ -1,6 +1,6 @@
 <script>
     import { options } from './stores/options.js'
-    import { pageNumber, rowCount } from './stores/state.js'
+    import { pageNumber, rowCount, datatableWidth } from './stores/state.js'
     $: start = $pageNumber * $options.rowPerPage - $options.rowPerPage + 1
     $: end = Math.min($pageNumber * $options.rowPerPage, $rowCount)
     $: rows = $rowCount
@@ -8,11 +8,16 @@
 </script>
 
 
+
 <aside class="dt-pagination-rowcount">
-    {#if rows > 0}
-        {@html info}
+    {#if $datatableWidth > 600}
+        {#if rows > 0}
+            {@html info}
+        {:else}
+            {@html $options.labels.noRows}
+        {/if}
     {:else}
-        {@html $options.labels.noRows}
+        {@html `<b>${start}</b>-<b>${end}</b>/<b>${rows}</b>` }
     {/if}
 </aside>
 

@@ -1,7 +1,7 @@
 
 <script>
     import { options } from './stores/options.js'
-    import { rowCount, pageNumber } from './stores/state.js'
+    import { rowCount, pageNumber, datatableWidth } from './stores/state.js'
     import { columns } from './stores/columns.js'
     export let ref = ''
     export let classList = ''
@@ -22,50 +22,59 @@
     }
 </script>
 
-<section class="dt-pagination-buttons {classList}" {ref}>
-    <button 
-        class="text"
-        class:disabled={$pageNumber === 1}
-        on:click={() => setPage($pageNumber - 1)}
-    >
-        {@html $options.labels.previous}
-    </button>
-    <button class:active={$pageNumber === 1} on:click={() => setPage(1)}>
-        1
-    </button>  
-    {#if pageCount.length > 6 && $pageNumber >= 5}
-        <button class="ellipse">...</button>
-    {/if}
-
-    {#each buttons as n}
-        {#if n > 0 && n < pageCount.length - 1}
+{#if $datatableWidth > 600}
+    <section class="dt-pagination-buttons {classList}" {ref}>
         <button 
-            class:active={$pageNumber === n + 1}
-            on:click={() => setPage(n + 1)}
+            class="text"
+            class:disabled={$pageNumber === 1}
+            on:click={() => setPage($pageNumber - 1)}
         >
-            {n + 1}
+            {@html $options.labels.previous}
         </button>
+        <button class:active={$pageNumber === 1} on:click={() => setPage(1)}>
+            1
+        </button>  
+        {#if pageCount.length > 6 && $pageNumber >= 5}
+            <button class="ellipse">...</button>
         {/if}
-    {/each}
 
-    {#if pageCount.length > 6 && $pageNumber <= pageCount.length - 3}
-        <button class="ellipse">...</button>
-    {/if}
+        {#each buttons as n}
+            {#if n > 0 && n < pageCount.length - 1}
+            <button 
+                class:active={$pageNumber === n + 1}
+                on:click={() => setPage(n + 1)}
+            >
+                {n + 1}
+            </button>
+            {/if}
+        {/each}
 
-    {#if pageCount.length > 1}
-        <button class:active={$pageNumber === pageCount.length} on:click={() => setPage(pageCount.length)}>
-            {pageCount.length}
+        {#if pageCount.length > 6 && $pageNumber <= pageCount.length - 3}
+            <button class="ellipse">...</button>
+        {/if}
+
+        {#if pageCount.length > 1}
+            <button class:active={$pageNumber === pageCount.length} on:click={() => setPage(pageCount.length)}>
+                {pageCount.length}
+            </button>
+        {/if}
+
+        <button 
+            class="text"
+            class:disabled={$pageNumber === pageCount.length}
+            on:click={() => setPage($pageNumber + 1)}
+        >
+            {@html $options.labels.next}
         </button>
-    {/if}
-
-    <button 
-        class="text"
-        class:disabled={$pageNumber === pageCount.length}
-        on:click={() => setPage($pageNumber + 1)}
-    >
-        {@html $options.labels.next}
-    </button>
-</section>
+    </section>
+{:else}
+    <section class="mobile">
+        <button class:disabled={$pageNumber === 1} on:click={() => setPage(1)}>&#10092;&#10092;</button>
+        <button class:disabled={$pageNumber === 1} on:click={() => setPage($pageNumber - 1)}>&#10094;</button>
+        <button class:disabled={$pageNumber === pageCount.length}  on:click={() => setPage($pageNumber + 1)}>&#10095;</button>
+        <button class:disabled={$pageNumber === pageCount.length}  on:click={() => setPage(pageCount.length)}>&#10093;&#10093;</button>
+    </section>
+{/if}           
 
 <style>
     section{display:flex;flex-direction:row;height:32px;margin-right:16px;}
@@ -77,5 +86,7 @@
     button.ellipse:hover{background:inherit;cursor: default;}
     button.active{background:#eee;font-weight:bold;}
     button.disabled:hover{background:inherit;cursor: default;}
+    .mobile button.disabled{color:#bdbdbd;}
+    .mobile button{font-weight:bold;}
     /* button.disabled{color:#9e9e9e;} */
 </style>

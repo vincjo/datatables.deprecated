@@ -20,3 +20,5 @@ const createPageNumber = () => {
 	}
 }
 export const pageNumber = createPageNumber()
+
+export const datatableWidth = writable(null)

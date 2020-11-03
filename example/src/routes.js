@@ -6,6 +6,7 @@ import Internationalization from './routes/demo/Internationalization.svelte'
 import Blocks from './routes/demo/Blocks.svelte'
 import Expression from './routes/demo/Expression.svelte'
 import ScrollX from './routes/demo/ScrollX.svelte'
+import Responsive from './routes/demo/Responsive.svelte'
 import Settings from './routes/Settings.svelte'
 import NotFound from './routes/NotFound.svelte'
 
@@ -18,6 +19,7 @@ export const routes = {
     '/demo/blocks': Blocks,
     '/demo/expression': Expression,
     '/demo/scroll-x': ScrollX,
+    '/demo/responsive': Responsive,
     '/demo/*': NotFound,
     '/settings': Settings,
     '/*': NotFound
