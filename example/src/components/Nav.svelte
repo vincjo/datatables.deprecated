@@ -32,6 +32,7 @@
 {#if $location.indexOf('test')  > 0}
 	<ul class="demo">
 		<li class:active={test === `#/test`} 				on:click={() => test = "#/test"}				><a href="#/test">Grid layout</a></li>
+		<li class:active={test === `#/test/lots-of-data`} 	on:click={() => test = "#/test/lots-of-data"}	><a href="#/test/lots-of-data">Lots of data</a></li>
 	</ul>
 {/if}
 

@@ -97,7 +97,7 @@
     .wrapper {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-gap: 10px;
+        grid-gap: 8px;
         grid-auto-rows: minmax(100px, auto);
         background:rgba(255, 62, 0, 0.1);
         padding:8px

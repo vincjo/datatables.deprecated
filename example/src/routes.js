@@ -9,6 +9,7 @@ import ScrollX from './routes/demo/ScrollX.svelte'
 import Responsive from './routes/demo/Responsive.svelte'
 import Settings from './routes/Settings.svelte'
 import GridLayout from './routes/test/GridLayout.svelte'
+import LotsOfData from './routes/test/LotsOfData.svelte'
 import NotFound from './routes/NotFound.svelte'
 
 export const routes = {
@@ -25,5 +26,6 @@ export const routes = {
     '/settings': Settings,
     '/test': GridLayout,
     '/test/grid-layout': GridLayout,
+    '/test/lots-of-data': LotsOfData,
     '/*': NotFound
 }
