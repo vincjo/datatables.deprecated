@@ -13,12 +13,12 @@
 - Fits in its container
 - The table has fixed header
 - Scrolls vertically and horizontally
+- Responsive design
 
 :point_right: **[Live Demo](https://vincjo.fr/svelte-simple-datatables)**
 
 Todos : 
 - Sort columns programmatically
-- Responsive design
 - SSR support
 
 <br>
