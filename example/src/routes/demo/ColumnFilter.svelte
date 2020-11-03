@@ -13,6 +13,7 @@
 <Checkbox bind:checked={columnFilter}>Set column filter inputs</Checkbox>
 
 <Demo code={code(columnFilter)} {data}>
+    {#if columnFilter}
     <Datatable {settings} data={JSON.parse(data)}>
         <thead>
             <th data-key="id">ID</th>
@@ -31,6 +32,26 @@
             {/each}
         </tbody>
     </Datatable>
+    {:else}
+    <Datatable {settings} data={JSON.parse(data)}>
+        <thead>
+            <th data-key="id">ID</th>
+            <th data-key="first_name">First Name</th>
+            <th data-key="last_name">Last Name</th>
+            <th data-key="email">Email</th>
+        </thead>
+        <tbody>
+            {#each $rows as row}
+            <tr>
+                <td>{row.id}</td>
+                <td>{row.first_name}</td>
+                <td>{row.last_name}</td>
+                <td>{row.email}</td>
+            </tr>
+            {/each}
+        </tbody>
+    </Datatable>
+    {/if}
 </Demo>
 
 <style>
