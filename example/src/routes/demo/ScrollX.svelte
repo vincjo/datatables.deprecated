@@ -7,6 +7,7 @@
     const settings = { columnFilter: true }
 </script>
 
+<p>This example shows a large dataset in a small table container</p>
 <Demo code={code()} {data}>
     <Datatable {settings} data={JSON.parse(data)}>
         <thead>
