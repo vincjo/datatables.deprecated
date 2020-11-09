@@ -26,8 +26,8 @@
 		<h1>svelte-simple-datatables</h1>
 		<p>A Datatable component for Svelte</p>
 		<div>
-			<img src="https://img.shields.io/npm/dt/svelte-simple-datatables?color=%23ff3e00" alt="npm downloads"/>
-			<img src="https://img.shields.io/npm/v/svelte-simple-datatables?color=%23ff3e00&label=version" alt="npm version"/>
+			<img src="https://img.shields.io/npm/dt/svelte-simple-datatables?color=%23b71540" alt="npm downloads"/>
+			<img src="https://img.shields.io/npm/v/svelte-simple-datatables?color=%23b71540" alt="npm version"/>
 		</div>
 	</div>
 </aside>

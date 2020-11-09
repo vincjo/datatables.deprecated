@@ -2,8 +2,8 @@
 	<img align="center" src="./example/public/logo.svg" alt="logo" width="172"/>
 	<p align="center">
 		<h1 align="center" style="font-size:32px;margin:0;border:none;">svelte-simple-datatables</h1>
-		<img src="https://img.shields.io/npm/v/svelte-simple-datatables?color=%23ff3e00" alt="npm version"/>
-		<img src="https://img.shields.io/github/license/vincjo/svelte-simple-datatables?color=ff3e00" alt="last commit"/>
+		<img src="https://img.shields.io/npm/v/svelte-simple-datatables?color=%23b71540" alt="npm version"/>
+		<img src="https://img.shields.io/github/license/vincjo/svelte-simple-datatables?color=b71540" alt="last commit"/>
 	</p>
 </div>
 

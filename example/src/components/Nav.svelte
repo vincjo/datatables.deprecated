@@ -41,7 +41,7 @@
 	header ul {margin:0;padding:0;}
 	header ul::after {content: '';display: block;clear: both;}
 	header li {display: block;float: left;margin-right:24px}
-	header a.active{border-bottom:2px solid #ff3e00;}
+	header a.active{border-bottom:2px solid #b71540;}
 	header a {text-decoration: none;padding:0;display: block;font-size:16px;line-height:56px;}
 	header li.github{display:flex;margin-right:0;float:right;}
 	header li.github img{float:right;padding:16px 8px;width:40px;}
@@ -49,6 +49,6 @@
 	ul.demo{margin:24px 0 0 0;display:flex;flex-wrap:wrap;padding:0;list-style-type:none;}
     ul.demo li{display:block;margin:8px;border:1px solid #eee;border-radius:8px;}
     ul.demo li:first-child{margin-left:0;}
-    ul.demo li.active{font-weight:bold;color:#40b3ff;border:2px solid #40b3ff;}
+    ul.demo li.active{font-weight:bold;color:#38ada9;border:2px solid #38ada9;}
     ul.demo a{display:block;text-decoration:none;color:inherit;padding:8px 16px;}
 </style>

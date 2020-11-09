@@ -1,10 +1,14 @@
 *{box-sizing:border-box;}
 *{
-	--primary:#ff3e00;
+	--primary:#b71540;
 	--color:#444;
-	--label:#40b3ff;
+	--label:#38ada9;
 	--hljs: #171c19;
 }
+
+
+	/* 40b3ff     ff3e00    676778 */
+
 .hljs{background:var(--hljs);}
 .hljs::-webkit-scrollbar {width:8px;height:8px;}
 .hljs::-webkit-scrollbar-track {background:#3d433f;}
@@ -36,7 +40,3 @@ pre{margin:0 !important;}
 .z-depth-5, .modal {-webkit-box-shadow: 0 24px 38px 3px rgba(189,189,189, 0.14), 0 9px 46px 8px rgba(189,189,189, 0.12), 0 11px 15px -7px rgba(189,189,189, 0.2);box-shadow: 0 24px 38px 3px rgba(189,189,189, 0.14), 0 9px 46px 8px rgba(189,189,189, 0.12), 0 11px 15px -7px rgba(189,189,189, 0.2);}
 
 
-
-
-
-	/* 40b3ff     ff3e00    676778 */

@@ -99,16 +99,16 @@
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 8px;
         grid-auto-rows: minmax(100px, auto);
-        background:rgba(255, 62, 0, 0.1);
+        background:rgba(56, 173, 169, 0.1);
         padding:8px
     }
     div{border-radius:8px;}
     .three   {background:#fff;grid-column: 1;grid-row: 2 / 5;padding:8px 0;}
-    .one     {background:rgba(255, 62, 0, 0.2);grid-column: 1 / 2;grid-row: 1;}
-    .two     {background:rgba(255, 62, 0, 0.2);grid-column: 2 / 4;grid-row: 1 / 3;}
-    .four    {background:rgba(255, 62, 0, 0.2);grid-column: 3;grid-row: 3;}
-    .five    {background:rgba(255, 62, 0, 0.2);grid-column: 2;grid-row: 4;}
-    .six     {background:rgba(255, 62, 0, 0.2);grid-column: 3;grid-row: 4;}
+    .one     {background:rgba(56, 173, 169, 0.2);grid-column: 1 / 2;grid-row: 1;}
+    .two     {background:rgba(56, 173, 169, 0.2);grid-column: 2 / 4;grid-row: 1 / 3;}
+    .four    {background:rgba(56, 173, 169, 0.2);grid-column: 3;grid-row: 3;}
+    .five    {background:rgba(56, 173, 169, 0.2);grid-column: 2;grid-row: 4;}
+    .six     {background:rgba(56, 173, 169, 0.2);grid-column: 3;grid-row: 4;}
     td{text-align:center;padding:4px;}
 
     
