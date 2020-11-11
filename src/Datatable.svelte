@@ -1,24 +1,24 @@
 <script>
-  import { options } from "./stores/options.js";
-  import { datatable } from "./datatable.js";
-  import Search from "./components/Search.svelte";
-  import Pagination from "./components/Pagination.svelte";
-  import Header from "./components/Header.svelte";
-  import { onMount, onDestroy } from "svelte";
-  export let data = [];
-  export let settings = {};
+  import { options } from "./stores/options.js"
+  import { datatable } from "./datatable.js"
+  import Search from "./components/Search.svelte"
+  import Pagination from "./components/Pagination.svelte"
+  import Header from "./components/Header.svelte"
+  import { onMount, onDestroy } from "svelte"
+  export let data = []
+  export let settings = {}
   $: {
-    datatable.setRows(data);
-    options.update(settings);
+    datatable.setRows(data)
+    options.update(settings)
   }
   onMount(() => {
-    datatable.addEventScrollX();
-    datatable.resize();
+    datatable.addEventScrollX()
+    datatable.resize()
     new ResizeObserver((mutations) => {
-      datatable.resize();
-    }).observe(document.querySelector("main.datatable").parentElement);
-  });
-  onDestroy(() => datatable.reset());
+      datatable.resize()
+    }).observe(document.querySelector("main.datatable").parentElement)
+  })
+  onDestroy(() => datatable.reset())
 </script>
 
 <section class="datatable">

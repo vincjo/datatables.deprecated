@@ -1,5 +1,5 @@
 <script>
-  import SearchInput from "../SearchInput.svelte";
+  import SearchInput from "../SearchInput.svelte"
 </script>
 
 <section class="dt-search">

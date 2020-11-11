@@ -1,7 +1,7 @@
 <script>
-  import PaginationRowCount from "../PaginationRowCount.svelte";
-  import PaginationButtons from "../PaginationButtons.svelte";
-  import { options } from "../stores/options.js";
+  import PaginationRowCount from "../PaginationRowCount.svelte"
+  import PaginationButtons from "../PaginationButtons.svelte"
+  import { options } from "../stores/options.js"
 </script>
 
 {#if $options.pagination && ($options.blocks.paginationRowCount || $options.blocks.paginationButtons)}

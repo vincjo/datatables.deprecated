@@ -1,20 +1,20 @@
 <script>
-  import { options } from "../stores/options.js";
-  import { pageNumber } from "../stores/state.js";
-  import { columns } from "../stores/columns.js";
-  import { local } from "../stores/filters.js";
-  import { data } from "../stores/data.js";
-  import { header } from "./header.js";
-  import { onMount } from "svelte";
-  let theadClassList;
+  import { options } from "../stores/options.js"
+  import { pageNumber } from "../stores/state.js"
+  import { columns } from "../stores/columns.js"
+  import { local } from "../stores/filters.js"
+  import { data } from "../stores/data.js"
+  import { header } from "./header.js"
+  import { onMount } from "svelte"
+  let theadClassList
   onMount(() => {
-    header.getColumns();
-    header.removeOriginalThead();
-    theadClassList = header.getOrginalTHeadClassList();
-  });
+    header.getColumns()
+    header.removeOriginalThead()
+    theadClassList = header.getOrginalTHeadClassList()
+  })
   const sort = (element, key) => {
     if ($options.sortable !== true || typeof key === "undefined") {
-      return;
+      return
     }
     if (
       element.classList.contains("sortable") &&
@@ -22,26 +22,26 @@
     ) {
       Array.from(element.parentNode.children).forEach((item) =>
         item.classList.remove("asc")
-      );
-      element.classList.add("desc");
-      data.sortDesc(key);
-      pageNumber.set(1);
+      )
+      element.classList.add("desc")
+      data.sortDesc(key)
+      pageNumber.set(1)
     } else {
       Array.from(element.parentNode.children).forEach((item) =>
         item.classList.remove("desc")
-      );
-      element.classList.add("asc");
-      data.sortAsc(key);
-      pageNumber.set(1);
+      )
+      element.classList.add("asc")
+      data.sortAsc(key)
+      pageNumber.set(1)
     }
-    columns.redraw();
-  };
+    columns.redraw()
+  }
 
   const filter = (key, value) => {
-    pageNumber.set(1);
-    local.add(key, value);
-    columns.redraw();
-  };
+    pageNumber.set(1)
+    local.add(key, value)
+    columns.redraw()
+  }
 </script>
 
 <section class="datatable-thead" class:sortable={$options.sortable === true}>
