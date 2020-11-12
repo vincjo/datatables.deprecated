@@ -18,7 +18,7 @@ export const datatable = {
         return
     },
     getSize: () => {
-        const parent = document.querySelector('main.datatable').parentNode
+        const parent = document.querySelector('section.datatable').parentNode
         const style = getComputedStyle(parent)
         const rect = parent.getBoundingClientRect()
         const getNumber = (pxValue) => { return parseFloat(pxValue.replace('px', ''))  } 
@@ -34,9 +34,9 @@ export const datatable = {
         }
     },
     resize: () => {
-        if ( !document.querySelector('main.datatable') ) return
+        if ( !document.querySelector('section.datatable') ) return
         const size = datatable.getSize()
-        const tableContainer = document.querySelector('main.datatable .dt-table')
+        const tableContainer = document.querySelector('section.datatable .dt-table')
         tableContainer.style.height = datatable.getTableContainerHeight(size.parentHeight * size.height) + 'px'
         columns.redraw()
         datatableWidth.set( size.parentWidth * size.width )
@@ -51,10 +51,10 @@ export const datatable = {
             (paginationBlock) ? document.querySelector('.datatable .dt-pagination').getBoundingClientRect().height : 0
         ]
         const sum = (a, b) => a + b
-        document.querySelector('main.datatable .dt-table').style.height = height - calc.reduce(sum) + 'px'
+        document.querySelector('section.datatable .dt-table').style.height = height - calc.reduce(sum) + 'px'
     },
     addEventScrollX: () => {
-        document.querySelector('main.datatable .dt-table').addEventListener('scroll', (e) => {
+        document.querySelector('section.datatable .dt-table').addEventListener('scroll', (e) => {
             document.querySelector('.datatable-thead').style.left = (-1 * e.target.scrollLeft ) + 'px'
         })
     },

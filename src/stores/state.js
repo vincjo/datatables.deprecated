@@ -14,7 +14,7 @@ const createPageNumber = () => {
 			if ( number >= 1 && number <= Math.ceil($rowCount / $rowPerPage) ) {
 				store = parseInt(number)
 			}
-			document.querySelector('main.datatable .dt-table').scrollTop = 0
+			document.querySelector('section.datatable .dt-table').scrollTop = 0
 			return store
 		})
 	}
