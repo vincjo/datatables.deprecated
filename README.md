@@ -9,7 +9,7 @@
 
 # Presentation
 
-`Datatable` component behavior :
+`Datatable` component default behavior :
 - Fits in its container
 - The table has fixed header
 - Scrolls vertically and horizontally
@@ -19,13 +19,13 @@
 
 Todos : 
 - Sort columns programmatically
-- SSR support
+- Server side data
 
 <br>
 
 
 # Install
-:warning: No SSR support : to work properly with Sapper, the component is installed in DevDependencies 
+:white_check_mark: Install as a dev dependency if using Sapper to avoid a SSR error.
 ````apache
 npm i -D svelte-simple-datatables
 ````
