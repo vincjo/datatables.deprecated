@@ -48,6 +48,7 @@ const createOptions = () => {
                 pagination:   typeof opt.pagination   === 'boolean' ? opt.pagination   : true,
                 rowPerPage:   typeof opt.rowPerPage   === 'number'  ? opt.rowPerPage   : 50,
                 columnFilter: typeof opt.columnFilter === 'boolean' ? opt.columnFilter : false, 
+                scrollY:      typeof opt.scrollY      === 'boolean' ? opt.scrollY      : true, 
                 labels: labels,
                 blocks: blocks
             }

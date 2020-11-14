@@ -24,6 +24,7 @@
 		<li class:active={demo === `#/demo/i18n`} 			on:click={() => demo = "#/demo/i18n"}			><a href="#/demo/i18n">i18n</a></li>
 		<li class:active={demo === `#/demo/blocks`} 		on:click={() => demo = "#/demo/blocks"}			><a href="#/demo/blocks">Blocks</a></li>
 		<li class:active={demo === `#/demo/expression`} 	on:click={() => demo = "#/demo/expression"}		><a href="#/demo/expression">JS Expression</a></li>
+		<li class:active={demo === `#/demo/scroll-y`} 		on:click={() => demo = "#/demo/scroll-y"}		><a href="#/demo/scroll-y">Scroll Y</a></li>
 		<li class:active={demo === `#/demo/scroll-x`} 		on:click={() => demo = "#/demo/scroll-x"}		><a href="#/demo/scroll-x">Scroll X</a></li>
 		<li class:active={demo === `#/demo/responsive`} 	on:click={() => demo = "#/demo/responsive"}		><a href="#/demo/responsive">Responsive</a></li>
 	</ul>
@@ -47,8 +48,8 @@
 	header li.github img{float:right;padding:16px 8px;width:40px;}
 
 	ul.demo{margin:24px 0 0 0;display:flex;flex-wrap:wrap;padding:0;list-style-type:none;}
-    ul.demo li{display:block;margin:8px;border:1px solid #eee;border-radius:8px;}
+    ul.demo li{display:block;margin:4px;border:1px solid #eee;border-radius:8px;}
     ul.demo li:first-child{margin-left:0;}
     ul.demo li.active{font-weight:bold;color:#38ada9;border:2px solid #38ada9;}
-    ul.demo a{display:block;text-decoration:none;color:inherit;padding:8px 16px;}
+    ul.demo a{display:block;text-decoration:none;color:inherit;padding:4px 8px;}
 </style>

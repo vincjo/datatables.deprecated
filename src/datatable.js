@@ -6,6 +6,20 @@ import { global, local } from './stores/filters.js'
 
 
 export const datatable = {
+    init: () => {
+        datatable.resize()
+        datatable.addEventScrollX()
+        datatable.getColumns()
+        new ResizeObserver((mutations) => {
+            datatable.resize()
+        }).observe(document.querySelector('section.datatable').parentElement)
+    },
+    reset: () => {
+        pageNumber.update(store => store = 1)
+        global.remove()
+        local.remove()
+        columns.set([])
+    },
     setRows: (arr) => {
         arr.forEach( (item) => {
             Object.keys(item).forEach( (k) => {
@@ -37,9 +51,14 @@ export const datatable = {
         if ( !document.querySelector('section.datatable') ) return
         const size = datatable.getSize()
         const tableContainer = document.querySelector('section.datatable .dt-table')
-        tableContainer.style.height = datatable.getTableContainerHeight(size.parentHeight * size.height) + 'px'
-        columns.redraw()
+        if ( options.get().scrollY ) {
+            tableContainer.style.height = datatable.getTableContainerHeight(size.parentHeight * size.height) + 'px'
+            columns.redraw()
+        }
         datatableWidth.set( size.parentWidth * size.width )
+        if (size.parentWidth * size.width < document.querySelector('section.datatable table').offsetWidth) {
+            tableContainer.style.overflowX = 'auto'
+        }
     },
     getTableContainerHeight: (height) => {
         let paginationBlock
@@ -54,14 +73,37 @@ export const datatable = {
         document.querySelector('section.datatable .dt-table').style.height = height - calc.reduce(sum) + 'px'
     },
     addEventScrollX: () => {
-        document.querySelector('section.datatable .dt-table').addEventListener('scroll', (e) => {
-            document.querySelector('.datatable-thead').style.left = (-1 * e.target.scrollLeft ) + 'px'
-        })
+        if ( options.get().scrollY ) {
+            document.querySelector('section.datatable .dt-table').addEventListener('scroll', (e) => {
+                document.querySelector('.datatable-thead').style.left = (-1 * e.target.scrollLeft) + 'px'
+            })
+        }
     },
-    reset: () => {
-        pageNumber.update(store => store = 1)
-        global.remove()
-        local.remove()
-        columns.set([])
-    }
+    getColumns: () => {
+        const columnList = []
+        let i = 0
+        document.querySelectorAll('.datatable table thead th').forEach(th => {
+            columnList.push({
+                index: i,
+                html: th.innerHTML,
+                key: datatable.getKey(th.dataset.key),
+                sort: null,
+                classList: th.classList,
+                minWidth: th.getBoundingClientRect().width
+            })
+            th.addEventListener('click', (e) => {
+                columns.sort(e.target, datatable.getKey(th.dataset.key))
+            }, true)
+            i++
+        })
+        columns.set(columnList)
+    },
+    getKey: (key) => {
+        if (!key)  return 
+        if (key && key.indexOf('=>') > 0) {
+            return new Function(`'use strict';return (${key})`)()
+        }
+        return (x) => x[key]
+    },
 }
+

@@ -5,6 +5,7 @@
 `const settings = {
     sortable: true,
     pagination: true,
+    scrollY: true,
     rowPerPage: 50,
     columnFilter: false,
     labels: {

@@ -1,32 +1,28 @@
 <script>
-	import { options } from "./stores/options.js"
-	import { datatable } from "./datatable.js"
-	import Search from "./components/Search.svelte"
-	import Pagination from "./components/Pagination.svelte"
-	import Header from "./components/Header.svelte"
-	import { onMount, onDestroy } from "svelte"
+	import { options } from './stores/options.js'
+	import { datatable } from './datatable.js'
+	import Search from './components/Search.svelte'
+	import Pagination from './components/Pagination.svelte'
+	import StickyHeader from './components/StickyHeader.svelte'
+	import { onMount, onDestroy } from 'svelte'
 	export let data = []
 	export let settings = {}
 	$: {
 		datatable.setRows(data)
 		options.update(settings)
 	}
-	onMount(() => {
-		datatable.addEventScrollX()
-		datatable.resize()
-		new ResizeObserver((mutations) => {
-			datatable.resize()
-		}).observe(document.querySelector("section.datatable").parentElement)
-	})
+	onMount(() => datatable.init() )
 	onDestroy(() => datatable.reset())
 </script>
 
-<section class="datatable">
+<section class="datatable" class:scroll-y={$options.scrollY}>
 	{#if $options.blocks.searchInput === true}
 		<Search />
 	{/if}
 	<article class="dt-table">
-		<Header />
+		{#if $options.scrollY}
+			<StickyHeader/>
+		{/if}
 		<table>
 			<slot />
 		</table>
@@ -40,6 +36,8 @@
 	.datatable {
 		position: relative;
 		background: #fff;
+	}
+	.datatable.scroll-y{
 		height:160px;
 	}
 	.datatable * {
@@ -47,7 +45,8 @@
 	}
 	article {
 		position: relative;
-		overflow: auto;
+		overflow-y: auto;
+		overflow-x: hidden;
 		width: 100%;
 		background: inherit;
 		border-bottom: 1px solid #e0e0e0;

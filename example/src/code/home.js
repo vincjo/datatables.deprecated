@@ -24,7 +24,7 @@ export const code = `
 </Datatable>
 
 <style>
-    td{text-align:center;padding:4px 16px 4px 0}
+    td{text-align:center;padding:4px 0}
 </style>
 
 

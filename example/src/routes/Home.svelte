@@ -69,5 +69,5 @@
 	/* 40b3ff     ff3e00    676778*/
 	div.code{background:var(--hljs);border-radius:8px;padding:4px;max-width:440px;}
 
-	td{text-align:center;padding:4px 16px 4px 0}
+	td{text-align:center;padding:4px 0}
 </style>

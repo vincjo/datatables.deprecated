@@ -1,4 +1,8 @@
 import { writable } from 'svelte/store'
+import { options } from '../stores/options.js'
+import { data } from '../stores/data.js'
+import { pageNumber } from '../stores/state.js'
+import { local } from '../stores/filters.js'
 
 const createColumns = () => {
 	const { subscribe, set, update } = writable([])
@@ -8,6 +12,35 @@ const createColumns = () => {
 			let $columns
 			columns.subscribe(store => $columns = store)
 			return $columns
+		},
+		sort: (element, key) => {
+			if (options.get().sortable !== true || typeof key === 'undefined') {
+				return
+			}
+			if (
+				element.classList.contains('sortable') &&
+				element.classList.contains('asc')
+			) {
+				Array.from(element.parentNode.children).forEach((item) =>
+					item.classList.remove('asc')
+				)
+				element.classList.add('desc')
+				data.sortDesc(key)
+				pageNumber.set(1)
+			} else {
+				Array.from(element.parentNode.children).forEach((item) =>
+					item.classList.remove('desc')
+				)
+				element.classList.add('asc')
+				data.sortAsc(key)
+				pageNumber.set(1)
+			}
+			columns.redraw()
+		},
+		filter: (key, value) => {
+			pageNumber.set(1)
+			local.add(key, value)
+			columns.redraw()
 		},
 		draw: () => {
 			setTimeout(() => {
@@ -38,6 +71,9 @@ const createColumns = () => {
 			}, 50)	
 		},
 		redraw: () => {
+			if (!options.get().scrollY) {
+				return
+			}
 			setTimeout(() => {
 				const tbody = document.querySelector('.datatable table tbody tr')
 				if (tbody === null) return

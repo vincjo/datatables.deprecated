@@ -1,30 +1,4 @@
-import { columns } from '../stores/columns.js'
-
 export const header = {
-    getColumns: () => {
-        const columnList = []
-        let i = 0
-        document.querySelectorAll('.datatable table thead th').forEach(th => {
-            columnList.push({
-                index: i,
-                html: th.innerHTML,
-                key: header.getKey(th.dataset.key),
-                sort: null,
-                classList: th.classList,
-                minWidth: th.getBoundingClientRect().width
-            })
-            i++
-        })
-        columns.set(columnList)
-        columns.draw()
-    },
-    getKey: (key) => {
-        if (!key)  return 
-        if (key && key.indexOf('=>') > 0) {
-            return new Function(`'use strict';return (${key})`)()
-        }
-        return (x) => x[key]
-    },
     removeOriginalThead: () => {
         setTimeout(() => {
             const thead = document.querySelector('.datatable table thead')
@@ -38,5 +12,5 @@ export const header = {
     },
     getOrginalTHeadClassList: () => {
         return document.querySelector('.datatable table thead').classList
-    }
+    },
 }
