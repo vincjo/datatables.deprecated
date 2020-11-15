@@ -4,7 +4,7 @@
     import { data } from 'app/data.js'
     import { Menu, Menuitem, Button, Icon, Checkbox } from 'svelte-mui/src'
     import Datatable from '../../../../src/Datatable.svelte'
-	import ColumnFilterInput from '../../../../src/ColumnFilterInput.svelte'
+	import ColumnFilterInputs from '../../../../src/ColumnFilterInputs.svelte'
     import { rows } from '../../../../src/stores/data.js'
     let scrollY = false
     let checked = true
@@ -37,7 +37,7 @@
 
 <p>
     Disabling vertical scroll renders table in a more standard way : no floating header and no fit to container.<br>
-    However the column-filter-inputs must be imported as component to activate column filtering.
+    However the column-filter-inputs must be imported as component to handle column filtering.
 </p>
 
 
@@ -51,12 +51,7 @@
                 <th class="sortable asc desc" data-key="last_name">Last Name<span/></th>
                 <th class="sortable asc desc" data-key="email">Email<span/></th>
             </tr>
-            <tr>
-                <ColumnFilterInput index={0}/>
-                <ColumnFilterInput index={1}/>
-                <ColumnFilterInput index={2}/>
-                <ColumnFilterInput index={3}/>
-            </tr>
+            <ColumnFilterInputs/>
         </thead>
         <tbody>
             {#each $rows as row}

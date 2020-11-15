@@ -41,7 +41,7 @@ else {
     return `
 <script>
     import { data } from './data.example.js'  
-    import { Datatable, ColumnFilterInput, rows } from 'svelte-simple-datatables'
+    import { Datatable, ColumnFilterInputs, rows } from 'svelte-simple-datatables'
     const settings = { 
         rowPerPage: ${rowPerPage},
         scrollY: ${scrollY}
@@ -56,13 +56,7 @@ else {
             <th class="sortable asc desc" data-key="last_name">Last Name<span/></th>
             <th class="sortable asc desc" data-key="email">Email<span/></th>
         </tr>
-        <tr>
-            <ColumnFilterInput index={0}/>
-            <ColumnFilterInput index={1}/>
-            <ColumnFilterInput index={2}/>
-            <ColumnFilterInput index={3}/>
-        </tr>
-    </thead>
+        <ColumnFilterInputs/>
     <tbody>
         {#each $rows as row}
         <tr>

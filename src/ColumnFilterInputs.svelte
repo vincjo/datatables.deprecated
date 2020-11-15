@@ -1,18 +1,25 @@
 <script>
     import { options } from './stores/options.js'
     import { columns } from './stores/columns.js'
-    export let index
 </script>
 
+<tr>
+{#each $columns as column}
+    {#if column.key}
+        <th class="filter" class:css={$options.css}>
+            <input
+                type="text"
+                placeholder={$options.labels.filter}
+                class="browser-default"
+                on:input={(e) => columns.filter(column.key, e.target.value)}
+            />
+        </th>
+    {:else}
+        <th class="filter"></th>
+    {/if}
+{/each}
+</tr>
 
-<th class="filter" class:css={$options.css}>
-    <input
-        type="text"
-        placeholder={$options.labels.filter}
-        class="browser-default"
-        on:input={(e) => columns.filter($columns[index].key, e.target.value)}
-    />
-</th>
 
 <style>
    .css {
