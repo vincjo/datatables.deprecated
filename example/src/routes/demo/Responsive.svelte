@@ -2,7 +2,7 @@
     import Demo from 'components/Demo.svelte'
     import { code } from 'code/demo.responsive.js'
     import { data } from 'app/data.js'
-    import { Radio } from 'svelte-mui/src';
+    import { Radio } from 'svelte-mui/src'
 	import Datatable from '../../../../src/Datatable.svelte'
     import { rows } from '../../../../src/stores/data.js'
     let group = 'Desktop' 

@@ -75,7 +75,7 @@ export const datatable = {
     addEventScrollX: () => {
         if ( options.get().scrollY ) {
             document.querySelector('section.datatable .dt-table').addEventListener('scroll', (e) => {
-                document.querySelector('.datatable-thead').style.left = (-1 * e.target.scrollLeft) + 'px'
+                document.querySelector('.dt-header').style.left = (-1 * e.target.scrollLeft) + 'px'
             })
         }
     },

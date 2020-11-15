@@ -9,7 +9,7 @@
 
 
 
-<aside class="dt-pagination-rowcount">
+<aside class="dt-pagination-rowcount" class:css={$options.css}>
     {#if $datatableWidth > 600}
         {#if rows > 0}
             {@html info}
@@ -22,5 +22,5 @@
 </aside>
 
 <style>
-    aside{margin-left:16px;font-size:14px;line-height:32px;color:#616161}
+    .css{color:#616161;line-height:32px;margin-left:16px;font-size:14px;}
 </style>

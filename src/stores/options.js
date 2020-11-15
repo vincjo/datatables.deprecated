@@ -6,6 +6,8 @@ const createOptions = () => {
         pagination: true,
         rowPerPage: 50,
         columnFilter: false,
+        scrollY: true,
+        css: true,
         labels: {
             search: 'Search...',
             filter: 'Filter',
@@ -49,6 +51,7 @@ const createOptions = () => {
                 rowPerPage:   typeof opt.rowPerPage   === 'number'  ? opt.rowPerPage   : 50,
                 columnFilter: typeof opt.columnFilter === 'boolean' ? opt.columnFilter : false, 
                 scrollY:      typeof opt.scrollY      === 'boolean' ? opt.scrollY      : true, 
+                css:          typeof opt.css          === 'boolean' ? opt.css          : true, 
                 labels: labels,
                 blocks: blocks
             }

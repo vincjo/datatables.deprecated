@@ -46,7 +46,7 @@ const createColumns = () => {
 			setTimeout(() => {
 				const tbody = document.querySelector('.datatable table tbody tr')
 				if (tbody === null) return
-				const thead = document.querySelectorAll('.datatable-thead thead tr')
+				const thead = document.querySelectorAll('.dt-header thead tr')
 				const $columns = columns.get()
 				thead.forEach(tr => {
 					let i = 0
@@ -77,7 +77,7 @@ const createColumns = () => {
 			setTimeout(() => {
 				const tbody = document.querySelector('.datatable table tbody tr')
 				if (tbody === null) return
-				const thead = document.querySelectorAll('.datatable-thead thead tr')
+				const thead = document.querySelectorAll('.dt-header thead tr')
 				thead.forEach(tr => {
 					let i = 0
 					Array.from(tbody.children).forEach(td => {

@@ -8,6 +8,7 @@
     scrollY: true,
     rowPerPage: 50,
     columnFilter: false,
+    css: true,
     labels: {
         search: 'Search...',    // search input placeholer
         filter: 'Filter',       // filter inputs placeholder

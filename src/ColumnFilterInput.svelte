@@ -5,7 +5,7 @@
 </script>
 
 
-<th class="filter">
+<th class="filter" class:css={$options.css}>
     <input
         type="text"
         placeholder={$options.labels.filter}
@@ -15,18 +15,20 @@
 </th>
 
 <style>
-   th.filter {
+   .css {
         padding: 0;
         margin: 0;
         background-image: none;
         border: 1px solid #fafafa;
     }
     th.filter input {
-        background: #fff;
-        padding: 0;
         margin: 0;
-        height: 24px;
+        padding: 0;
         width: 100%;
+    }
+    .css input {
+        background: #fff;
+        height: 24px;
         border: none;
         border-bottom: 1px solid #eee;
         text-align: center;
@@ -34,7 +36,7 @@
         border-radius: 0;
         font-size: 14px;
     }
-    th.filter input::placeholder {
+    .css input::placeholder {
         color: #bdbdbd;
         font-style: italic;
         font-size: 13px;

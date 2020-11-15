@@ -23,7 +23,7 @@
 </script>
 
 {#if $datatableWidth > 600}
-    <section class="dt-pagination-buttons {classList}" {ref}>
+    <section class="dt-pagination-buttons {classList}" {ref} class:css={$options.css}>
         <button 
             class="text"
             class:disabled={$pageNumber === 1}
@@ -68,7 +68,7 @@
         </button>
     </section>
 {:else}
-    <section class="mobile">
+    <section class="dt-pagination-buttons mobile {classList}" class:css={$options.css}>
         <button class:disabled={$pageNumber === 1} on:click={() => setPage(1)}>&#10092;&#10092;</button>
         <button class:disabled={$pageNumber === 1} on:click={() => setPage($pageNumber - 1)}>&#10094;</button>
         <button class:disabled={$pageNumber === pageCount.length}  on:click={() => setPage($pageNumber + 1)}>&#10095;</button>
@@ -77,16 +77,16 @@
 {/if}           
 
 <style>
-    section{display:flex;flex-direction:row;height:32px;margin-right:16px;}
-    button{height:32px;width:32px;background:inherit;color:#616161;font-size:13px;margin:0;padding:0;transition:all, .2s;line-height:32px;border:1px solid #e0e0e0;border-right:none;outline:none;}
-    button:first-child{border-radius:4px 0 0 4px;}
-    button:last-child{border-right:1px solid #e0e0e0;border-radius:0 4px 4px 0;}
-    button:not(.active):hover{background:#eee;cursor:pointer;}
-    button.text{min-width:70px;cursor:pointer;}
-    button.ellipse:hover{background:inherit;cursor: default;}
-    button.active{background:#eee;font-weight:bold;}
-    button.disabled:hover{background:inherit;cursor: default;}
-    .mobile button.disabled{color:#bdbdbd;}
-    .mobile button{font-weight:bold;}
-    /* button.disabled{color:#9e9e9e;} */
+    section{display:flex;flex-direction:row;}
+    .css{height:32px;margin-right:16px;}
+    .css button{background:inherit;height:32px;width:32px;color:#616161;font-size:13px;margin:0;padding:0;transition:all, .2s;line-height:32px;border:1px solid #e0e0e0;border-right:none;outline:none;}
+    .css button:first-child{border-radius:4px 0 0 4px;}
+    .css button:last-child{border-right:1px solid #e0e0e0;border-radius:0 4px 4px 0;}
+    .css button:not(.active):hover{background:#eee;cursor:pointer;}
+    .css button.text{width:auto;min-width:70px;cursor:pointer;}
+    .css button.ellipse:hover{background:inherit;cursor: default;}
+    .css button.active{background:#eee;font-weight:bold;}
+    .css button.disabled:hover{background:inherit;cursor: default;}
+    .css.mobile button.disabled{color:#bdbdbd;}
+    .css.mobile button{font-weight:bold;}
 </style>

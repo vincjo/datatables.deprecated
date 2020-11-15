@@ -11,7 +11,7 @@
     })
 </script>
 
-<section class="datatable-thead" class:sortable={$options.sortable === true}>
+<section class="dt-header" class:sortable={$options.sortable === true} class:css={$options.css}>
     <thead class={theadClassList}>
         <tr>
             {#each $columns as th}
@@ -54,21 +54,21 @@
         z-index: 6;
         background: inherit;
     }
-    th {
+    .css th {
         padding: 8px 0px 8px 16px;
         text-align: center;
         border-bottom: 1px solid #eee;
         background: #fff;
     }
-    th.sortable {
+    .css th.sortable {
         cursor: pointer;
     }
-    th.sortable span {
+    .css th.sortable span {
         padding-right: 16px;
         position: relative;
     }
-    th.sortable span:before,
-    th.sortable span:after {
+    .css th.sortable span:before,
+    .css th.sortable span:after {
         border: 4px solid transparent;
         content: '';
         display: block;
@@ -78,32 +78,34 @@
         position: absolute;
         width: 0;
     }
-    th.sortable span:before {
+    .css th.sortable span:before {
         border-bottom-color: #e0e0e0;
         margin-top: -9px;
     }
-    th.sortable span:after {
+    .css th.sortable span:after {
         border-top-color: #e0e0e0;
         margin-top: 1px;
     }
-    th.sortable.asc span:before {
+    .css th.sortable.asc span:before {
         border-bottom-color: #9e9e9e;
     }
-    th.sortable.desc span:after {
+    .css th.sortable.desc span:after {
         border-top-color: #9e9e9e;
     }
-    th.filter {
+    .css th.filter {
         padding: 0;
         margin: 0;
         background-image: none;
         border: 1px solid #fafafa;
     }
     th.filter input {
-        background: #fff;
-        padding: 0;
         margin: 0;
-        height: 24px;
+        padding: 0;
         width: 100%;
+    }
+    .css th.filter input {
+        background: #fff;
+        height: 24px;
         border: none;
         border-bottom: 1px solid #eee;
         text-align: center;
@@ -111,7 +113,7 @@
         border-radius: 0;
         font-size: 14px;
     }
-    th.filter input::placeholder {
+    .css th.filter input::placeholder {
         color: #bdbdbd;
         font-style: italic;
         font-size: 13px;

@@ -7,6 +7,7 @@
 	import { onMount, onDestroy } from 'svelte'
 	export let data = []
 	export let settings = {}
+	export let classList = ''
 	$: {
 		datatable.setRows(data)
 		options.update(settings)
@@ -15,7 +16,7 @@
 	onDestroy(() => datatable.reset())
 </script>
 
-<section class="datatable" class:scroll-y={$options.scrollY}>
+<section class="datatable {classList}" class:scroll-y={$options.scrollY} class:css={$options.css}>
 	{#if $options.blocks.searchInput === true}
 		<Search />
 	{/if}
@@ -35,6 +36,8 @@
 <style>
 	.datatable {
 		position: relative;
+	}
+	.css.datatable {
 		background: #fff;
 	}
 	.datatable.scroll-y{
@@ -49,26 +52,28 @@
 		overflow-x: hidden;
 		width: 100%;
 		background: inherit;
+	}
+	.css article {
 		border-bottom: 1px solid #e0e0e0;
 		scrollbar-width: thin;
 	}
-	article::-webkit-scrollbar {
+	.css article::-webkit-scrollbar {
 		width: 6px;
 		height: 6px;
 	}
-	article::-webkit-scrollbar-track {
+	.css article::-webkit-scrollbar-track {
 		background: #f5f5f5;
 	}
-	article::-webkit-scrollbar-thumb {
+	.css article::-webkit-scrollbar-thumb {
 		background: #c2c2c2;
 	}
-	article::-webkit-scrollbar-thumb:hover {
+	.css article::-webkit-scrollbar-thumb:hover {
 		background: #9e9e9e;
 	}
-	article::-webkit-scrollbar-track-piece:start {
+	.css article::-webkit-scrollbar-track-piece:start {
 		top: 40px;
 	}
-	table {
+	.css table {
 		width: 100%;
 		border-collapse: collapse;
 		overflow: hidden;

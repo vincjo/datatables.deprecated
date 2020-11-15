@@ -1,5 +1,4 @@
 <script>
-    // import { board } from 'app/store.js'
     import { fade } from 'svelte/transition'
     import { Highlight, HighlightSvelte } from 'svelte-highlight'
     import { json } from 'svelte-highlight/languages'
@@ -7,6 +6,7 @@
     export let data
     export let code
     export let scrollY = true
+    export let background = '#fff'
     let current = 'result' 
 </script>
 
@@ -18,7 +18,7 @@
     </ul>
     <section class:code={current === 'code' || current === 'data'} class:table={current === 'result'} class:scroll-y={scrollY}>
         {#if current === 'result'}
-            <div class="table z-depth-2" in:fade={{ duration:200 }} style="width:{tableWidth}">
+            <div class="table z-depth-2" in:fade={{ duration:200 }} style="width:{tableWidth};background:{background}">
                 <slot></slot>
             </div>
         {:else if current === 'code'}
