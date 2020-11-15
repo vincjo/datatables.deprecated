@@ -25,7 +25,7 @@
     line-height: 24px;
 }
 
-.datatable .dt-table th {
+.datatable thead:not([style*='hidden']) th {
     padding: 8px 0px 8px 16px;
     text-align: center;
     border-bottom: 1px solid #eee;
