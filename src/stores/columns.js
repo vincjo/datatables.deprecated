@@ -22,14 +22,14 @@ const createColumns = () => {
 				element.classList.contains('asc')
 			) {
 				Array.from(element.parentNode.children).forEach((item) =>
-					item.classList.remove('asc')
+					item.classList.remove('asc', 'desc')
 				)
 				element.classList.add('desc')
 				data.sortDesc(key)
 				pageNumber.set(1)
 			} else {
 				Array.from(element.parentNode.children).forEach((item) =>
-					item.classList.remove('desc')
+					item.classList.remove('desc', 'asc')
 				)
 				element.classList.add('asc')
 				data.sortAsc(key)
@@ -71,7 +71,7 @@ const createColumns = () => {
 			}, 50)	
 		},
 		redraw: () => {
-			if (!options.get().scrollY) {
+			if ( options.get().scrollY === false ) {
 				return
 			}
 			setTimeout(() => {

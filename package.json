@@ -20,7 +20,7 @@
     "src",
     "dist"
   ],
-  "description": "Datatable component for Svelte",
+  "description": "A Datatable component for Svelte",
   "version": "0.1.24",
   "directories": {
     "example": "example"
@@ -35,5 +35,5 @@
   "bugs": {
     "url": "https://github.com/vincjo/svelte-simple-datatables/issues"
   },
-  "homepage": "https://github.com/vincjo/svelte-simple-datatables#readme"
+  "homepage": "https://vincjo.fr/svelte-simple-datatables"
 }
