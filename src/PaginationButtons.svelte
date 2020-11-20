@@ -5,7 +5,7 @@
     import { columns } from './stores/columns.js'
     export let ref = ''
     export let classList = ''
-    $: pageCount = Array.from( Array( Math.ceil($rowCount / $options.rowPerPage)).keys() )
+    $: pageCount = Array.from( Array( Math.ceil($rowCount / $options.rowsPerPage)).keys() )
     const slice = (arr, page) => {
         if (page < 5) {
             return arr.slice( 0, 5 )

@@ -1,4 +1,4 @@
-export const code = (rowPerPage, scrollY) => {
+export const code = (rowsPerPage, scrollY) => {
 
 if (scrollY) {
     return `
@@ -6,7 +6,7 @@ if (scrollY) {
     import { data } from './data.example.js'  
     import { Datatable, rows } from 'svelte-simple-datatables'
     const settings = { 
-        rowPerPage: ${rowPerPage},
+        rowsPerPage: ${rowsPerPage},
         scrollY: ${scrollY},
         columnFilter: true 
     }
@@ -43,7 +43,7 @@ else {
     import { data } from './data.example.js'  
     import { Datatable, ColumnFilterInputs, rows } from 'svelte-simple-datatables'
     const settings = { 
-        rowPerPage: ${rowPerPage},
+        rowsPerPage: ${rowsPerPage},
         scrollY: ${scrollY}
     }
 </script>

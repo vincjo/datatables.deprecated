@@ -1,8 +1,8 @@
 <script>
     import { options } from './stores/options.js'
     import { pageNumber, rowCount, datatableWidth } from './stores/state.js'
-    $: start = $pageNumber * $options.rowPerPage - $options.rowPerPage + 1
-    $: end = Math.min($pageNumber * $options.rowPerPage, $rowCount)
+    $: start = $pageNumber * $options.rowsPerPage - $options.rowsPerPage + 1
+    $: end = Math.min($pageNumber * $options.rowsPerPage, $rowCount)
     $: rows = $rowCount
     $: info = $options.labels.info.replace('{start}', `<b>${start}</b>`).replace('{end}', `<b>${end}</b>`).replace('{rows}', `<b>${rows}</b>`)
 </script>

@@ -4,7 +4,7 @@ const createOptions = () => {
     const {subscribe, set } = writable({
         sortable: true,
         pagination: true,
-        rowPerPage: 50,
+        rowsPerPage: 50,
         columnFilter: false,
         scrollY: true,
         css: true,
@@ -46,12 +46,12 @@ const createOptions = () => {
                 paginationRowCount: typeof opt.blocks.paginationRowCount === 'boolean' ? opt.blocks.paginationRowCount : true,
             }
             const parsed = {
-                sortable:     typeof opt.sortable     === 'boolean' ? opt.sortable     : true,
-                pagination:   typeof opt.pagination   === 'boolean' ? opt.pagination   : true,
-                rowPerPage:   typeof opt.rowPerPage   === 'number'  ? opt.rowPerPage   : 50,
-                columnFilter: typeof opt.columnFilter === 'boolean' ? opt.columnFilter : false, 
-                scrollY:      typeof opt.scrollY      === 'boolean' ? opt.scrollY      : true, 
-                css:          typeof opt.css          === 'boolean' ? opt.css          : true, 
+                sortable:      typeof opt.sortable     === 'boolean' ? opt.sortable     : true,
+                pagination:    typeof opt.pagination   === 'boolean' ? opt.pagination   : true,
+                rowsPerPage:   typeof opt.rowsPerPage  === 'number'  ? opt.rowsPerPage  : 50,
+                columnFilter:  typeof opt.columnFilter === 'boolean' ? opt.columnFilter : false, 
+                scrollY:       typeof opt.scrollY      === 'boolean' ? opt.scrollY      : true, 
+                css:           typeof opt.css          === 'boolean' ? opt.css          : true, 
                 labels: labels,
                 blocks: blocks
             }

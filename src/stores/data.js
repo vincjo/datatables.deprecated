@@ -55,6 +55,6 @@ export const rows = derived(
 		if (!$options.pagination) {
 			return $filtered
 		}
-		return $filtered.slice( ($pageNumber - 1) * $options.rowPerPage, $pageNumber * $options.rowPerPage) 
+		return $filtered.slice( ($pageNumber - 1) * $options.rowsPerPage, $pageNumber * $options.rowsPerPage) 
 	} 
 )

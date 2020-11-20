@@ -43,7 +43,7 @@ npm i -D svelte-simple-datatables
     const settings = {
         sortable: true,
         pagination: true,
-        rowPerPage: 50,
+        rowsPerPage: 50,
         columnFilter: true,
     }
 </script>

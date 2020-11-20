@@ -2,7 +2,7 @@
     import { data } from 'app/data.11000.js'
 	import Datatable from '../../../../src/Datatable.svelte'
     import { rows } from '../../../../src/stores/data.js'
-    const settings = { columnFilter: true, rowPerPage: 100 }
+    const settings = { columnFilter: true, rowsPerPage: 100 }
 </script>
 
 <h2>11000 rows</h2>

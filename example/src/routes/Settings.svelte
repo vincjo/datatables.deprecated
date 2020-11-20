@@ -6,7 +6,7 @@
     sortable: true,
     pagination: true,
     scrollY: true,
-    rowPerPage: 50,
+    rowsPerPage: 50,
     columnFilter: false,
     css: true,
     labels: {

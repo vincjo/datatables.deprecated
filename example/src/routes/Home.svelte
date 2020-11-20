@@ -7,7 +7,7 @@
 	import { apache as language } from 'svelte-highlight/languages'
 	import Demo from '../components/Demo.svelte'
 	const settings = {
-		rowPerPage: 50,
+		rowsPerPage: 50,
 		columnFilter: true,
         blocks: {
             searchInput: true, 

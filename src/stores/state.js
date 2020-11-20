@@ -8,10 +8,10 @@ const createPageNumber = () => {
 	return {
 		subscribe, update,
 		set: (number) => update(store => {
-			let $rowPerPage, $rowCount
+			let $rowsPerPage, $rowCount
 			rowCount.subscribe(store => $rowCount = store)
-			options.subscribe(store => $rowPerPage = store.rowPerPage)
-			if ( number >= 1 && number <= Math.ceil($rowCount / $rowPerPage) ) {
+			options.subscribe(store => $rowsPerPage = store.rowsPerPage)
+			if ( number >= 1 && number <= Math.ceil($rowCount / $rowsPerPage) ) {
 				store = parseInt(number)
 			}
 			document.querySelector('section.datatable .dt-table').scrollTop = 0
