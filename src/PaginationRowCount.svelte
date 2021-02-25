@@ -10,7 +10,7 @@
 
 
 <aside class="dt-pagination-rowcount" class:css={$options.css}>
-    {#if $datatableWidth > 600}
+    {#if $datatableWidth > 778}
         {#if rows > 0}
             {@html info}
         {:else}
