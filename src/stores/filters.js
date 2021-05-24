@@ -26,4 +26,4 @@ const createGlobal = () => {
 		remove: () => update(store => store = null)
 	}
 }
-export const global = createGlobal()
+export const globalFilters = createGlobal()

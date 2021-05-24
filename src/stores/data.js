@@ -1,7 +1,7 @@
 import { writable, derived } from 'svelte/store'
 import { options } from './options.js'
 import { pageNumber, rowCount } from './state.js'
-import { global, local } from './filters.js'
+import { globalFilters, local } from './filters.js'
 
 
 const createData = () => {
@@ -30,12 +30,12 @@ const createData = () => {
 export const data = createData()
 
 export const filtered = derived(
-	[data, global, local],
-    ([$data, $global, $local]) => {
-		if ($global) {
+	[data, globalFilters, local],
+    ([$data, $globalFilters, $local]) => {
+		if ($globalFilters) {
 			$data = $data.filter( item => {
 				return Object.keys(item).some( k => {
-					return item[k].toString().toLowerCase().indexOf($global.toString().toLowerCase()) > -1
+					return item[k].toString().toLowerCase().indexOf($globalFilters.toString().toLowerCase()) > -1
 				})
 			})
 		}

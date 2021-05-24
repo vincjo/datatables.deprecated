@@ -2,12 +2,12 @@
     import { options } from './stores/options.js'
     import { pageNumber } from './stores/state.js'
     import { columns } from './stores/columns.js'
-    import { global } from './stores/filters.js'
+    import { globalFilters } from './stores/filters.js'
     export let ref = ''
     export let classList = ''
     const search = (value) => {
         pageNumber.set(1)
-        global.set(value)
+        globalFilters.set(value)
         columns.redraw()
     }
 </script>
