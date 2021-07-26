@@ -9,6 +9,7 @@ import ScrollY from './routes/demo/ScrollY.svelte'
 import ScrollX from './routes/demo/ScrollX.svelte'
 import Responsive from './routes/demo/Responsive.svelte'
 import Css from './routes/demo/Css.svelte'
+import MultipleDatatables from './routes/demo/MultipleDatatables.svelte'
 import Settings from './routes/Settings.svelte'
 import GridLayout from './routes/test/GridLayout.svelte'
 import LotsOfData from './routes/test/LotsOfData.svelte'
@@ -26,6 +27,7 @@ export const routes = {
     '/demo/scroll-x': ScrollX,
     '/demo/responsive': Responsive,
     '/demo/css': Css,
+    // '/demo/multiple-dt': MultipleDatatables,
     '/demo/*': NotFound,
     '/settings': Settings,
     '/test': GridLayout,

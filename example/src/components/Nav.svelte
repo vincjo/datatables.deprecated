@@ -28,6 +28,7 @@
 		<li class:active={demo === `#/demo/scroll-x`} 		on:click={() => demo = "#/demo/scroll-x"}		><a href="#/demo/scroll-x">Scroll X</a></li>
 		<li class:active={demo === `#/demo/responsive`} 	on:click={() => demo = "#/demo/responsive"}		><a href="#/demo/responsive">Responsive</a></li>
 		<li class:active={demo === `#/demo/css`} 			on:click={() => demo = "#/demo/css"}			><a href="#/demo/css">CSS</a></li>
+		<!-- <li class:active={demo === `#/demo/multiple-dt`}	on:click={() => demo = "#/demo/multiple-dt"}	><a href="#/demo/multiple-dt">Multiple Datatables</a></li> -->
 	</ul>
 {/if}
 
@@ -48,9 +49,9 @@
 	header li.github{display:flex;margin-right:0;float:right;}
 	header li.github img{float:right;padding:16px 8px;width:40px;}
 
-	ul.demo{margin:24px 0 0 0;display:flex;flex-wrap:wrap;padding:0;list-style-type:none;}
-    ul.demo li{display:block;margin:4px;border:1px solid #eee;border-radius:8px;}
+	ul.demo{margin:12px 0 0 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;padding:0;list-style-type:none;background:#fff;padding:12px 4px 0 4px;border-bottom:2px solid #e0e0e0;}
+    ul.demo li{display:block;margin:2px 4px -2px 4px;border:1px solid transporent;border-bottom:2px solid #e0e0e0;border-radius:4px 4px 0 0;background:#f5f5f5;transition:all,0.3s;}
     ul.demo li:first-child{margin-left:0;}
-    ul.demo li.active{font-weight:bold;color:#38ada9;border:2px solid #38ada9;}
+    ul.demo li.active{color:#007d7a;border:1px solid #38ada9;border-bottom:2px solid #38ada9;background:#fff;}
     ul.demo a{display:block;text-decoration:none;color:inherit;padding:4px 8px;}
 </style>
