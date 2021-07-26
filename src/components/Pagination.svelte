@@ -23,7 +23,7 @@
         flex-direction: row;
         justify-content: space-between;
         height: 40px;
-        // padding-top: 8px;
+        padding-top: 8px;
         align-items: center;
     }
     .css{
