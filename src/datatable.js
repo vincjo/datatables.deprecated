@@ -2,7 +2,7 @@ import { data } from './stores/data.js'
 import { options } from './stores/options.js'
 import { columns } from './stores/columns.js'
 import { datatableWidth, pageNumber } from './stores/state.js'
-import { global, local } from './stores/filters.js'
+import { globalFilters, localFilters } from './stores/filters.js'
 
 
 export const datatable = {
@@ -16,8 +16,8 @@ export const datatable = {
     },
     reset: () => {
         pageNumber.update(store => store = 1)
-        global.remove()
-        local.remove()
+        globalFilters.remove()
+        localFilters.remove()
         columns.set([])
     },
     setRows: (arr) => {

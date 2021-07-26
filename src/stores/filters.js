@@ -13,7 +13,7 @@ const createLocal = () => {
 		remove: () => update(store => store = [])
 	}
 }
-export const local = createLocal()
+export const localFilters = createLocal()
 
 const createGlobal = () => {
 	const { subscribe, update } = writable(null)
@@ -26,4 +26,4 @@ const createGlobal = () => {
 		remove: () => update(store => store = null)
 	}
 }
-export const global = createGlobal()
+export const globalFilters = createGlobal()
