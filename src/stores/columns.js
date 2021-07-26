@@ -2,7 +2,7 @@ import { writable } from 'svelte/store'
 import { options } from '../stores/options.js'
 import { data } from '../stores/data.js'
 import { pageNumber } from '../stores/state.js'
-import { local } from '../stores/filters.js'
+import { localFilters } from '../stores/filters.js'
 
 const createColumns = () => {
 	const { subscribe, set, update } = writable([])
@@ -39,7 +39,7 @@ const createColumns = () => {
 		},
 		filter: (key, value) => {
 			pageNumber.set(1)
-			local.add(key, value)
+			localFilters.add(key, value)
 			columns.redraw()
 		},
 		draw: () => {
