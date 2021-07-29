@@ -28,7 +28,6 @@
 		<li class:active={demo === `#/demo/scroll-x`} 		on:click={() => demo = "#/demo/scroll-x"}		><a href="#/demo/scroll-x">Scroll X</a></li>
 		<li class:active={demo === `#/demo/responsive`} 	on:click={() => demo = "#/demo/responsive"}		><a href="#/demo/responsive">Responsive</a></li>
 		<li class:active={demo === `#/demo/css`} 			on:click={() => demo = "#/demo/css"}			><a href="#/demo/css">CSS</a></li>
-		<!-- <li class:active={demo === `#/demo/multiple-dt`}	on:click={() => demo = "#/demo/multiple-dt"}	><a href="#/demo/multiple-dt">Multiple Datatables</a></li> -->
 	</ul>
 {/if}
 
@@ -36,6 +35,7 @@
 	<ul class="demo">
 		<li class:active={test === `#/test`} 				on:click={() => test = "#/test"}				><a href="#/test">Grid layout</a></li>
 		<li class:active={test === `#/test/lots-of-data`} 	on:click={() => test = "#/test/lots-of-data"}	><a href="#/test/lots-of-data">Lots of data</a></li>
+		<li class:active={test === `#/test/multiple-dt`}	on:click={() => test = "#/test/multiple-dt"}	><a href="#/test/multiple-dt">Multiple Datatables</a></li>
 	</ul>
 {/if}
 
