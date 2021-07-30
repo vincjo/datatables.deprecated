@@ -2,12 +2,33 @@
     import { data, data2 } from 'app/data.js'
 	import Datatable from '../../../../src/Datatable.svelte'
     import { rows } from '../../../../src/stores/data.js'
+    const settings = {
+            columnFilter: true,
+            labels: {
+                search: 'Rechercher...',    // search input placeholer
+                filter: 'Filtrer',       // filter inputs placeholder
+                noRows: 'Aucune donnée',
+                info: '{start} à {end} sur {rows} lignes',
+                previous: 'Précédent',
+                next: 'Suivant',       
+        }
+    }
+    const settings2 = {
+            labels: {
+                search: 'tititi...',    // search input placeholer
+                filter: 'Filtrer',       // filter inputs placeholder
+                noRows: 'Aucune donnée',
+                info: '{start} à {end} sur {rows} lignes',
+                previous: 'Précédent',
+                next: 'Suivant',        
+        }
+    }
 </script>
 
 <h2>Multiple Datatables on the same page</h2>
     <section>
         <aside>
-        <Datatable data={JSON.parse(data)}>
+        <Datatable settings={settings} data={JSON.parse(data)} name="table1">
             <thead>
                 <th data-key="id">ID</th>
                 <th data-key="first_name">First Name</th>
@@ -27,7 +48,7 @@
         </Datatable>
         </aside>
         <aside>
-        <Datatable data={JSON.parse(data2)}>
+        <Datatable settings={settings2} data={JSON.parse(data2)} name="table2">
             <thead>
                 <th data-key="id">ID</th>
                 <th data-key="first_name">First Name</th>

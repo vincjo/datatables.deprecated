@@ -4,7 +4,7 @@ import { data } from '../stores/data.js'
 import { pageNumber } from '../stores/state.js'
 import { localFilters } from '../stores/filters.js'
 
-const createColumns = () => {
+export const createColumns = () => {
 	const { subscribe, set, update } = writable([])
 	return {
 		subscribe, set, update,
@@ -13,7 +13,7 @@ const createColumns = () => {
 			columns.subscribe(store => $columns = store)
 			return $columns
 		},
-		sort: (element, key) => {
+		sort: (element, key, context) => {
 			if (options.get().sortable !== true || typeof key === 'undefined') {
 				return
 			}
@@ -35,18 +35,18 @@ const createColumns = () => {
 				data.sortAsc(key)
 				pageNumber.set(1)
 			}
-			columns.redraw()
+			columns.redraw(context)
 		},
-		filter: (key, value) => {
+		filter: (key, value, context) => {
 			pageNumber.set(1)
 			localFilters.add(key, value)
-			columns.redraw()
+			columns.redraw(context)
 		},
-		draw: () => {
+		draw: (context) => {
 			setTimeout(() => {
-				const tbody = document.querySelector('.datatable table tbody tr')
+				const tbody = document.querySelector(`#${context} table tbody tr`)
 				if (tbody === null) return
-				const thead = document.querySelectorAll('.dt-header thead tr')
+				const thead = document.querySelectorAll(`#${context} .dt-header thead tr`)
 				const $columns = columns.get()
 				thead.forEach(tr => {
 					let i = 0
@@ -70,14 +70,14 @@ const createColumns = () => {
 				})
 			}, 50)	
 		},
-		redraw: () => {
+		redraw: (context) => {
 			if ( options.get().scrollY === false ) {
 				return
 			}
 			setTimeout(() => {
-				const tbody = document.querySelector('.datatable table tbody tr')
+				const tbody = document.querySelector(`#${context} table tbody tr`)
 				if (tbody === null) return
-				const thead = document.querySelectorAll('.dt-header thead tr')
+				const thead = document.querySelectorAll(`#${context} .dt-header thead tr`)
 				thead.forEach(tr => {
 					let i = 0
 					Array.from(tbody.children).forEach(td => {

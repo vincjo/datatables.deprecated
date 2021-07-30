@@ -1,14 +1,19 @@
 <script>
-    import { options } from './stores/options.js'
+    import { getContext } from 'svelte'
     import { pageNumber } from './stores/state.js'
     import { columns } from './stores/columns.js'
     import { globalFilters } from './stores/filters.js'
+    
+    export let name = 'svelte-simple-datatable'
     export let ref = ''
     export let classList = ''
+
+    const options = getContext(name+'options')
+    
     const search = (value) => {
-        pageNumber.set(1)
+        pageNumber.set(1, name)
         globalFilters.set(value)
-        columns.redraw()
+        columns.redraw(name)
     }
 </script>
 

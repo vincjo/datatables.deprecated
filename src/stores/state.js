@@ -7,14 +7,14 @@ const createPageNumber = () => {
 	const { subscribe, update } = writable(1)
 	return {
 		subscribe, update,
-		set: (number) => update(store => {
+		set: (number, context) => update(store => {
 			let $rowPerPage, $rowCount
 			rowCount.subscribe(store => $rowCount = store)
 			options.subscribe(store => $rowPerPage = store.rowPerPage)
 			if ( number >= 1 && number <= Math.ceil($rowCount / $rowPerPage) ) {
 				store = parseInt(number)
 			}
-			document.querySelector('section.datatable .dt-table').scrollTop = 0
+			document.querySelector(`#${context} .dt-table`).scrollTop = 0
 			return store
 		})
 	}

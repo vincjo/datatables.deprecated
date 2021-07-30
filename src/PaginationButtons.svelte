@@ -5,6 +5,7 @@
     import { columns } from './stores/columns.js'
     export let ref = ''
     export let classList = ''
+    export let name = 'svelte-simple-datatable'
     $: pageCount = Array.from( Array( Math.ceil($rowCount / $options.rowPerPage)).keys() )
     const slice = (arr, page) => {
         if (page < 5) {
@@ -17,8 +18,8 @@
     }
     $: buttons = slice(pageCount, $pageNumber)
     const setPage = (number) => {
-        pageNumber.set(number)
-        columns.redraw()
+        pageNumber.set(number, name)
+        columns.redraw(name)
     }
 </script>
 

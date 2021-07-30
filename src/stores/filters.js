@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 
-const createLocal = () => {
+const createLocalFilters = () => {
 	const { subscribe, update } = writable([])
 	return {
 		subscribe, update,
@@ -13,9 +13,9 @@ const createLocal = () => {
 		remove: () => update(store => store = [])
 	}
 }
-export const localFilters = createLocal()
+export const localFilters = createLocalFilters()
 
-const createGlobal = () => {
+const createGlobalFilters = () => {
 	const { subscribe, update } = writable(null)
 	return {
 		subscribe, 
@@ -26,4 +26,4 @@ const createGlobal = () => {
 		remove: () => update(store => store = null)
 	}
 }
-export const globalFilters = createGlobal()
+export const globalFilters = createGlobalFilters()

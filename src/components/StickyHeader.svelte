@@ -1,13 +1,17 @@
 <script>
-    import { options } from '../stores/options.js'
+    import { getContext } from 'svelte'
     import { columns } from '../stores/columns.js'
     import { header } from './header.js'
     import { onMount } from 'svelte'
+    export let name = 'svelte-simple-datatable'
+    
+    const options = getContext(name+'options')
+    
     let theadClassList
     onMount(() => {
-        columns.draw()
-        header.removeOriginalThead()
-        theadClassList = header.getOrginalTHeadClassList()
+        columns.draw(name)
+        header.removeOriginalThead(name)
+        theadClassList = header.getOrginalTHeadClassList(name)
     })
 </script>
 

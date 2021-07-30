@@ -1,7 +1,7 @@
 export const header = {
-    removeOriginalThead: () => {
+    removeOriginalThead: (context) => {
         setTimeout(() => {
-            const thead = document.querySelector('.datatable table thead')
+            const thead = document.querySelector(`#${context} table thead`)
             const originHeight = thead.getBoundingClientRect().height
             // const tableContainer = document.querySelector('section.datatable .dt-table')
             // const scrollXHeight = tableContainer.offsetHeight - tableContainer.clientHeight
@@ -10,7 +10,7 @@ export const header = {
             thead.style.visibility = 'hidden'
         }, 50)
     },
-    getOrginalTHeadClassList: () => {
-        return document.querySelector('.datatable table thead').classList
+    getOrginalTHeadClassList: (context) => {
+        return document.querySelector(`#${context} table thead`).classList
     },
 }
