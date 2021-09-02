@@ -1,13 +1,11 @@
 <script>
-    import { getContext } from 'svelte'
     import SearchInput from "../SearchInput.svelte"
+    import { options } from "../stores/options.js"
     export let name = 'svelte-simple-datatable'
-    
-    const options = getContext(name+'options')
 </script>
 
-<section class="dt-search" class:css={$options.css}>
-    <SearchInput name={name}/>
+<section class="dt-search" class:css={options.css}>
+    <SearchInput name="{name}"/>
 </section>
 
 <style>

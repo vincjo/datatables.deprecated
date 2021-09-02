@@ -1,10 +1,9 @@
 <script>
-    import { getContext } from 'svelte'
+    import { options } from '../stores/options.js'
     import PaginationRowCount from "../PaginationRowCount.svelte"
     import PaginationButtons from "../PaginationButtons.svelte"
     export let name = 'svelte-simple-datatable'
     
-    const options = getContext(name+'options')
 </script>
 
 {#if $options.pagination && ($options.blocks.paginationRowCount || $options.blocks.paginationButtons)}

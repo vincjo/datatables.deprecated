@@ -1,4 +1,5 @@
-import { getContext } from 'svelte'
+// import { getContext } from 'svelte'
+import { options } from './stores/options.js'
 import { data } from './stores/data.js'
 import { columns } from './stores/columns.js'
 import { datatableWidth, pageNumber } from './stores/state.js'
@@ -10,7 +11,8 @@ export default class SimpleDatatable {
 
     constructor(name) {
         this.context = name
-        this.options = getContext(name+'options').get()
+        // this.options = getContext(name+'options').get()
+        this.options = options.get()
     }
 
     init() {

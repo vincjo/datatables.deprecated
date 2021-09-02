@@ -1,7 +1,6 @@
 <script>
     import { options } from './stores/options.js'
     import { pageNumber, rowCount, datatableWidth } from './stores/state.js'
-    export let name = 'svelte-simple-datatable'
     $: start = $pageNumber * $options.rowPerPage - $options.rowPerPage + 1
     $: end = Math.min($pageNumber * $options.rowPerPage, $rowCount)
     $: rows = $rowCount

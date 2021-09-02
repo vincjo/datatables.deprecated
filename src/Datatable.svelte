@@ -1,12 +1,7 @@
 <script>
-	import { setContext, getContext } from 'svelte'
-	import { data as input } from './stores/data.js'
 	import { options } from './stores/options.js'
-	import { columns } from './stores/columns.js'
-	import { datatableWidth, pageNumber } from './stores/state.js'
-	import { globalFilters, localFilters } from './stores/filters.js'
-	// import { datatable } from './datatable.js'
-	import SimpleDatatable from './SimpleDatatable.js'
+	import { datatable } from './datatable.js'
+	// import SimpleDatatable from './SimpleDatatable.js'
 	import Search from './components/Search.svelte'
 	import Pagination from './components/Pagination.svelte'
 	import StickyHeader from './components/StickyHeader.svelte'
@@ -15,39 +10,32 @@
 	export let settings = {}
 	export let classList = ''
 	export let name = 'svelte-simple-datatable'
-	
-	setContext(name+'data'			, input)
-	setContext(name+'options'		, options)
-	setContext(name+'columns'		, columns)
-	setContext(name+'datatableWidth', datatableWidth)
-	setContext(name+'pageNumber'	, pageNumber)
-	setContext(name+'globalFilters'	, globalFilters)
-	setContext(name+'localFilters'	, localFilters)
 
-	const datatable = new SimpleDatatable(name)
+	// const datatable = new SimpleDatatable(name)
 
 	$: {
 		datatable.setRows(data)
-		getContext(name+'options').update(settings)
+		options.update(settings)
 	}
+
 	onMount(() => datatable.init() )
 	onDestroy(() => datatable.reset())
 </script>
 
-<section id={name} class="datatable {classList}" class:scroll-y={$options.scrollY} class:css={$options.css}>
+<section id="{name}" class="datatable {classList}" class:scroll-y={$options.scrollY} class:css={$options.css}>
 	{#if $options.blocks.searchInput === true}
-		<Search name="{name}"/>
+		<Search name={name}/>
 	{/if}
 	<article class="dt-table">
 		{#if $options.scrollY}
-			<StickyHeader name="{name}"/>
+			<StickyHeader name={name}/>
 		{/if}
 		<table>
 			<slot />
 		</table>
 	</article>
 	{#if $options.blocks.paginationRowCount === true || $options.blocks.paginationButtons === true}
-		<Pagination name="{name}"/>
+		<Pagination/>
 	{/if}
 </section>
 

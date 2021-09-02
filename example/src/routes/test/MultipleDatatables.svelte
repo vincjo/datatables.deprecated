@@ -5,17 +5,17 @@
     const settings = {
             columnFilter: true,
             labels: {
-                search: 'Rechercher...',    // search input placeholer
-                filter: 'Filtrer',       // filter inputs placeholder
-                noRows: 'Aucune donnée',
-                info: '{start} à {end} sur {rows} lignes',
-                previous: 'Précédent',
-                next: 'Suivant',       
+                search: 'Search...',    // search input placeholer
+                filter: 'Filter',       // filter inputs placeholder
+                noRows: 'No entries',
+                info: 'Showing {start} to {end} of {rows} entries',
+                previous: 'Previous',
+                next: 'Next',       
         }
     }
     const settings2 = {
             labels: {
-                search: 'tititi...',    // search input placeholer
+                search: 'Rechercher...',    // search input placeholer
                 filter: 'Filtrer',       // filter inputs placeholder
                 noRows: 'Aucune donnée',
                 info: '{start} à {end} sur {rows} lignes',
