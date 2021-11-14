@@ -3,7 +3,7 @@ import PaginationButtons from './PaginationButtons.svelte'
 import PaginationRowCount from './PaginationRowCount.svelte'
 import SearchInput from './SearchInput.svelte'
 import ColumnFilterInputs from './ColumnFilterInputs.svelte'
-import { rows } from './stores/data.js'
+//import { rows } from './stores/data.js'
 
 export {
     Datatable,
@@ -11,5 +11,5 @@ export {
     PaginationRowCount,
     SearchInput,
     ColumnFilterInputs,
-    rows
+    //rows
 }

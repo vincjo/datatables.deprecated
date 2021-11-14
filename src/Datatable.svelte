@@ -1,11 +1,17 @@
 <script>
-	import { options } from './stores/options.js'
-	import { datatable } from './datatable.js'
+	//import { options } from "./stores/options.js";
+	//import { datatable } from "./datatable.js";
 	// import SimpleDatatable from './SimpleDatatable.js'
 	import Search from './components/Search.svelte'
 	import Pagination from './components/Pagination.svelte'
 	import StickyHeader from './components/StickyHeader.svelte'
 	import { onMount, onDestroy } from 'svelte'
+	//import { columns } from "./stores/columns.js";
+	import { setContext, getContext } from 'svelte'
+	import { key } from './key.js'
+	import { initContext } from './createContext.js'
+	import { getDataTable } from './datatable.js'
+
 	export let data = []
 	export let settings = {}
 	export let classList = ''
@@ -13,29 +19,44 @@
 
 	// const datatable = new SimpleDatatable(name)
 
+	//Initialize context for all stores.
+	setContext(key, {})
+	initContext()
+
+	const { rows } = getContext(key)
+	export const dataRows = rows
+
+	const datatable = getDataTable(name)
+	const { options } = getContext(key)
+
 	$: {
 		datatable.setRows(data)
 		options.update(settings)
 	}
 
-	onMount(() => datatable.init() )
+	onMount(() => datatable.init())
 	onDestroy(() => datatable.reset())
 </script>
 
-<section id="{name}" class="datatable {classList}" class:scroll-y={$options.scrollY} class:css={$options.css}>
+<section
+	id={name}
+	class="datatable {classList}"
+	class:scroll-y={$options.scrollY}
+	class:css={$options.css}
+>
 	{#if $options.blocks.searchInput === true}
-		<Search name={name}/>
+		<Search {name} />
 	{/if}
 	<article class="dt-table">
 		{#if $options.scrollY}
-			<StickyHeader name={name}/>
+			<StickyHeader {name} />
 		{/if}
 		<table>
 			<slot />
 		</table>
 	</article>
 	{#if $options.blocks.paginationRowCount === true || $options.blocks.paginationButtons === true}
-		<Pagination/>
+		<Pagination {name} />
 	{/if}
 </section>
 
@@ -46,8 +67,8 @@
 	.css.datatable {
 		background: #fff;
 	}
-	.datatable.scroll-y{
-		height:160px;
+	.datatable.scroll-y {
+		height: 160px;
 	}
 	.datatable * {
 		box-sizing: border-box;

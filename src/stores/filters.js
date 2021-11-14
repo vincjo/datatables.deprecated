@@ -1,4 +1,6 @@
 import { writable } from 'svelte/store'
+import { key } from '../key.js'
+import { getContext, setContext } from 'svelte'
 
 const createLocalFilters = () => {
 	const { subscribe, update } = writable([])
@@ -13,7 +15,7 @@ const createLocalFilters = () => {
 		remove: () => update(store => store = [])
 	}
 }
-export const localFilters = createLocalFilters()
+//export const localFilters = createLocalFilters()
 
 const createGlobalFilters = () => {
 	const { subscribe, update } = writable(null)
@@ -26,4 +28,16 @@ const createGlobalFilters = () => {
 		remove: () => update(store => store = null)
 	}
 }
-export const globalFilters = createGlobalFilters()
+//export const globalFilters = createGlobalFilters()
+
+function getFilters() {
+	const localFilters = createLocalFilters();
+	const globalFilters = createGlobalFilters();
+	return {localFilters, globalFilters}
+}
+
+export function init_module(){
+	const ctx = getContext(key);
+	const {localFilters, globalFilters} = getFilters();
+	setContext(key, {...ctx, localFilters, globalFilters});
+}
