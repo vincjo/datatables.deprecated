@@ -9,7 +9,7 @@
 
 ## 2021-11-14 **Breaking changes** - 0.1.26
 
-Hello, <br>```svelte-simple-datatables``` now support **multiple instances** on the same page.<br>
+Hello, <br>```svelte-simple-datatables``` now supports **multiple instances** on the same page.<br>
 This brought some breaking changes in the way of mounting the component :
 - ```$rows``` store is no longer exported but requires a declaration ``let rows`` in your code   
 - The data are binded to a new prop : ``dataRows``
