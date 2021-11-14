@@ -45,39 +45,7 @@ const createData = () => {
 		}),
 	}
 }
-/*
-export const data = createData()
 
-export const filtered = derived(
-	[data, globalFilters, localFilters],
-    ([$data, $globalFilters, $localFilters]) => {
-		if ($globalFilters) {
-			$data = $data.filter( item => {
-				return Object.keys(item).some( k => {
-					return item[k].toString().toLowerCase().indexOf($globalFilters.toString().toLowerCase()) > -1
-				})
-			})
-		}
-		if ($localFilters.length > 0) {
-			$localFilters.forEach(filter => {
-				return $data = $data.filter( item => filter.key(item).toString().toLowerCase().indexOf(filter.value.toString().toLowerCase()) > -1)
-			})
-		}
-		rowCount.set($data.length)
-		return $data
-	} 	
-)
-
-export const rows = derived(
-	[filtered, options, pageNumber],
-    ([$filtered, $options, $pageNumber]) => {
-		if (!$options.pagination) {
-			return $filtered
-		}
-		return $filtered.slice( ($pageNumber - 1) * $options.rowPerPage, $pageNumber * $options.rowPerPage) 
-	} 
-)
-*/
 
 function getData(){
 	const {options, pageNumber, rowCount, globalFilters, localFilters} = getContext(key);
@@ -110,7 +78,7 @@ function getData(){
 			if (!$options.pagination) {
 				return $filtered
 			}
-			return $filtered.slice( ($pageNumber - 1) * $options.rowPerPage, $pageNumber * $options.rowPerPage) 
+			return $filtered.slice( ($pageNumber - 1) * $options.rowsPerPage, $pageNumber * $options.rowsPerPage) 
 		} 
 	)
 

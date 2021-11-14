@@ -1,14 +1,14 @@
 <script>
     import { data } from 'app/data.11000.js'
 	import Datatable from '../../../../src/Datatable.svelte'
-    import { rows } from '../../../../src/stores/data.js'
-    const settings = { columnFilter: true, rowPerPage: 100 }
+    const settings = { columnFilter: true, rowsPerPage: 100 }
+    let rows
 </script>
 
 <h2>11000 rows</h2>
 <section>
     <div class="z-depth-2">
-        <Datatable {settings} data={JSON.parse(data)}>
+        <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
             <thead>
                 <th data-key="first_name">First Name</th>
                 <th data-key="last_name">Last Name</th>
@@ -19,6 +19,7 @@
                 <th data-key="id">GUID</th>
             </thead>
             <tbody>
+                {#if rows}
                 {#each $rows as row}
                 <tr>
                     <td>{row.first_name}</td>
@@ -30,6 +31,7 @@
                     <td>{row.id}</td>
                 </tr>
                 {/each}
+                {/if}
             </tbody>
         </Datatable>
     </div>

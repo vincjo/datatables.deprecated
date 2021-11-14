@@ -4,13 +4,11 @@
 	import { key } from '../key.js'
 	import { getContext } from 'svelte'
 
-	export let name = 'svelte-simple-datatable'
-
 	const { options } = getContext(key)
 </script>
 
 <section class="dt-search" class:css={options.css}>
-	<SearchInput {name} />
+	<SearchInput />
 </section>
 
 <style>

@@ -7,6 +7,24 @@
 	</p>
 </div>
 
+## 2021-11-14 **Breaking changes** - 0.1.26
+
+Hello, <br>```svelte-simple-datatables``` now support **multiple instances** on the same page.<br>
+This brought some breaking changes in the way of mounting the component :
+- ```$rows``` store is no longer exported but requires a declaration ``let rows`` in your code   
+- The data are binded to a new prop : ``dataRows``
+- To retreive the ``$rows`` store, we need to add a ``{#if}`` block before the loop
+- Something else :
+  - ``rowPerPage`` option becomes ``rowsPerPage`` (row<u>**s**</u>PerPage)
+
+Special thanks to [@pangweisan](https://github.com/pangweisan) for his help
+
+--- **The demo site will be back soon** ---
+
+
+Below is the updated documentation :
+
+
 # Presentation
 
 `Datatable` component default behavior :
@@ -38,17 +56,18 @@ npm i -D svelte-simple-datatables
 ````svelte
 <script>
     import { data } from './data.example.js'  
-    import { Datatable, rows } from 'svelte-simple-datatables'
+    import { Datatable } from 'svelte-simple-datatables'
 
     const settings = {
         sortable: true,
         pagination: true,
-        rowPerPage: 50,
+        rowsPerPage: 50,
         columnFilter: true,
     }
+    let rows
 </script>
 
-<Datatable settings={settings} data={data}>
+<Datatable settings={settings} data={data} bind:dataRows={rows}>
     <thead>
         <th data-key="id">ID</th>
         <th data-key="first_name">First Name</th>
@@ -57,15 +76,17 @@ npm i -D svelte-simple-datatables
         <th data-key="ip_address">IP Adress</th>
     </thead>
     <tbody>
-    {#each $rows as row}
-        <tr>
-            <td>{row.id}</td>
-            <td>{row.first_name}</td>
-            <td>{row.last_name}</td>
-            <td>{row.email}</td>
-            <td>{row.ip_address}</td>
-        </tr>
-    {/each}
+    {#if rows}
+        {#each $rows as row}
+            <tr>
+                <td>{row.id}</td>
+                <td>{row.first_name}</td>
+                <td>{row.last_name}</td>
+                <td>{row.email}</td>
+                <td>{row.ip_address}</td>
+            </tr>
+        {/each}
+    {/if}
     </tbody>
 </Datatable>
 ````
@@ -97,7 +118,7 @@ These can be disabled in the settings, imported as components and placed anywher
 ````svelte
 <script>
     import { data } from './data.example.js' 
-    import { SearchInput, PaginationButtons, PaginationRowCount, Datatable, rows } from 'svelte-simple-datatables'
+    import { SearchInput, PaginationButtons, PaginationRowCount, Datatable } from 'svelte-simple-datatables'
 
     const settings = {
         blocks: {
@@ -106,13 +127,14 @@ These can be disabled in the settings, imported as components and placed anywher
             paginationRowCount: false,
         }
     }
+    let rows
 </script>
 
 <SearchInput/>
 <PaginationButtons/>
 <PaginationRowCount/>
 
-<Datatable {settings} {data}>
+<Datatable {settings} {data} bind:dataRows={rows}>
     (...)
 </Datatable>
 
@@ -123,10 +145,11 @@ See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/blocks)
 ````svelte
 <script>
     import { data } from './data.example.js'  
-    import { Datatable, rows } from 'svelte-simple-datatables'
+    import { Datatable } from 'svelte-simple-datatables'
+    let rows
 </script>
 
-<Datatable {data}>
+<Datatable {data} bind:dataRows={rows}>
     <thead>
         <th data-key="id">ID</th>
 
@@ -137,17 +160,19 @@ See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/blocks)
         <th data-key="ip_address">IP Adress</th>
     </thead>
     <tbody>
-    {#each $rows as row}
-        <tr>
-            <td>{row.id}</td>
+    {#if rows}
+        {#each $rows as row}
+            <tr>
+                <td>{row.id}</td>
 
-            <!-- This allows for example to concatenate values -->
-            <td>{row.first_name} {row.last_name}</td>
+                <!-- This allows for example to concatenate values -->
+                <td>{row.first_name} {row.last_name}</td>
 
-            <td>{row.email}</td>
-            <td>{row.ip_address}</td>
-        </tr>
-    {/each}
+                <td>{row.email}</td>
+                <td>{row.ip_address}</td>
+            </tr>
+        {/each}
+    {/if}
     </tbody>
 </Datatable>
 ````

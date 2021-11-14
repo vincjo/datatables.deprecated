@@ -2,11 +2,12 @@ export const code = () => {
     return `
 <script>
     import { data } from './data.example.js'  
-    import { Datatable, rows } from 'svelte-simple-datatables'
+    import { Datatable } from 'svelte-simple-datatables'
     settings = { columnFilter: true }
+    let rows
 </script>
 
-<Datatable {settings} data={JSON.parse(data)}>
+<Datatable {settings} {data} bind:dataRows={rows}>
     <thead>
         <th data-key="id">ID</th>
         <th data-key="first_name">First Name</th>
@@ -22,6 +23,7 @@ export const code = () => {
         <th data-key="guid">GUID</th>
     </thead>
     <tbody>
+    {#if rows}
         {#each $rows as row}
         <tr>
             <td>{row.id}</td>
@@ -38,6 +40,7 @@ export const code = () => {
             <td>{row.guid}</td>
         </tr>
         {/each}
+    {/if}
     </tbody>
 </Datatable>
 

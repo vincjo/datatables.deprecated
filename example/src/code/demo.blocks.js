@@ -2,7 +2,7 @@ export const code = (searchInput, paginationButtons, paginationRowCount, blocks)
     return `
 <script>
     import { data } from './data.example.js'  
-    import { Datatable, rows${blocks} } from 'svelte-simple-datatables'
+    import { Datatable${blocks} } from 'svelte-simple-datatables'
     const settings = {
         blocks: {
             searchInput: ${searchInput}, 
@@ -10,9 +10,10 @@ export const code = (searchInput, paginationButtons, paginationRowCount, blocks)
             paginationRowCount: ${paginationRowCount},
         }
     }
+    let rows
 </script>
 
-<Datatable {settings} {data}>
+<Datatable {settings} {data} bind:dataRows={rows}>
     <thead>
         <th data-key="id">ID</th>
         <th data-key="first_name">First Name</th>
@@ -20,6 +21,7 @@ export const code = (searchInput, paginationButtons, paginationRowCount, blocks)
         <th data-key="email">Email</th>
     </thead>
     <tbody>
+    {#if rows}
         {#each $rows as row}
         <tr>
             <td>{row.id}</td>
@@ -28,6 +30,7 @@ export const code = (searchInput, paginationButtons, paginationRowCount, blocks)
             <td>{row.email}</td>
         </tr>
         {/each}
+    {/if}
     </tbody>
 </Datatable>
 

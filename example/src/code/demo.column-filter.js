@@ -2,11 +2,12 @@ export const code = (columnFilter) => {
     return `
 <script>
     import { data } from './data.example.js'  
-    import { Datatable, rows } from 'svelte-simple-datatables'
+    import { Datatable } from 'svelte-simple-datatables'
     const settings = { columnFilter: ${columnFilter} }
+    let rows
 </script>
 
-<Datatable {settings} {data}>
+<Datatable {settings} {data} bind:dataRows={rows}>
     <thead>
         <th data-key="id">ID</th>
         <th data-key="first_name">First Name</th>
@@ -14,6 +15,7 @@ export const code = (columnFilter) => {
         <th data-key="email">Email</th>
     </thead>
     <tbody>
+    {#if rows}
         {#each $rows as row}
         <tr>
             <td>{row.id}</td>
@@ -22,6 +24,7 @@ export const code = (columnFilter) => {
             <td>{row.email}</td>
         </tr>
         {/each}
+    {/if}
     </tbody>
 </Datatable>
 

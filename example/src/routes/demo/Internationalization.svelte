@@ -4,7 +4,6 @@
     import { data } from 'app/data.js'
     import { Textfield } from 'svelte-mui/src';
 	import Datatable from '../../../../src/Datatable.svelte'
-    import { rows } from '../../../../src/stores/data.js'
     let search   = 'Search...'
     let filter   = 'Filter'
     let noRows   = 'No entries to found'
@@ -22,6 +21,7 @@
             next:     next       
         }
     }
+    let rows
 </script>
 
 <h2>Internationalization</h2>
@@ -36,7 +36,7 @@
 
 
 <Demo code={code(search, filter, noRows, info, previous, next)} {data}>
-    <Datatable {settings} data={JSON.parse(data)}>
+    <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
@@ -44,6 +44,7 @@
             <th data-key="email">Email</th>
         </thead>
         <tbody>
+            {#if rows}
             {#each $rows as row}
             <tr>
                 <td>{row.id}</td>
@@ -52,6 +53,7 @@
                 <td>{row.email}</td>
             </tr>
             {/each}
+            {/if}
         </tbody>
     </Datatable>
 </Demo>

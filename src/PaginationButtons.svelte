@@ -5,13 +5,11 @@
 	import { key } from './key.js'
 	import { getContext } from 'svelte'
 
-	const { options, rowCount, pageNumber, datatableWidth, columns } =
-		getContext(key)
+	const { options, rowCount, pageNumber, datatableWidth, columns } = getContext(key)
 	export let ref = ''
 	export let classList = ''
-	export let name = 'svelte-simple-datatable'
 	$: pageCount = Array.from(
-		Array(Math.ceil($rowCount / $options.rowPerPage)).keys()
+		Array(Math.ceil($rowCount / $options.rowsPerPage)).keys()
 	)
 	const slice = (arr, page) => {
 		if (page < 5) {
@@ -23,8 +21,8 @@
 	}
 	$: buttons = slice(pageCount, $pageNumber)
 	const setPage = (number) => {
-		pageNumber.set(number, name)
-		columns.redraw(name)
+		pageNumber.set(number)
+		columns.redraw()
 	}
 </script>
 

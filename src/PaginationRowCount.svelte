@@ -5,8 +5,8 @@
 	import { getContext } from 'svelte'
 
 	const { options, pageNumber, rowCount, datatableWidth } = getContext(key)
-	$: start = $pageNumber * $options.rowPerPage - $options.rowPerPage + 1
-	$: end = Math.min($pageNumber * $options.rowPerPage, $rowCount)
+	$: start = $pageNumber * $options.rowsPerPage - $options.rowsPerPage + 1
+	$: end = Math.min($pageNumber * $options.rowsPerPage, $rowCount)
 	$: rows = $rowCount
 	$: info = $options.labels.info
 		.replace('{start}', `<b>${start}</b>`)

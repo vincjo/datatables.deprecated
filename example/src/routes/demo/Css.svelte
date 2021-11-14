@@ -4,15 +4,15 @@
     import { data } from 'app/data.js'
     import { Radio } from 'svelte-mui/src'
 	import Datatable from '../../../../src/Datatable.svelte'
-    import { rows } from '../../../../src/stores/data.js'
     let group = 'enabled' 
     let background = '#fff'
     $: css = group === 'enabled' ? true : false
     $: settings = { columnFilter: true, css: css }
+    let rows
 </script>
 
 
-<h2>CSS :</h2>
+<h2>CSS</h2>
 <aside>
     <div>
         <b>Option</b>
@@ -47,7 +47,7 @@
 
 
 <Demo code={code(css)} {data} {background}>
-    <Datatable {settings} data={JSON.parse(data)} classList={group}>
+    <Datatable {settings} data={JSON.parse(data)} classList={group} bind:dataRows={rows}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
@@ -55,6 +55,7 @@
             <th data-key="email">Email</th>
         </thead>
         <tbody>
+            {#if rows}
             {#each $rows as row}
             <tr>
                 <td>{row.id}</td>
@@ -63,11 +64,13 @@
                 <td>{row.email}</td>
             </tr>
             {/each}
+            {/if}
         </tbody>
     </Datatable>
 </Demo>
 
 <style>
+    h2{font-size:24px;color:#676778;font-weight:400;margin:16px 0 8px 0;}
     aside{display:flex;flex-direction:row;justify-content:start;flex-wrap:wrap;}
     aside div{margin-right:24px;border-right:1px solid #eee;padding-right:48px;}
     b{color:var(--label, #38ada9);font-weight:500;padding-left:8px;}

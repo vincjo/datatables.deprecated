@@ -1,18 +1,19 @@
-export const code = (rowPerPage, scrollY) => {
+export const code = (rowsPerPage, scrollY) => {
 
 if (scrollY) {
     return `
 <script>
     import { data } from './data.example.js'  
-    import { Datatable, rows } from 'svelte-simple-datatables'
+    import { Datatable } from 'svelte-simple-datatables'
     const settings = { 
-        rowPerPage: ${rowPerPage},
+        rowsPerPage: ${rowsPerPage},
         scrollY: ${scrollY},
         columnFilter: true 
     }
+    let rows
 </script>
 
- <Datatable {settings} {data}>
+ <Datatable {settings} {data} bind:dataRows={rows}>
     <thead>
         <th data-key="id">ID</th>
         <th data-key="first_name">First Name</th>
@@ -20,6 +21,7 @@ if (scrollY) {
         <th data-key="email">Email</th>
     </thead>
     <tbody>
+    {#if rows}
         {#each $rows as row}
         <tr>
             <td>{row.id}</td>
@@ -28,6 +30,7 @@ if (scrollY) {
             <td>{row.email}</td>
         </tr>
         {/each}
+    {/if}
     </tbody>
 </Datatable>   
 
@@ -41,14 +44,15 @@ else {
     return `
 <script>
     import { data } from './data.example.js'  
-    import { Datatable, ColumnFilterInputs, rows } from 'svelte-simple-datatables'
+    import { Datatable, ColumnFilterInputs } from 'svelte-simple-datatables'
     const settings = { 
-        rowPerPage: ${rowPerPage},
+        rowsPerPage: ${rowsPerPage},
         scrollY: ${scrollY}
     }
+    let rows
 </script>
 
-<Datatable {settings} {data}>
+<Datatable {settings} {data} bind:dataRows={rows}>
     <thead>
         <tr>
             <th class="sortable asc desc" data-key="id">ID <span/></th>
@@ -58,6 +62,7 @@ else {
         </tr>
         <ColumnFilterInputs/>
     <tbody>
+    {#if rows}
         {#each $rows as row}
         <tr>
             <td>{row.id}</td>
@@ -66,6 +71,7 @@ else {
             <td>{row.email}</td>
         </tr>
         {/each}
+    {/if}
     </tbody>
 </Datatable> 
 

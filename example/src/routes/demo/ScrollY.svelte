@@ -2,34 +2,34 @@
     import Demo from 'components/Demo.svelte'
     import { code } from 'code/demo.scroll-y.js'
     import { data } from 'app/data.js'
-    import { Menu, Menuitem, Button, Icon, Checkbox } from 'svelte-mui/src'
+    import { Menu, Menuitem, Button, Checkbox } from 'svelte-mui/src'
     import Datatable from '../../../../src/Datatable.svelte'
 	import ColumnFilterInputs from '../../../../src/ColumnFilterInputs.svelte'
-    import { rows } from '../../../../src/stores/data.js'
     let scrollY = false
     let checked = true
-    let rowPerPage = 10
+    let rowsPerPage = 10
     $: settings = { 
-        rowPerPage: rowPerPage,
+        rowsPerPage: rowsPerPage,
         scrollY: scrollY,
         columnFilter: true 
     }
+    let rows
 </script>
 
-
+<h2>Scroll Y</h2>
 <div class="menu">
 <Menu origin="top right" dy={36} width={180}>
     <div slot="activator">
         <Button color="primary" outlined ripple={false} style="padding:0 8px;">
-            <span>Rows per page : <b>{rowPerPage}</b> &nbsp;&#8628;</span>
+            <span>Rows per page : <b>{rowsPerPage}</b> &nbsp;&#8628;</span>
         </Button>
     </div>
 
-    <Menuitem on:click={() => rowPerPage = 5}>5 rows per page</Menuitem>
-    <Menuitem on:click={() => rowPerPage = 10}>10 rows per page</Menuitem>
-    <Menuitem on:click={() => rowPerPage = 20}>20 rows per page</Menuitem>
-    <Menuitem on:click={() => rowPerPage = 50}>50 rows per page</Menuitem>
-    <Menuitem on:click={() => rowPerPage = 100}>100 rows per page</Menuitem>
+    <Menuitem on:click={() => rowsPerPage = 5}>5 rows per page</Menuitem>
+    <Menuitem on:click={() => rowsPerPage = 10}>10 rows per page</Menuitem>
+    <Menuitem on:click={() => rowsPerPage = 20}>20 rows per page</Menuitem>
+    <Menuitem on:click={() => rowsPerPage = 50}>50 rows per page</Menuitem>
+    <Menuitem on:click={() => rowsPerPage = 100}>100 rows per page</Menuitem>
 </Menu>
 </div>
 
@@ -41,9 +41,9 @@
 </p>
 
 
-<Demo code={code(rowPerPage, scrollY)} {data} {scrollY}>
+<Demo code={code(rowsPerPage, scrollY)} {data} {scrollY}>
     {#if !scrollY}
-    <Datatable {settings} data={JSON.parse(data)}>
+    <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
         <thead>
             <tr>
                 <th class="sortable asc desc" data-key="id">ID <span/></th>
@@ -54,6 +54,7 @@
             <ColumnFilterInputs/>
         </thead>
         <tbody>
+            {#if rows}
             {#each $rows as row}
             <tr>
                 <td>{row.id}</td>
@@ -62,6 +63,7 @@
                 <td>{row.email}</td>
             </tr>
             {/each}
+            {/if}
         </tbody>
     </Datatable>
     {:else}
@@ -87,6 +89,7 @@
 </Demo>
 
 <style>
+    h2{font-size:24px;color:#676778;font-weight:400;margin:16px 0 8px 0;}
     th:first-child{width:72px;}
     thead:not(.sticky) th {
         padding: 8px 0px 8px 16px;

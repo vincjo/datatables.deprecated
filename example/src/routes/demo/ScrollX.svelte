@@ -3,13 +3,14 @@
     import { code } from 'code/demo.scroll-x.js'
     import { data } from 'app/data.large.js'
 	import Datatable from '../../../../src/Datatable.svelte'
-    import { rows } from '../../../../src/stores/data.js'
     const settings = { columnFilter: true }
+    let rows
 </script>
 
+<h2>Scroll X</h2>
 <p>This example shows horizontal scroll behaviour</p>
 <Demo code={code()} {data}>
-    <Datatable {settings} data={JSON.parse(data)}>
+    <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
@@ -25,6 +26,7 @@
             <th data-key="guid">GUID</th>
         </thead>
         <tbody>
+            {#if rows}
             {#each $rows as row}
             <tr>
                 <td>{row.id}</td>
@@ -41,11 +43,13 @@
                 <td>{row.guid}</td>
             </tr>
             {/each}
+            {/if}
         </tbody>
     </Datatable>
 </Demo>
 
 <style>
+    h2{font-size:24px;color:#676778;font-weight:400;margin:16px 0 8px 0;}
     th:first-child{width:56px;}
     td{text-align:center;padding:4px 8px;white-space:nowrap}
 </style>

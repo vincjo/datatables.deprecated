@@ -1,6 +1,10 @@
 <script>
-    import { options } from './stores/options.js'
-    import { columns } from './stores/columns.js'
+    // import { options } from './stores/options.js'
+    // import { columns } from './stores/columns.js'
+    import { key } from './key.js'
+	import { getContext } from 'svelte'
+	const { options, columns } = getContext(key)
+
 </script>
 
 <tr>

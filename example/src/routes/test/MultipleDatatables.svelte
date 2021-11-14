@@ -1,7 +1,6 @@
 <script>
     import { data, data2 } from 'app/data.js'
 	import Datatable from '../../../../src/Datatable.svelte'
-    import { rows } from '../../../../src/stores/data.js'
     const settings = {
             columnFilter: true,
             labels: {
@@ -23,12 +22,14 @@
                 next: 'Suivant',        
         }
     }
+    let rowset1 
+    let rowset2
 </script>
 
 <h2>Multiple Datatables on the same page</h2>
     <section>
         <aside>
-        <Datatable settings={settings} data={JSON.parse(data)} name="table1">
+        <Datatable settings={settings} data={JSON.parse(data)} bind:dataRows={rowset1}>
             <thead>
                 <th data-key="id">ID</th>
                 <th data-key="first_name">First Name</th>
@@ -36,7 +37,8 @@
                 <th data-key="email">Email</th>
             </thead>
             <tbody>
-                {#each $rows as row}
+                {#if rowset1}
+                {#each $rowset1 as row}
                 <tr>
                     <td>{row.id}</td>
                     <td>{row.first_name}</td>
@@ -44,11 +46,12 @@
                     <td>{row.email}</td>
                 </tr>
                 {/each}
+                {/if}
             </tbody>
         </Datatable>
         </aside>
         <aside>
-        <Datatable settings={settings2} data={JSON.parse(data2)} name="table2">
+        <Datatable settings={settings2} data={JSON.parse(data2)} bind:dataRows={rowset2}>
             <thead>
                 <th data-key="id">ID</th>
                 <th data-key="first_name">First Name</th>
@@ -56,7 +59,8 @@
                 <th data-key="email">Email</th>
             </thead>
             <tbody>
-                {#each $rows as row}
+                {#if rowset2}
+                {#each $rowset2 as row}
                 <tr>
                     <td>{row.id}</td>
                     <td>{row.first_name}</td>
@@ -64,6 +68,7 @@
                     <td>{row.email}</td>
                 </tr>
                 {/each}
+                {/if}
             </tbody>
         </Datatable>
         </aside>

@@ -1,57 +1,72 @@
 <script>
 	import { location } from 'svelte-spa-router'
-	let demo = $location.indexOf('demo')  > 0 ? `#${$location}` : '#/demo'
-	let test = $location.indexOf('test')  > 0 ? `#${$location}` : '#/test'
+    import { slide, fade } from 'svelte/transition'
 </script>
 
-<header>
-	<ul>
-		<li><a class:active={$location === '/'} href="#/">home</a></li>
-		<li><a class:active={$location.indexOf('demo')  > 0 ? true : false} href="{demo}">demo</a></li>
-		<li><a class:active={$location === '/settings'} href="#/settings">settings</a></li>
-		<li><a class:active={$location.indexOf('test')  > 0 ? true : false} href="{test}">test</a></li>
-		<li class="github"><a href="https://github.com/vincjo/svelte-simple-datatables#readme">
-			<img alt="github logo" src="github.svg"/><span>&#10149; Github</span>
-		</a></li>
-	</ul>
-</header>
+<section>
+    <article>
+        {#if $location !== '/'}
+        <aside transition:fade={{ duration:100 }}>
+            <img src="./logo.svg" alt="logo"/>
+            <div>
+                <h1>svelte<br>simple<br>datatables</h1>
+            </div>
+        </aside>
+        {/if}
+    </article>
+   
+    <h2 class:active={$location === '/'}>
+        <a href="#/">home</a>
+    </h2>
+    <h2 class:active={$location.includes('/demo')}>
+        <a href="#/demo">demo</a>
+    </h2>
+    {#if $location.includes('/demo')}
+        <ul transition:slide={{ duration:200}}>
+            <li class:active={$location === `/demo`} 				><a href="#/demo">basic</a></li>
+            <li class:active={$location === `/demo/pagination`} 	><a href="#/demo/pagination">pagination</a></li>
+            <li class:active={$location === `/demo/column-filter`} 	><a href="#/demo/column-filter">column filter</a></li>
+            <li class:active={$location === `/demo/i18n`} 			><a href="#/demo/i18n">i18n</a></li>
+            <li class:active={$location === `/demo/blocks`} 		><a href="#/demo/blocks">blocks</a></li>
+            <li class:active={$location === `/demo/expression`} 	><a href="#/demo/expression">js expression</a></li>
+            <li class:active={$location === `/demo/scroll-y`} 		><a href="#/demo/scroll-y">scroll y</a></li>
+            <li class:active={$location === `/demo/scroll-x`} 		><a href="#/demo/scroll-x">scroll x</a></li>
+            <li class:active={$location === `/demo/responsive`} 	><a href="#/demo/responsive">responsive</a></li>
+            <li class:active={$location === `/demo/css`} 			><a href="#/demo/css">css</a></li>
+        </ul>
+    {/if}
+    <h2 class:active={$location.includes('/settings')}>
+        <a class:active={$location === '/settings'} href="#/settings">settings</a>
+    </h2>
+    <h2 class:active={$location.includes('/test')}>
+        <a href="#/test">test</a>
+    </h2>
+    {#if $location.includes('/test')}
+        <ul transition:slide={{ duration:200}}>
+            <li class:active={$location === `/test`} 				><a href="#/test">Grid layout</a></li>
+            <li class:active={$location === `/test/lots-of-data`} 	><a href="#/test/lots-of-data">Lots of data</a></li>
+            <li class:active={$location === `/test/multiple-dt`}	><a href="#/test/multiple-dt">Multiple Datatables</a></li>
+        </ul>
+    {/if}
+</section>
 
-{#if $location.indexOf('demo')  > 0}
-	<ul class="demo">
-		<li class:active={demo === `#/demo`} 				on:click={() => demo = "#/demo"}				><a href="#/demo">Basic</a></li>
-		<li class:active={demo === `#/demo/pagination`} 	on:click={() => demo = "#/demo/pagination"}		><a href="#/demo/pagination">Pagination</a></li>
-		<li class:active={demo === `#/demo/column-filter`} 	on:click={() => demo = "#/demo/column-filter"}	><a href="#/demo/column-filter">Column filter</a></li>
-		<li class:active={demo === `#/demo/i18n`} 			on:click={() => demo = "#/demo/i18n"}			><a href="#/demo/i18n">i18n</a></li>
-		<li class:active={demo === `#/demo/blocks`} 		on:click={() => demo = "#/demo/blocks"}			><a href="#/demo/blocks">Blocks</a></li>
-		<li class:active={demo === `#/demo/expression`} 	on:click={() => demo = "#/demo/expression"}		><a href="#/demo/expression">JS Expression</a></li>
-		<li class:active={demo === `#/demo/scroll-y`} 		on:click={() => demo = "#/demo/scroll-y"}		><a href="#/demo/scroll-y">Scroll Y</a></li>
-		<li class:active={demo === `#/demo/scroll-x`} 		on:click={() => demo = "#/demo/scroll-x"}		><a href="#/demo/scroll-x">Scroll X</a></li>
-		<li class:active={demo === `#/demo/responsive`} 	on:click={() => demo = "#/demo/responsive"}		><a href="#/demo/responsive">Responsive</a></li>
-		<li class:active={demo === `#/demo/css`} 			on:click={() => demo = "#/demo/css"}			><a href="#/demo/css">CSS</a></li>
-	</ul>
-{/if}
-
-{#if $location.indexOf('test')  > 0}
-	<ul class="demo">
-		<li class:active={test === `#/test`} 				on:click={() => test = "#/test"}				><a href="#/test">Grid layout</a></li>
-		<li class:active={test === `#/test/lots-of-data`} 	on:click={() => test = "#/test/lots-of-data"}	><a href="#/test/lots-of-data">Lots of data</a></li>
-		<li class:active={test === `#/test/multiple-dt`}	on:click={() => test = "#/test/multiple-dt"}	><a href="#/test/multiple-dt">Multiple Datatables</a></li>
-	</ul>
-{/if}
 
 <style>
-	header {font-weight:300;padding:0;height:56px;}  
-	header ul {margin:0;padding:0;}
-	header ul::after {content: '';display: block;clear: both;}
-	header li {display: block;float: left;margin-right:24px}
-	header a.active{border-bottom:2px solid #b71540;}
-	header a {text-decoration: none;padding:0;display: block;font-size:16px;line-height:56px;}
-	header li.github{display:flex;margin-right:0;float:right;}
-	header li.github img{float:right;padding:16px 8px;width:40px;}
+    section{position:fixed;top:0;bottom:0;left:0;width:240px;background:#fff;z-index:1;padding:40px 0 0 40px;overflow-y:auto;}
 
-	ul.demo{margin:12px 0 0 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;padding:0;list-style-type:none;background:#fff;padding:12px 4px 0 4px;border-bottom:2px solid #e0e0e0;}
-    ul.demo li{display:block;margin:2px 4px -2px 4px;border:1px solid transporent;border-bottom:2px solid #e0e0e0;border-radius:4px 4px 0 0;background:#f5f5f5;transition:all,0.3s;}
-    ul.demo li:first-child{margin-left:0;}
-    ul.demo li.active{color:#007d7a;border:1px solid #38ada9;border-bottom:2px solid #38ada9;background:#fff;}
-    ul.demo a{display:block;text-decoration:none;color:inherit;padding:4px 8px;}
+    article{height:88px;}
+    aside{display:flex;justify-content:start;margin:0;height:48px;}
+	aside h1 {font-size:16px;line-height:15px; text-align:left; font-weight:400; margin: 0;color:#333 }
+	aside img {width:48px;margin:0 8px;}
+
+    h2{color:#333;font-weight:200;margin:0;font-size:32px;line-height:40px;transition:all,0.1s;}
+    h2:hover{font-weight:600;color:#676778;}
+    h2.active{color:#b71540;font-weight:600;}
+    h2 a{text-decoration:none;}
+    ul{margin:0;list-style-type:none;background:#fff;padding:0 16px 0 0;}
+    ul li{display:block;margin:0;background:#fff;transition:all,0.1s;padding:0;font-size:16px;color:#676778;font-weight:400;line-height:24px;}
+    ul li:hover{font-weight:bold;color:#38ada9;}
+    ul li.active{color:#333;font-weight:bold;}
+    /* ul li.active a {background:#fafafa;} */
+    ul a{display:block;text-decoration:none;color:inherit;padding:0px 8px;}
 </style>

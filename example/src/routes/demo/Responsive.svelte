@@ -4,17 +4,17 @@
     import { data } from 'app/data.js'
     import { Radio } from 'svelte-mui/src'
 	import Datatable from '../../../../src/Datatable.svelte'
-    import { rows } from '../../../../src/stores/data.js'
     let group = 'Desktop' 
     const settings = { columnFilter: true }
+    let rows
 </script>
 
-<h2>Choose device :</h2>
+<h2>Responsive</h2>
 <Radio bind:group color={'var(--primary'} value='Desktop'><span>Desktop</span></Radio>
 <Radio bind:group color={'var(--primary'} value='Mobile'><span>Mobile</span></Radio>
 
 <Demo code={code()} {data} tableWidth={group === 'Desktop' ? 'auto' : '320px'}>
-    <Datatable {settings} data={JSON.parse(data)}>
+    <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
@@ -22,6 +22,7 @@
             <th data-key="email">Email</th>
         </thead>
         <tbody>
+            {#if rows}
             {#each $rows as row}
             <tr>
                 <td>{row.id}</td>
@@ -30,6 +31,7 @@
                 <td>{row.email}</td>
             </tr>
             {/each}
+            {/if}
         </tbody>
     </Datatable>
 </Demo>

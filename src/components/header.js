@@ -1,16 +1,13 @@
 export const header = {
-    removeOriginalThead: (name) => {
+    removeOriginalThead: (id) => {
         setTimeout(() => {
-            const thead = document.querySelector(`#${name} table thead`)
+            const thead = document.querySelector(`#${id} table thead`)
             const originHeight = thead.getBoundingClientRect().height
-            // const tableContainer = document.querySelector('section.datatable .dt-table')
-            // const scrollXHeight = tableContainer.offsetHeight - tableContainer.clientHeight
-            // - (scrollXHeight > 5 ? scrollXHeight + 10 : 1)
             thead.parentNode.style.marginTop = '-' + (originHeight) + 'px'
             thead.style.visibility = 'hidden'
         }, 50)
     },
-    getOrginalTHeadClassList: (name) => {
-        return document.querySelector(`#${name} table thead`).classList
+    getOrginalTHeadClassList: (id) => {
+        return document.querySelector(`#${id} table thead`).classList
     },
 }

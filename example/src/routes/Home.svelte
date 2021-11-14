@@ -1,19 +1,19 @@
 <script>
 	import Datatable from '../../../src/Datatable.svelte'
-	import { rows } from '../../../src/stores/data.js'
 	import { data } from 'app/data.js'
 	import { code } from 'code/home.js'
 	import { Highlight } from 'svelte-highlight'
 	import { apache as language } from 'svelte-highlight/languages'
 	import Demo from '../components/Demo.svelte'
 	const settings = {
-		rowPerPage: 50,
+		rowsPerPage: 50,
 		columnFilter: true,
         blocks: {
             searchInput: true, 
         }
 
 	}
+	let rows
 </script>
 
 <svelte:head>
@@ -40,13 +40,14 @@
 <h2>Example</h2>
 <section>
 <Demo {code} data={data}>
-	<Datatable {settings} data={JSON.parse(data)}>
+	<Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
 		<thead>
 			<th data-key="first_name">First Name</th>
 			<th data-key="last_name">Last Name</th>
 			<th data-key="email">Email</th>
 		</thead>
 		<tbody>
+		{#if rows}
 		{#each $rows as row}
 			<tr>
 				<td>{row.first_name}</td>
@@ -54,6 +55,7 @@
 				<td>{row.email}</td>
 			</tr>
 		{/each}
+		{/if}
 		</tbody>
 	</Datatable>
 </Demo>

@@ -3,12 +3,12 @@
     import { code } from 'code/demo.js'
     import { data } from 'app/data.js'
 	import Datatable from '../../../src/Datatable.svelte'
-	import { rows } from '../../../src/stores/data.js'
+    let rows
 </script>
 
 <h2>Default settings</h2>
 <Demo {code} {data}>
-    <Datatable data={JSON.parse(data)}>
+    <Datatable data={JSON.parse(data)} bind:dataRows={rows}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
@@ -16,14 +16,16 @@
             <th data-key="email">Email</th>
         </thead>
         <tbody>
-            {#each $rows as row}
-            <tr>
-                <td>{row.id}</td>
-                <td>{row.first_name}</td>
-                <td>{row.last_name}</td>
-                <td>{row.email}</td>
-            </tr>
-            {/each}
+            {#if rows}
+                {#each $rows as row}
+                <tr>
+                    <td>{row.id}</td>
+                    <td>{row.first_name}</td>
+                    <td>{row.last_name}</td>
+                    <td>{row.email}</td>
+                </tr>
+                {/each}
+            {/if}
         </tbody>
     </Datatable>
 </Demo>

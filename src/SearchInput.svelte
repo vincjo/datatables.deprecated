@@ -6,16 +6,15 @@
 	import { key } from './key.js'
 	import { getContext } from 'svelte'
 
-	export let name = 'svelte-simple-datatable'
 	export let ref = ''
 	export let classList = ''
 
 	const { options, pageNumber, columns, globalFilters } = getContext(key)
 
 	const search = (value) => {
-		pageNumber.set(1, name)
+		pageNumber.set(1)
 		globalFilters.set(value)
-		columns.redraw(name)
+		columns.redraw()
 	}
 </script>
 

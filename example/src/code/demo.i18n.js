@@ -3,7 +3,7 @@ export const code = (search, filter, noRows, info, previous, next) => {
     return `
 <script>
     import { data } from './data.example.js'  
-    import { Datatable, rows } from 'svelte-simple-datatables'
+    import { Datatable } from 'svelte-simple-datatables'
     const settings = {
         columnFilter: true,
         labels: {
@@ -15,9 +15,10 @@ export const code = (search, filter, noRows, info, previous, next) => {
             next:     '${next}',       
         }
     }
+    let rows
 </script>
 
-<Datatable {settings} {data}>
+<Datatable {settings} {data} bind:dataRows={rows}>
     <thead>
         <th data-key="id">ID</th>
         <th data-key="first_name">First Name</th>
@@ -25,6 +26,7 @@ export const code = (search, filter, noRows, info, previous, next) => {
         <th data-key="email">Email</th>
     </thead>
     <tbody>
+    {#if rows}
         {#each $rows as row}
         <tr>
             <td>{row.id}</td>
@@ -33,6 +35,7 @@ export const code = (search, filter, noRows, info, previous, next) => {
             <td>{row.email}</td>
         </tr>
         {/each}
+    {/if}
     </tbody>
 </Datatable>
 

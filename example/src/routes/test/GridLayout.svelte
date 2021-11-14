@@ -2,8 +2,8 @@
     import { fade } from 'svelte/transition'
     import { data } from 'app/data.js'
 	import Datatable from '../../../../src/Datatable.svelte'
-    import { rows } from '../../../../src/stores/data.js'
     import { HighlightSvelte } from 'svelte-highlight'
+    let rows
 </script>
 
 <h2>Behaviour in CSS Grid</h2>
@@ -11,7 +11,7 @@
     <div class="one"></div>
     <div class="two"></div>
     <div class="three">
-        <Datatable data={JSON.parse(data)}>
+        <Datatable data={JSON.parse(data)} bind:dataRows={rows}>
             <thead>
                 <th data-key="id">ID</th>
                 <th data-key="first_name">First Name</th>
@@ -19,6 +19,7 @@
                 <th data-key="email">Email</th>
             </thead>
             <tbody>
+                {#if rows}
                 {#each $rows as row}
                 <tr>
                     <td>{row.id}</td>
@@ -27,6 +28,7 @@
                     <td>{row.email}</td>
                 </tr>
                 {/each}
+                {/if}
             </tbody>
         </Datatable>
     </div>

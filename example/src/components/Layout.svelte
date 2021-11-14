@@ -1,15 +1,22 @@
 <script>
-	import Nav from './Nav.svelte'
+	import Header from '././Header.svelte'
+	import Nav from '././Nav.svelte'
 </script>
 
 
 
 <main>
 	<Nav/>
-	<slot></slot>
+	<Header/>
+	<section>
+		<article>
+			<slot></slot>
+		</article>
+	</section>
 </main>
 
 
 <style>
-	main {position:relative;width:96%;max-width:980px;background-color: white; padding:0;margin:0 auto;box-sizing:border-box;padding-bottom:80px;} 
+	section {position:absolute;left:240px;bottom:0;top:0px;;right:0;background-color: white; padding:0;margin:0;box-sizing:border-box;padding-bottom:80px;padding-left:56px;background:#fff;} 
+	article{max-width:960px;padding-bottom:80px;}
 </style>

@@ -5,15 +5,14 @@
 	import { onMount } from 'svelte'
 	import { key } from '../key.js'
 	import { getContext } from 'svelte'
-	export let name = 'svelte-simple-datatable'
 
-	const { options, columns } = getContext(key)
+	const { id, options, columns } = getContext(key)
 
 	let theadClassList
 	onMount(() => {
-		columns.draw(name)
-		header.removeOriginalThead(name)
-		theadClassList = header.getOrginalTHeadClassList(name)
+		columns.draw()
+		header.removeOriginalThead(id.get())
+		theadClassList = header.getOrginalTHeadClassList(id.get())
 	})
 </script>
 
@@ -27,7 +26,7 @@
 			{#each $columns as th}
 				<th
 					nowrap
-					style="min-width:{th.minWidth}px"
+					style="min-width:{th.minWidth}px" 
 					on:click={(e) => columns.sort(e.target, th.key)}
 					class={th.classList}
 					class:sortable={th.key && $options.sortable === true}
