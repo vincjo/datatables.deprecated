@@ -7,26 +7,12 @@
 	</p>
 </div>
 
-## 2021-11-14 **Breaking changes** - 0.1.27
-
-Hello, <br>```svelte-simple-datatables``` now supports **multiple instances** on the same page.<br>
-This brought some breaking changes in the way of mounting the component :
-- ```$rows``` store is no longer exported but requires a declaration ``let rows`` in your code   
-- The data are binded to a new prop : ``dataRows``
-- To retreive the ``$rows`` store, we need to add a ``{#if}`` block before the loop
-- Something else :
-  - ``rowPerPage`` option becomes ``rowsPerPage`` (row<u>**s**</u>PerPage)
-
-Special thanks to [@pangweisan](https://github.com/pangweisan) for his help
-
---- **The demo site will be back soon** ---
 
 
-Below is the updated documentation :
+
 
 
 # Presentation
-
 `Datatable` component default behavior :
 - Fits in its container
 - The table has fixed header
@@ -177,3 +163,17 @@ See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/blocks)
 </Datatable>
 ````
 See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/expression) 
+
+# Breaking changes
+
+## 2021-11-14 / v0.1.27 - Multiple datatables
+
+```svelte-simple-datatables``` now supports **multiple instances** on the same page.<br>
+This brought some breaking changes in the way of mounting the component :
+- ```$rows``` store is no longer exported but requires a declaration ``let rows`` in your code   
+- The data are binded to a new prop : ``dataRows``
+- To retreive the ``$rows`` store, we need to add a ``{#if}`` block before the loop
+- Something else :
+  - ``rowPerPage`` option becomes ``rowsPerPage`` (row<u>**s**</u>PerPage)
+
+Special thanks to [@pangweisan](https://github.com/pangweisan) for his help
