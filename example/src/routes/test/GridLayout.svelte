@@ -19,7 +19,7 @@
                 <th data-key="email">Email</th>
             </thead>
             <tbody>
-                {#if rows}
+            {#if rows}
                 {#each $rows as row}
                 <tr>
                     <td>{row.id}</td>
@@ -28,7 +28,7 @@
                     <td>{row.email}</td>
                 </tr>
                 {/each}
-                {/if}
+            {/if}
             </tbody>
         </Datatable>
     </div>

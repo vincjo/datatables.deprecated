@@ -13,6 +13,7 @@ import Settings from './routes/Settings.svelte'
 import GridLayout from './routes/test/GridLayout.svelte'
 import LotsOfData from './routes/test/LotsOfData.svelte'
 import MultipleDatatables from './routes/test/MultipleDatatables.svelte'
+import OptionalBlocks from './routes/test/OptionalBlocks.svelte'
 import NotFound from './routes/NotFound.svelte'
 
 export const routes = {
@@ -33,5 +34,6 @@ export const routes = {
     '/test/grid-layout': GridLayout,
     '/test/lots-of-data': LotsOfData,
     '/test/multiple-dt': MultipleDatatables,
+    '/test/optional-blocks': OptionalBlocks,
     '/*': NotFound
 }

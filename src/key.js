@@ -1,1 +1,1 @@
-export const key = {};
+export const key = 'datatable'

@@ -46,6 +46,7 @@
             <li class:active={$location === `/test`} 				><a href="#/test">Grid layout</a></li>
             <li class:active={$location === `/test/lots-of-data`} 	><a href="#/test/lots-of-data">Lots of data</a></li>
             <li class:active={$location === `/test/multiple-dt`}	><a href="#/test/multiple-dt">Multiple Datatables</a></li>
+            <!-- <li class:active={$location === `/test/optional-blocks`}><a href="#/test/optional-blocks">Optional Blocks</a></li> -->
         </ul>
     {/if}
 </section>
