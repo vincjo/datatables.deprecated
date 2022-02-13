@@ -13,7 +13,7 @@
 ## 13/02/2021 - svelte-simple-datatable v0.2.1 :
 You can now set an `id` prop to the datatables :
 ````svelte
-    <Datatable {settings} bind:DataRows={rows} id={'my-datatable'}>
+    <Datatable {settings} bind:dataRows={rows} id={'my-datatable'}>
 ````
 This is **required** for using multiple datatables on the same page.<br>
 :eyes: **[Code example](https://vincjo.fr/svelte-simple-datatables/#/test/multiple-dt)** <br><br>
