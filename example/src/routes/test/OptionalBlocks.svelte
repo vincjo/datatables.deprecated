@@ -21,9 +21,7 @@
 <h2>Optional blocks</h2>
 <section>
     <aside class="z-depth-2">
-        {#if $rows}
-            <SearchInput id={'my-table'}/>
-        {/if}
+        <SearchInput id={'my-table'}/>
     </aside>
     <div class="z-depth-2">
         <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows} id={'my-table'}>
@@ -49,10 +47,8 @@
     </div>
     
     <aside class="z-depth-2">
-        {#if $rows}
-            <PaginationButtons id={'my-table'}/>
-            <PaginationRowCount id={'my-table'}/>
-        {/if}
+        <PaginationButtons id={'my-table'}/>
+        <PaginationRowCount id={'my-table'}/>
     </aside>
 </section>
 
@@ -77,9 +73,7 @@
 
 <section>
     <aside>
-        {#if $rows}
-            <SearchInput id={'my-table'}/>
-        {/if}
+        <SearchInput id={'my-table'}/>
     </aside>
 
     <div>
@@ -106,10 +100,8 @@
     </div>
     
     <aside>
-        {#if $rows}
-            <PaginationButtons id={'my-table'}/>
-            <PaginationRowCount id={'my-table'}/>
-        {/if}
+        <PaginationButtons id={'my-table'}/>
+        <PaginationRowCount id={'my-table'}/>
     </aside>
 </section>
 
