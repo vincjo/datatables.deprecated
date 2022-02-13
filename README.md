@@ -10,7 +10,7 @@
 
 
 
-## 13/02/2021 - svelte-simple-datatable v0.2.1 :
+## 13/02/2022 - svelte-simple-datatable v0.2.2 :
 You can now set an `id` prop to the datatables :
 ````svelte
     <Datatable {settings} bind:dataRows={rows} id={'my-datatable'}>
