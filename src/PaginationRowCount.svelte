@@ -1,13 +1,17 @@
 <script>
-	//import { options } from './stores/options.js'
-	//import { pageNumber, rowCount, datatableWidth } from './stores/state.js'
-	import { key } from './key.js'
-	import { getContext } from 'svelte'
+	import { context as store } from './app/context.js'
 
-	const { options, pageNumber, rowCount, datatableWidth } = getContext(key)
+	export let id = 'svelte-simple-datatable'
+	const context = store.get(id)
+	
+	const rowsCount = context.getRowsCount()
+	const options = context.getOptions()
+	const pageNumber = context.getPageNumber()
+	const datatableWidth = context.getDatatableWidth()
+
 	$: start = $pageNumber * $options.rowsPerPage - $options.rowsPerPage + 1
-	$: end = Math.min($pageNumber * $options.rowsPerPage, $rowCount)
-	$: rows = $rowCount
+	$: end = Math.min($pageNumber * $options.rowsPerPage, $rowsCount)
+	$: rows = $rowsCount
 	$: info = $options.labels.info
 		.replace('{start}', `<b>${start}</b>`)
 		.replace('{end}', `<b>${end}</b>`)

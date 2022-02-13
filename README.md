@@ -10,7 +10,16 @@
 
 
 
+## 13/02/2021 - svelte-simple-datatable v0.2.0 :
+You can now set an `id` prop to the datatables :
+````svelte
+    <Datatable {settings} bind:DataRows={rows} id={'my-datatable'}>
+````
+This is **required** for using multiple datatables on the same page.<br>
+:eyes: **[Code example](https://vincjo.fr/svelte-simple-datatables/#/test/multiple-dt)** <br><br>
 
+The Context API has been removed for the benefit of `nested stores`, in particular to allow the use of remote components such as `<PageinationRowCount/>`, `<SearchInupt/>`<br>
+:eyes: **[Code example](https://vincjo.fr/svelte-simple-datatables/#/test/optional-blocks)** 
 
 # Presentation
 `Datatable` component default behavior :

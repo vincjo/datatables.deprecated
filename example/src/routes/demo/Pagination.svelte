@@ -35,7 +35,7 @@
         </tbody>
     </Datatable>
     {:else}
-    <Datatable {settings} data={JSON.parse(data)}>
+    <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
@@ -43,6 +43,7 @@
             <th data-key="email">Email</th>
         </thead>
         <tbody>
+            {#if rows}
             {#each $rows as row}
             <tr>
                 <td>{row.id}</td>
@@ -51,6 +52,7 @@
                 <td>{row.email}</td>
             </tr>
             {/each}
+            {/if}
         </tbody>
     </Datatable>
     {/if}

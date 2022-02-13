@@ -1,20 +1,16 @@
 <script>
-	//import { options } from './stores/options.js'
-	//import { pageNumber } from './stores/state.js'
-	//import { columns } from './stores/columns.js'
-	//import { globalFilters } from './stores/filters.js'
-	import { key } from './key.js'
-	import { getContext } from 'svelte'
+	import { context as store } from './app/context.js'
 
 	export let ref = ''
 	export let classList = ''
-
-	const { options, pageNumber, columns, globalFilters } = getContext(key)
+	export let id = 'svelte-simple-datatable'
+	const context = store.get(id)
+	const options = context.getOptions()
 
 	const search = (value) => {
-		pageNumber.set(1)
-		globalFilters.set(value)
-		columns.redraw()
+		context.getPageNumber().set(1)
+		context.getGlobalFilter().set(value)
+		context.getColumns().redraw()
 	}
 </script>
 

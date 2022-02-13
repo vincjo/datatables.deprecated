@@ -1,21 +1,20 @@
 <script>
 	import PaginationRowCount from '../PaginationRowCount.svelte'
 	import PaginationButtons from '../PaginationButtons.svelte'
-	import { key } from '../key.js'
-	import { getContext } from 'svelte'
 
-	const { options } = getContext(key)
+	export let id
+	export let options
 </script>
 
 {#if $options.pagination && ($options.blocks.paginationRowCount || $options.blocks.paginationButtons)}
 	<section class="dt-pagination" class:css={$options.css}>
 		{#if $options.blocks.paginationRowCount}
-			<PaginationRowCount />
+			<PaginationRowCount {id} />
 		{:else}
 			<div />
 		{/if}
 		{#if $options.blocks.paginationButtons}
-			<PaginationButtons />
+			<PaginationButtons {id}/>
 		{/if}
 	</section>
 {/if}

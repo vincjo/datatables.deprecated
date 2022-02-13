@@ -1,9 +1,10 @@
 import { writable } from 'svelte/store'
-import { key } from '../key.js'
-import { getContext, setContext } from 'svelte'
 
-const getOptions = () => {
-    const createOptions = () => {
+
+export default class options
+{
+    create()
+    {
         const {subscribe, set } = writable({
             sortable: true,
             pagination: true,
@@ -27,13 +28,13 @@ const getOptions = () => {
         })
         return {
             subscribe, set, 
-            get: () => {
+            get: (self) => {
                 let $store
-                options.subscribe(store => $store = store)
+                self.subscribe(store => $store = store)
                 return $store
             },
-            update: (opt) => {
-                opt.labels = opt.labels ? opt.labels : {}
+            parse: (opt) => {
+                opt.labels = opt.labels ?? {}
                 const labels = {
                     search:   typeof opt.labels.search   === 'string' ? opt.labels.search   : 'Search...',
                     filter:   typeof opt.labels.filter   === 'string' ? opt.labels.filter   : 'Filter',
@@ -42,13 +43,13 @@ const getOptions = () => {
                     previous: typeof opt.labels.previous === 'string' ? opt.labels.previous : 'Previous',
                     next:     typeof opt.labels.next     === 'string' ? opt.labels.next     : 'Next',                
                 }   
-                opt.blocks = opt.blocks ? opt.blocks : {}
+                opt.blocks = opt.blocks ?? {}
                 const blocks = {
                     searchInput:        typeof opt.blocks.searchInput        === 'boolean' ? opt.blocks.searchInput        : true, 
                     paginationButtons:  typeof opt.blocks.paginationButtons  === 'boolean' ? opt.blocks.paginationButtons  : true,
                     paginationRowCount: typeof opt.blocks.paginationRowCount === 'boolean' ? opt.blocks.paginationRowCount : true,
                 }
-                const parsed = {
+                return {
                     sortable:     typeof opt.sortable       === 'boolean' ? opt.sortable      : true,
                     pagination:   typeof opt.pagination     === 'boolean' ? opt.pagination    : true,
                     rowsPerPage:  typeof opt.rowsPerPage    === 'number'  ? opt.rowsPerPage   : 50,
@@ -58,17 +59,7 @@ const getOptions = () => {
                     labels: labels,
                     blocks: blocks
                 }
-                options.set(parsed)
             }
         }
-    }    
-    const options = createOptions();
-    return options
-
-}
-
-export const init_module = () => {
-    const ctx = getContext(key);
-	const options = getOptions();
-	setContext(key, {...ctx, options});
+    }
 }

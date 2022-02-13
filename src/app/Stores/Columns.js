@@ -1,23 +1,24 @@
 import { writable } from 'svelte/store'
-import { getContext, setContext } from 'svelte';
-import { key } from '../key.js';
+import { context } from '../context.js'
 
-
-const getColumns = () => {
-	const {id ,options, data, pageNumber, localFilters} = getContext(key);
-
-	const createColumns = () => {
-		
-		const { subscribe, set, update } = writable([])
+export default class Columns 
+{
+    create(data, states, filters, options)
+    {
+		const id = states.id
+		this.id = id.get()
+		const pageNumber = states.pageNumber
+		const localFilters = filters.localFilters
+        const { subscribe, set, update } = writable([])
 		return {
 			subscribe, set, update,
-			get: () => {
+			get: (self) => {
 				let $columns
-				columns.subscribe(store => $columns = store)
+				self.subscribe(store => $columns = store)
 				return $columns
 			},
-			sort: (element, key, context) => {
-				if (options.get().sortable !== true || typeof key === 'undefined') {
+			sort: (element, key) => {
+				if (options.get(options).sortable !== true || typeof key === 'undefined') {
 					return
 				}
 				if (
@@ -29,28 +30,28 @@ const getColumns = () => {
 					)
 					element.classList.add('desc')
 					data.sortDesc(key)
-					pageNumber.set(1, context)
+					pageNumber.set(1)
 				} else {
 					Array.from(element.parentNode.children).forEach((item) =>
 						item.classList.remove('desc', 'asc')
 					)
 					element.classList.add('asc')
 					data.sortAsc(key)
-					pageNumber.set(1, context)
+					pageNumber.set(1)
 				}
-				columns.redraw(context)
+				this.get(this.id).redraw()
 			},
-			filter: (key, value, context) => {
-				pageNumber.set(1, context)
+			filter: (key, value) => {
+				pageNumber.set(1)
 				localFilters.add(key, value)
-				columns.redraw(context)
+				this.get(this.id).redraw()
 			},
 			draw: () => {
 				setTimeout(() => {
 					const tbody = document.querySelector(`#${id.get()} table tbody tr`)
 					if (tbody === null) return
 					const thead = document.querySelectorAll(`#${id.get()} .dt-header thead tr`)
-					const $columns = columns.get()
+					const $columns = this.getData(this.id)
 
 					const th = thead[0].children[0]
 					const td = Array.from(tbody.children)[0]
@@ -77,13 +78,13 @@ const getColumns = () => {
 				}, 50)	
 			},
 			redraw: () => {
-				if ( options.get().scrollY === false ) return
+				if ( options.get(options).scrollY === false ) return
 				
 				setTimeout(() => {
 					const tbody = document.querySelector(`#${id.get()} table tbody tr`)
 					if (tbody === null) return
 					const thead = document.querySelectorAll(`#${id.get()} .dt-header thead tr`)
-					const $columns = columns.get()
+					const $columns = this.getData(this.id)
 					thead.forEach(tr => {
 						let i = 0
 						Array.from(tbody.children).forEach(td => {
@@ -106,15 +107,16 @@ const getColumns = () => {
 				}, 50)			
 			},
 		}
-	}	
+    }
 
-	const columns = createColumns();
-	return columns
-}
+	get(id)
+	{
+		return context.get(id).getColumns()
+	}
 
-export const init_module = () => {
-	const ctx = getContext(key);
-	const columns = getColumns();
-
-	setContext(key, {...ctx, columns});
+	getData(id) 
+	{
+		const columns =  context.get(id).getColumns()
+		return context.get(id).getColumns().get(columns)
+	}
 }

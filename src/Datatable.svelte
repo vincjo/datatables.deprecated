@@ -3,54 +3,53 @@
 	import Pagination from './components/Pagination.svelte'
 	import StickyHeader from './components/StickyHeader.svelte'
 	import { onMount, onDestroy } from 'svelte'
-	import { setContext, getContext } from 'svelte'
-	import { key } from './key.js'
-	import { initContext } from './createContext.js'
-	import { getDataTable } from './datatable.js'
+	import Datatable from './app/Datatable.js'
+	import Component from './app/Component.js'
 
 	export let data = []
 	export let settings = {}
 	export let classList = ''
+	export let id = 'svelte-simple-datatable'
+
 
 	//Initialize context for all stores.
-	setContext(key, {})
-	initContext()
+	const datatable = new Datatable(id)
+	datatable.create()
+	const options = datatable.getOptions()
 
-	const { rows } = getContext(key)
+	const component = new Component(id)
+	
+	const rows = datatable.getRows()
 	export const dataRows = rows
 
-	const datatable = getDataTable()
-	const { id, options } = getContext(key)
-
-	
 	$: {
-		datatable.setRows(data)
-		options.update(settings)
+		component.setRows(data)
+		options.set( options.parse(settings) )
 	}
 
-	onMount(() => datatable.init())
-	onDestroy(() => datatable.reset())
+	onMount(() => component.init())
+	onDestroy(() => component.reset())
 </script>
 
 <section
-	id={$id}
+	id={id}
 	class="datatable {classList}"
 	class:scroll-y={$options.scrollY}
 	class:css={$options.css}
 >
 	{#if $options.blocks.searchInput === true}
-		<Search/>
+		<Search {options} {id}/>
 	{/if}
 	<article class="dt-table">
 		{#if $options.scrollY}
-			<StickyHeader/>
+			<StickyHeader {id} {options} columns={datatable.getColumns()}/>
 		{/if}
 		<table>
-			<slot />
+			<slot rows={datatable.getRows()}/>
 		</table>
 	</article>
 	{#if $options.blocks.paginationRowCount === true || $options.blocks.paginationButtons === true}
-		<Pagination/>
+		<Pagination {options} {id}/>
 	{/if}
 </section>
 

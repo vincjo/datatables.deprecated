@@ -1,14 +1,12 @@
 <script>
 	import SearchInput from '../SearchInput.svelte'
-	//import { options } from "../stores/options.js"
-	import { key } from '../key.js'
-	import { getContext } from 'svelte'
+	export let id
+	export let options
 
-	const { options } = getContext(key)
 </script>
 
-<section class="dt-search" class:css={options.css}>
-	<SearchInput />
+<section class="dt-search" class:css={$options.css}>
+	<SearchInput {id}/>
 </section>
 
 <style>

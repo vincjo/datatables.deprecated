@@ -1,10 +1,10 @@
 <script>
-    // import { options } from './stores/options.js'
-    // import { columns } from './stores/columns.js'
-    import { key } from './key.js'
-	import { getContext } from 'svelte'
-	const { options, columns } = getContext(key)
+    import { context as store } from './app/context.js'
+    export let id = 'svelte-simple-datatable'
+    const context = store.get(id)
 
+    const columns = context.getColumns()
+    const options = context.getOptions()
 </script>
 
 <tr>

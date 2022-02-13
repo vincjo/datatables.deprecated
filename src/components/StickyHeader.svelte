@@ -1,18 +1,16 @@
 <script>
-	//import { options } from '../stores/options.js';
-	//import { columns } from '../stores/columns.js';
 	import { header } from './header.js'
 	import { onMount } from 'svelte'
-	import { key } from '../key.js'
-	import { getContext } from 'svelte'
 
-	const { id, options, columns } = getContext(key)
+	export let id = 'svelte-simple-datatable'
+	export let options
+	export let columns
 
 	let theadClassList
 	onMount(() => {
 		columns.draw()
-		header.removeOriginalThead(id.get())
-		theadClassList = header.getOrginalTHeadClassList(id.get())
+		header.removeOriginalThead(id)
+		theadClassList = header.getOrginalTHeadClassList(id)
 	})
 </script>
 
@@ -44,8 +42,7 @@
 								type="text"
 								placeholder={$options.labels.filter}
 								class="browser-default"
-								on:input={(e) =>
-									columns.filter(th.key, e.target.value)}
+								on:input={(e) => columns.filter(th.key, e.target.value)}
 							/>
 						{/if}
 					</th>

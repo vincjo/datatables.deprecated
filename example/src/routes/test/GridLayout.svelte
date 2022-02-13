@@ -43,7 +43,8 @@
 <HighlightSvelte code={`
 <script>
     import { data } from './data.example.js'
-    import { Datatables, rows } from 'svelte-simple-datatables'
+    import { Datatables } from 'svelte-simple-datatables'
+    let rows
 </script>
 
 <div class="wrapper">
@@ -58,6 +59,7 @@
                 <th data-key="email">Email</th>
             </thead>
             <tbody>
+            {#if rows}
                 {#each $rows as row}
                 <tr>
                     <td>{row.id}</td>
@@ -66,6 +68,7 @@
                     <td>{row.email}</td>
                 </tr>
                 {/each}
+            {/if}
             </tbody>
         </Datatable>
     </div>

@@ -4,14 +4,13 @@
     import { data } from 'app/data.js'
     import { Menu, Menuitem, Button, Checkbox } from 'svelte-mui/src'
     import Datatable from '../../../../src/Datatable.svelte'
-	import ColumnFilterInputs from '../../../../src/ColumnFilterInputs.svelte'
     let scrollY = false
     let checked = true
     let rowsPerPage = 10
     $: settings = { 
         rowsPerPage: rowsPerPage,
         scrollY: scrollY,
-        columnFilter: true 
+        columnFilter: true
     }
     let rows
 </script>
@@ -51,7 +50,6 @@
                 <th class="sortable asc desc" data-key="last_name">Last Name<span/></th>
                 <th class="sortable asc desc" data-key="email">Email<span/></th>
             </tr>
-            <ColumnFilterInputs/>
         </thead>
         <tbody>
             {#if rows}
@@ -67,7 +65,7 @@
         </tbody>
     </Datatable>
     {:else}
-    <Datatable {settings} data={JSON.parse(data)}>
+    <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
         <thead class="sticky">
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
@@ -75,6 +73,7 @@
             <th data-key="email">Email</th>
         </thead>
         <tbody>
+        {#if rows}
             {#each $rows as row}
             <tr>
                 <td>{row.id}</td>
@@ -83,6 +82,7 @@
                 <td>{row.email}</td>
             </tr>
             {/each}
+        {/if}
         </tbody>
     </Datatable>
     {/if}

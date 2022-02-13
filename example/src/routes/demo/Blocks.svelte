@@ -48,7 +48,7 @@ Disabling blocks does'nt change datatable's config. The aim is to import them se
         </tbody>
     </Datatable>
     {:else if !searchInput && paginationButtons || !searchInput && paginationRowCount}
-    <Datatable {settings} data={JSON.parse(data)}>
+    <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
@@ -56,6 +56,7 @@ Disabling blocks does'nt change datatable's config. The aim is to import them se
             <th data-key="email">Email</th>
         </thead>
         <tbody>
+            {#if rows}
             {#each $rows as row}
             <tr>
                 <td>{row.id}</td>
@@ -64,10 +65,11 @@ Disabling blocks does'nt change datatable's config. The aim is to import them se
                 <td>{row.email}</td>
             </tr>
             {/each}
+            {/if}
         </tbody>
     </Datatable>
     {:else if searchInput && !paginationButtons && !paginationRowCount}
-    <Datatable {settings} data={JSON.parse(data)}>
+    <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
@@ -75,6 +77,7 @@ Disabling blocks does'nt change datatable's config. The aim is to import them se
             <th data-key="email">Email</th>
         </thead>
         <tbody>
+            {#if rows}
             {#each $rows as row}
             <tr>
                 <td>{row.id}</td>
@@ -83,10 +86,11 @@ Disabling blocks does'nt change datatable's config. The aim is to import them se
                 <td>{row.email}</td>
             </tr>
             {/each}
+            {/if}
         </tbody>
     </Datatable>
     {:else if !searchInput && !paginationButtons && !paginationRowCount}
-    <Datatable {settings} data={JSON.parse(data)}>
+    <Datatable {settings} data={JSON.parse(data)} bind:dataRows={rows}>
         <thead>
             <th data-key="id">ID</th>
             <th data-key="first_name">First Name</th>
@@ -94,6 +98,7 @@ Disabling blocks does'nt change datatable's config. The aim is to import them se
             <th data-key="email">Email</th>
         </thead>
         <tbody>
+            {#if rows}
             {#each $rows as row}
             <tr>
                 <td>{row.id}</td>
@@ -102,6 +107,7 @@ Disabling blocks does'nt change datatable's config. The aim is to import them se
                 <td>{row.email}</td>
             </tr>
             {/each}
+            {/if}
         </tbody>
     </Datatable>
     {/if}
