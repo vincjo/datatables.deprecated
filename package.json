@@ -21,7 +21,7 @@
     "dist"
   ],
   "description": "A Datatable component for Svelte",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "directories": {
     "example": "example"
   },
