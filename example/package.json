@@ -16,7 +16,8 @@
     "rollup-plugin-terser": "^7.0.0",
     "svelte": "^3.0.0",
     "svelte-highlight": "^0.6.2",
-    "svelte-mui": "^0.3.3-4"
+    "svelte-mui": "^0.3.3-4",
+    "svelte-simple-datatables": "^0.2.1"
   },
   "dependencies": {
     "sirv-cli": "^1.0.0",
