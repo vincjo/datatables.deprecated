@@ -1,47 +1,25 @@
 <script>
+	import SearchInputHTML from './components/SearchInputHTML.svelte'
 	import { context as store } from './app/context.js'
 
 	export let ref = ''
 	export let classList = ''
 	export let id = 'svelte-simple-datatable'
-	const context = store.get(id)
-	const options = context.getOptions()
-
-	const search = (value) => {
-		context.getPageNumber().set(1)
-		context.getGlobalFilter().set(value)
-		context.getColumns().redraw()
-	}
+	let context = null
+	let loop = 0
+	const interval = setInterval( () => {
+		loop++
+		if (store.get(id)) {
+			context = store.get(id)
+			clearInterval(interval)
+		}
+		else if ( loop === 20) {
+			clearInterval(interval)
+		}
+	}, 50)
+	
 </script>
 
-<input
-	class={classList}
-	class:css={$options.css}
-	type="text"
-	placeholder={$options.labels.search}
-	on:input={(e) => search(e.target.value)}
-	{ref}
-/>
-
-<style>
-	input.css {
-		border: 1px solid #e0e0e0;
-		border-radius: 4px;
-		outline: none;
-		padding: 0 8px;
-		line-height: 24px;
-		margin: 0;
-		height: 24px;
-		background: transparent;
-		width: 176px;
-		transition: all, 0.1s;
-		margin-left: 16px;
-	}
-	input.css:focus {
-		border: 2px solid #e0e0e0;
-	}
-	input.css::placeholder {
-		color: #9e9e9e;
-		line-height: 24px;
-	}
-</style>
+{#if context}
+	<SearchInputHTML {context} {ref} {classList}/>
+{/if}
