@@ -112,13 +112,11 @@ These can be disabled in the settings, imported as components and placed anywher
     let rows
 </script>
 
-{#if rows}
-    <SearchInput/>
-    <PaginationButtons/>
-    <PaginationRowCount/>
-{/if}
+<SearchInput id={"my-datatable"}/>
+<PaginationButtons id={"my-datatable"}/>
+<PaginationRowCount id={"my-datatable"}/>
 
-<Datatable {settings} {data} bind:dataRows={rows}>
+<Datatable {settings} {data} bind:dataRows={rows} id={"my-datatable"}>
     (...)
 </Datatable>
 
