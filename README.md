@@ -20,15 +20,12 @@
 
 :point_right: **[Live Demo](https://vincjo.fr/svelte-simple-datatables)**
 
-Todos : 
-- Sort columns programmatically
-- Server side data
 
 <br>
 
 
 # Install
-:white_check_mark: Install as a dev dependency if using Sapper to avoid a SSR error.
+:white_check_mark: Install as a dev dependency to avoid a SSR errors.
 ````apache
 npm i -D svelte-simple-datatables
 ````
@@ -188,6 +185,6 @@ This brought some breaking changes in the way of mounting the component :
 - The data are binded to a new prop : ``dataRows``
 - To retreive the ``$rows`` store, we need to add a ``{#if}`` block before the loop
 - Something else :
-  - ``rowPerPage`` option becomes ``rowsPerPage`` (row<u>**s**</u>PerPage)
+  - ``rowPerPage`` option becomes ``rowsPerPage`` (row<u>**s**</u>)
 
 Special thanks to [@pangweisan](https://github.com/pangweisan) for his help
