@@ -10,16 +10,6 @@
 
 
 
-## 13/02/2022 - svelte-simple-datatable v0.2.3 :
-You can now set an `id` prop to the datatables :
-````svelte
-    <Datatable {settings} bind:dataRows={rows} id={'my-datatable'}>
-````
-This is **required** for using multiple datatables on the same page.<br>
-:eyes: **[Code example](https://vincjo.fr/svelte-simple-datatables/#/test/multiple-dt)** <br><br>
-
-The Context API has been removed for the benefit of `nested stores`, in particular to allow the use of remote components such as `<PaginationRowCount/>`, `<SearchInupt/>`<br>
-:eyes: **[Code example](https://vincjo.fr/svelte-simple-datatables/#/test/optional-blocks)** 
 
 # Presentation
 `Datatable` component default behavior :
@@ -176,6 +166,19 @@ See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/blocks)
 See demo [here](https://vincjo.fr/svelte-simple-datatables/#/demo/expression) 
 
 # Breaking changes
+<br>
+
+## 2022-02-13 / v0.2.3 - Nested stores :
+You can now set an `id` prop to the datatables :
+````svelte
+    <Datatable {settings} bind:dataRows={rows} id={'my-datatable'}>
+````
+This is **required** for using multiple datatables on the same page.<br>
+ **[Code example](https://vincjo.fr/svelte-simple-datatables/#/test/multiple-dt)** <br>
+
+The Context API has been removed for the benefit of `nested stores`, in particular to allow the use of remote components such as `<PaginationRowCount/>`, `<SearchInupt/>`<br>
+**[Code example](https://vincjo.fr/svelte-simple-datatables/#/test/optional-blocks)** 
+<br><br><br>
 
 ## 2021-11-14 / v0.1.27 - Multiple datatables
 
