@@ -35,14 +35,15 @@
 		</tr>
 		{#if $options.columnFilter === true}
 			<tr>
-				{#each $columns as th}
+				{#each $columns as th, index}
 					<th class="filter" style="width:{th.width};height:25px;">
 						{#if th.key}
 							<input
 								type="text"
 								placeholder={$options.labels.filter}
 								class="browser-default"
-								on:input={(e) => columns.filter(th.key, e.target.value)}
+								on:input={(e) => columns.filter(th.key, e.target.value, index)}
+								value={th.value}
 							/>
 						{/if}
 					</th>

@@ -1,24 +1,44 @@
-import { writable } from 'svelte/store'
+import { get, writable } from 'svelte/store'
 import { context } from '../context.js'
 
-export default class Columns 
-{
-    create(data, states, filters, options)
-    {
+export default class Columns {
+	create(data, states, filters, options) {
 		const id = states.id
 		this.id = id.get()
 		const pageNumber = states.pageNumber
 		const localFilters = filters.localFilters
-        const { subscribe, set, update } = writable([])
+		const inner = writable([])
+		const { subscribe, set, update } = inner
+
+		localFilters.subscribe((filters) => {
+			const columnList = get(inner)
+			if (columnList.length) {
+				filters.forEach(({ key, value }, index) => {
+					columnList[index].value = value
+				})
+				set(columnList)
+			}
+		})
+
 		return {
-			subscribe, set, update,
+			subscribe,
+			set: (columnList) => {
+				columnList.forEach((column, index) => {
+					localFilters.add(column.key, '', index)
+				})
+				set(columnList)
+			},
+			update,
 			get: (self) => {
 				let $columns
-				self.subscribe(store => $columns = store)
+				self.subscribe((store) => ($columns = store))
 				return $columns
 			},
 			sort: (element, key) => {
-				if (options.get(options).sortable !== true || typeof key === 'undefined') {
+				if (
+					options.get(options).sortable !== true ||
+					typeof key === 'undefined'
+				) {
 					return
 				}
 				if (
@@ -41,82 +61,86 @@ export default class Columns
 				}
 				this.get(this.id).redraw()
 			},
-			filter: (key, value) => {
+			filter: (key, value, index) => {
 				pageNumber.set(1)
-				localFilters.add(key, value)
+				localFilters.add(key, value, index)
 				this.get(this.id).redraw()
 			},
 			draw: () => {
 				setTimeout(() => {
-					const tbody = document.querySelector(`#${id.get()} table tbody tr`)
+					const tbody = document.querySelector(
+						`#${id.get()} table tbody tr`
+					)
 					if (tbody === null) return
-					const thead = document.querySelectorAll(`#${id.get()} .dt-header thead tr`)
+					const thead = document.querySelectorAll(
+						`#${id.get()} .dt-header thead tr`
+					)
 					const $columns = this.getData(this.id)
 
 					const th = thead[0].children[0]
 					const td = Array.from(tbody.children)[0]
 
-					thead.forEach(tr => {
+					thead.forEach((tr) => {
 						let i = 0
-						Array.from(tbody.children).forEach(td => {
+						Array.from(tbody.children).forEach((td) => {
 							let th = tr.children[i]
 							let thW = th.getBoundingClientRect().width
 							let tdW = td.getBoundingClientRect().width
-							if (tdW > thW) { 
+							if (tdW > thW) {
 								th.style.minWidth = tdW + 'px'
 								th.style.maxWidth = tdW + 'px'
 								$columns[i].minWidth = tdW
-							}
-							else {
+							} else {
 								td.style.minWidth = thW + 'px'
 								td.style.maxWidth = thW + 'px'
 								$columns[i].minWidth = thW
-							} 
+							}
 							i++
 						})
 					})
-				}, 50)	
+				}, 50)
 			},
 			redraw: () => {
-				if ( options.get(options).scrollY === false ) return
-				
+				if (options.get(options).scrollY === false) return
+
 				setTimeout(() => {
-					const tbody = document.querySelector(`#${id.get()} table tbody tr`)
+					const tbody = document.querySelector(
+						`#${id.get()} table tbody tr`
+					)
 					if (tbody === null) return
-					const thead = document.querySelectorAll(`#${id.get()} .dt-header thead tr`)
+					const thead = document.querySelectorAll(
+						`#${id.get()} .dt-header thead tr`
+					)
 					const $columns = this.getData(this.id)
-					thead.forEach(tr => {
+					thead.forEach((tr) => {
 						let i = 0
-						Array.from(tbody.children).forEach(td => {
+						Array.from(tbody.children).forEach((td) => {
 							let th = tr.children[i]
 							let thW = th.getBoundingClientRect().width
 							let tdW = td.getBoundingClientRect().width
-							if (tdW > thW) { 
+							if (tdW > thW) {
 								th.style.minWidth = tdW + 'px'
 								th.style.maxWidth = tdW + 'px'
 								$columns[i].minWidth = tdW
-							}
-							else {
+							} else {
 								td.style.minWidth = thW + 'px'
 								td.style.maxWidth = thW + 'px'
 								$columns[i].minWidth = thW
-							} 
+							}
 							i++
 						})
 					})
-				}, 50)			
+				}, 50)
 			},
 		}
-    }
+	}
 
-	get(id)
-	{
+	get(id) {
 		return context.get(id).getColumns()
 	}
 
-	getData(id) 
-	{
-		const columns =  context.get(id).getColumns()
+	getData(id) {
+		const columns = context.get(id).getColumns()
 		return context.get(id).getColumns().get(columns)
 	}
 }

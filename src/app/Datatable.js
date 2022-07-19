@@ -8,16 +8,17 @@ import { context }  from './context.js'
 
 export default class Datatable
 {
-    constructor(identifier) 
+    constructor(identifier, filterStore) 
     {
         this.id = identifier
+        this.filterStore = filterStore
     }
 
     create() 
     {
         this.options   = new Options().create()
         this.states    = new States().create(this.options, this.id)
-        this.filters   = new Filters().create()
+        this.filters   = new Filters().create(this.filterStore)
         this.data      = new Data().create(this.states, this.filters, this.options)
         this.columns   = new Columns().create(this.data.data, this.states, this.filters, this.options)
         context.add(this)

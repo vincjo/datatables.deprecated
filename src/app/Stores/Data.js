@@ -69,7 +69,7 @@ export default class Data
                 }
                 if ($localFilters.length > 0) {
                     $localFilters.forEach(filter => {
-                        return $data = $data.filter( item => filter.key(item).toString().toLowerCase().indexOf(filter.value.toString().toLowerCase()) > -1)
+                        return $data = $data?.filter( item => filter?.key ? filter?.key(item)?.toString()?.toLowerCase()?.indexOf(filter?.value?.toString()?.toLowerCase()) > -1 : true)
                     })
                 }
                 rowsCount.set($data.length)

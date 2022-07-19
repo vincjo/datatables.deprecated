@@ -1,19 +1,22 @@
-<script>
+<script lang="ts">
 	import Search from './components/Search.svelte'
 	import Pagination from './components/Pagination.svelte'
 	import StickyHeader from './components/StickyHeader.svelte'
 	import { onMount, onDestroy } from 'svelte'
 	import Datatable from './app/Datatable.js'
 	import Component from './app/Component.js'
+	import type { Writable } from 'svelte/store'
+
+	type T = $$Generic
 
 	export let data = []
 	export let settings = {}
 	export let classList = ''
 	export let id = 'svelte-simple-datatable'
-
+	export let filterStore: Writable<T>
 
 	//Initialize context for all stores.
-	const datatable = new Datatable(id)
+	const datatable = new Datatable(id, filterStore)
 	datatable.create()
 	const options = datatable.getOptions()
 

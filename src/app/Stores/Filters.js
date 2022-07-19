@@ -2,23 +2,24 @@ import { writable } from 'svelte/store'
 
 export default class Filters 
 {
-    create() 
+    create(filterStore) 
     {
         return {
             globalFilter: this.createGlobalFilter(),
-            localFilters: this.createLocalFilters()
+            localFilters: this.createLocalFilters(filterStore)
         }
     }
     
-    createLocalFilters() 
+    createLocalFilters(filterStore) 
     {
-        const { subscribe, update } = writable([])
+        const { subscribe, update } = filterStore;
         return {
             subscribe, update,
-            add: (key, value) => update(store => {
-                const filter = {key: key, value: value} 
-                store = store.filter(item => { return item.key !== key && item.value.length > 0 })
-                store.push(filter)
+            add: (key, value, index) => update(store => {
+                const filter = {key: key, value: value}
+                store.splice(index, 1, filter)
+                // store = store.filter(item => { return item.key !== key && item.value.length > 0 })
+                // store.push(filter)
                 return store
             }),
             remove: () => update(store => store = [])

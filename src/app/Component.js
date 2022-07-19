@@ -107,7 +107,8 @@ export default class Component
                     key: this.getKey(th.dataset.key),
                     sort: null,
                     classList: th.classList,
-                    minWidth: th.getBoundingClientRect().width
+                    minWidth: th.getBoundingClientRect().width,
+                    value: ''
                 })
                 th.addEventListener('click', (e) => {
                     this.context.getColumns().sort(e.target, this.getKey(th.dataset.key))
@@ -120,6 +121,7 @@ export default class Component
 
     getKey(key) 
     {
+        if (typeof key === "function") return key;
         if (!key)  return 
         if (key && key.indexOf('=>') > 0) {
             return new Function(`'use strict';return (${key})`)()
