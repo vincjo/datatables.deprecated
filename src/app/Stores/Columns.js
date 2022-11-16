@@ -62,16 +62,9 @@ export default class Columns
 							let th = tr.children[i]
 							let thW = th.getBoundingClientRect().width
 							let tdW = td.getBoundingClientRect().width
-							if (tdW > thW) { 
-								th.style.minWidth = tdW + 'px'
-								th.style.maxWidth = tdW + 'px'
-								$columns[i].minWidth = tdW
-							}
-							else {
-								td.style.minWidth = thW + 'px'
-								td.style.maxWidth = thW + 'px'
-								$columns[i].minWidth = thW
-							} 
+							th.style.minWidth = tdW + 'px'
+							th.style.maxWidth = tdW + 'px'
+							$columns[i].minWidth = tdW
 							i++
 						})
 					})
