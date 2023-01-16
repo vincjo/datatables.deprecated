@@ -20,7 +20,7 @@ It has typescript support, headless UI, SSR, and provide a data handler.
 It is a complete rewrite involving a few breaking changes but the concept is the same.
 
 
-This package is still maintained, but it is better to use the [new one](https://github.com/vincjo/datatables) for better performance.
+This package is still maintained, but it is better to use the [new one](https://github.com/vincjo/datatables) for more support.
 
 <br>
 
