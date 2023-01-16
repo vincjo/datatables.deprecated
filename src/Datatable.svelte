@@ -41,10 +41,10 @@
 		<Search {options} {id}/>
 	{/if}
 	<article class="dt-table">
-		{#if $options.scrollY}
-			<StickyHeader {id} {options} columns={datatable.getColumns()}/>
-		{/if}
-		<table>
+		<table class:with-filter={options.columnFilter}>
+			{#if $options.scrollY}
+				<StickyHeader {id} {options} columns={datatable.getColumns()}/>
+			{/if}
 			<slot rows={datatable.getRows()}/>
 		</table>
 	</article>
@@ -68,11 +68,18 @@
 		box-sizing: border-box;
 	}
 	article {
-		position: relative;
-		overflow-y: auto;
-		overflow-x: hidden;
-		width: 100%;
+        position:relative;
+        height:calc(100% - 96px);
+        overflow:auto;
 		background: inherit;
+	}
+	table {
+		width: 100%;
+		border-collapse: separate;
+		border-spacing: 0;
+	}
+	table :global(tbody) {
+		padding-top:26px;
 	}
 	.css article {
 		border-bottom: 1px solid #e0e0e0;
@@ -95,9 +102,6 @@
 		top: 40px;
 	}
 	.css table {
-		width: 100%;
-		border-collapse: collapse;
-		overflow: hidden;
 		margin-bottom: 6px;
 	}
 </style>

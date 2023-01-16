@@ -39,72 +39,10 @@ export default class Columns
 					data.sortAsc(key)
 					pageNumber.set(1)
 				}
-				this.get(this.id).redraw()
 			},
 			filter: (key, value) => {
 				pageNumber.set(1)
 				localFilters.add(key, value)
-				this.get(this.id).redraw()
-			},
-			draw: () => {
-				setTimeout(() => {
-					const tbody = document.querySelector(`#${id.get()} table tbody tr`)
-					if (tbody === null) return
-					const thead = document.querySelectorAll(`#${id.get()} .dt-header thead tr`)
-					const $columns = this.getData(this.id)
-
-					const th = thead[0].children[0]
-					const td = Array.from(tbody.children)[0]
-
-					thead.forEach(tr => {
-						let i = 0
-						Array.from(tbody.children).forEach(td => {
-							let th = tr.children[i]
-							let thW = th.getBoundingClientRect().width
-							let tdW = td.getBoundingClientRect().width
-							if (tdW > thW) { 
-								th.style.minWidth = tdW + 'px'
-								th.style.maxWidth = tdW + 'px'
-								$columns[i].minWidth = tdW
-							}
-							else {
-								td.style.minWidth = thW + 'px'
-								td.style.maxWidth = thW + 'px'
-								$columns[i].minWidth = thW
-							} 
-							i++
-						})
-					})
-				}, 50)	
-			},
-			redraw: () => {
-				if ( options.get(options).scrollY === false ) return
-				
-				setTimeout(() => {
-					const tbody = document.querySelector(`#${id.get()} table tbody tr`)
-					if (tbody === null) return
-					const thead = document.querySelectorAll(`#${id.get()} .dt-header thead tr`)
-					const $columns = this.getData(this.id)
-					thead.forEach(tr => {
-						let i = 0
-						Array.from(tbody.children).forEach(td => {
-							let th = tr.children[i]
-							let thW = th.getBoundingClientRect().width
-							let tdW = td.getBoundingClientRect().width
-							if (tdW > thW) { 
-								th.style.minWidth = tdW + 'px'
-								th.style.maxWidth = tdW + 'px'
-								$columns[i].minWidth = tdW
-							}
-							else {
-								td.style.minWidth = thW + 'px'
-								td.style.maxWidth = thW + 'px'
-								$columns[i].minWidth = thW
-							} 
-							i++
-						})
-					})
-				}, 50)			
 			},
 		}
     }

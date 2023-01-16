@@ -106,9 +106,6 @@
     top: 40px;
 }
 .datatable .dt-table table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
     margin-bottom: 6px;
 }
 

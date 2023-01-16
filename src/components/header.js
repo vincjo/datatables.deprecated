@@ -1,10 +1,8 @@
 export const header = {
     removeOriginalThead: (id) => {
         setTimeout(() => {
-            const thead = document.querySelector(`#${id} table thead`)
-            const originHeight = thead.getBoundingClientRect().height
-            thead.parentNode.style.marginTop = '-' + (originHeight) + 'px'
-            thead.style.visibility = 'hidden'
+            const thead = document.querySelector(`#${id} table thead:not(.dt-header)`)
+            thead.remove()
         }, 50)
     },
     getOrginalTHeadClassList: (id) => {

@@ -7,7 +7,6 @@
 	const search = (value) => {
 		context.getPageNumber().set(1)
 		context.getGlobalFilter().set(value)
-		context.getColumns().redraw()
 	}
 </script>
 

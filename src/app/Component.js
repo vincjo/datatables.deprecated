@@ -65,7 +65,6 @@ export default class Component
         const tableContainer = document.querySelector(`#${this.id} .dt-table`)
         if ( this.getOptions().scrollY ) {
             tableContainer.style.height = this.setTableContainerHeight(size.parentHeight * size.height) + 'px'
-            this.context.getColumns().redraw()
         }
         this.context.getDatatableWidth().set( size.parentWidth * size.width )
         if (size.parentWidth * size.width < document.querySelector(`#${this.id} table`).offsetWidth) {

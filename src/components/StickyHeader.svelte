@@ -8,64 +8,57 @@
 
 	let theadClassList
 	onMount(() => {
-		columns.draw()
 		header.removeOriginalThead(id)
 		theadClassList = header.getOrginalTHeadClassList(id)
 	})
 </script>
 
-<section
-	class="dt-header"
+<thead 
+	class="dt-header {theadClassList}"
 	class:sortable={$options.sortable === true}
 	class:css={$options.css}
->
-	<thead class={theadClassList}>
+	>
+	<tr>
+		{#each $columns as th}
+			<th
+				nowrap
+				on:click={(e) => columns.sort(e.target, th.key)}
+				class={th.classList}
+				class:sortable={th.key && $options.sortable === true}
+			>
+				{@html th.html}<span />
+			</th>
+		{/each}
+	</tr>
+	{#if $options.columnFilter === true}
 		<tr>
 			{#each $columns as th}
-				<th
-					nowrap
-					style="min-width:{th.minWidth}px" 
-					on:click={(e) => columns.sort(e.target, th.key)}
-					class={th.classList}
-					class:sortable={th.key && $options.sortable === true}
-				>
-					{@html th.html}<span />
+				<th class="filter" style="height:25px;">
+					{#if th.key}
+						<input
+							type="text"
+							placeholder={$options.labels.filter}
+							class="browser-default"
+							on:input={(e) => columns.filter(th.key, e.target.value)}
+						/>
+					{/if}
 				</th>
 			{/each}
 		</tr>
-		{#if $options.columnFilter === true}
-			<tr>
-				{#each $columns as th}
-					<th class="filter" style="width:{th.width};height:25px;">
-						{#if th.key}
-							<input
-								type="text"
-								placeholder={$options.labels.filter}
-								class="browser-default"
-								on:input={(e) => columns.filter(th.key, e.target.value)}
-							/>
-						{/if}
-					</th>
-				{/each}
-			</tr>
-		{/if}
-	</thead>
-</section>
+	{/if}
+</thead>
 
 <style>
-	section {
-		position: -webkit-sticky;
+	thead {
 		position: sticky;
-		top: 0;
-		left: 0;
-		z-index: 6;
-		background: inherit;
+		inset-block-start: 0;
 	}
 	.css th {
 		padding: 8px 0px 8px 16px;
 		text-align: center;
 		border-bottom: 1px solid #eee;
 		background: #fff;
+		user-select: none;
 	}
 	.css th.sortable {
 		cursor: pointer;

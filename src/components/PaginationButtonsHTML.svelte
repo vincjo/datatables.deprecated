@@ -22,7 +22,6 @@
 	$: buttons = slice(pageCount, $pageNumber)
 	const setPage = (number) => {
 		pageNumber.set(number)
-		context.getColumns().redraw()
 	}
 </script>
 
