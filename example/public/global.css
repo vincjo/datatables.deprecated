@@ -148,9 +148,6 @@ pre{margin:0 !important;}
     top: 40px;
 }
 .default .dt-table table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
     margin-bottom: 6px;
 }
 
@@ -333,9 +330,6 @@ pre{margin:0 !important;}
     top: 40px;
 }
 .dark .dt-table table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
     margin-bottom: 6px;
     color: #eee;
 }
@@ -518,9 +512,6 @@ pre{margin:0 !important;}
     top: 40px;
 }
 .custom .dt-table table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
     margin-bottom: 6px;
 }
 .custom .dt-table tbody tr {
