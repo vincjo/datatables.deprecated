@@ -9,7 +9,7 @@
 
 
 
-# New version ([new repo](https://github.com/vincjo/datatables))
+## New version ([new repo](https://github.com/vincjo/datatables))
 
 A new, more mature and controllable version is available here :
 
@@ -19,13 +19,9 @@ It has typescript support, headless UI, SSR, and provide a data handler.
 
 It is a complete rewrite involving a few breaking changes but the concept is the same.
 
-<br>
-<br>
 
 This package is still maintained, but it is better to use the [new one](https://github.com/vincjo/datatables) for better performance.
 
-<br>
-<br><br>
 <br>
 
 # Presentation
