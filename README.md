@@ -15,7 +15,7 @@ A new, more mature and controllable version is available here :
 
 **[https://github.com/vincjo/datatables](https://github.com/vincjo/datatables)**
 
-It has typescript support, headless UI, SSR, and provide a data handler.
+It has typescript support, headless UI, SSR, and provides a data handler.
 
 It is a complete rewrite involving a few breaking changes but the concept is the same.
 
