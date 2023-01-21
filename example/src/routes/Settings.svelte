@@ -1,28 +1,28 @@
 <script>
     import { Highlight } from 'svelte-highlight'
     import { typescript as language } from 'svelte-highlight/languages'
-    const code = 
-`const settings = {
-    sortable: true,
-    pagination: true,
-    scrollY: true,
-    rowsPerPage: 50,
-    columnFilter: false,
-    css: true,
-    labels: {
-        search: 'Search...',    // search input placeholer
-        filter: 'Filter',       // filter inputs placeholder
-        noRows: 'No entries to found',
-        info: 'Showing {start} to {end} of {rows} entries',
-        previous: 'Previous',
-        next: 'Next',       
-    },
-    blocks: {
-        searchInput: true, 
-        paginationButtons: true,
-        paginationRowCount: true,
-    }
-}    
+    const code = `
+    const settings = {
+        sortable: true,
+        pagination: true,
+        scrollY: true,
+        rowsPerPage: 50,
+        columnFilter: false,
+        css: true,
+        labels: {
+            search: 'Search...',    // search input placeholer
+            filter: 'Filter',       // filter inputs placeholder
+            noRows: 'No entries to found',
+            info: 'Showing {start} to {end} of {rows} entries',
+            previous: 'Previous',
+            next: 'Next',       
+        },
+        blocks: {
+            searchInput: true, 
+            paginationButtons: true,
+            paginationRowCount: true,
+        }
+    }    
 `
 
 </script>
