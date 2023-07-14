@@ -7,7 +7,7 @@
     <article>
         {#if $location !== '/'}
         <aside transition:fade={{ duration:100 }}>
-            <img src="./logo.svg" alt="logo"/>
+            <img src="./logo-grey.svg" alt="logo"/>
             <div>
                 <h1>svelte<br>simple<br>datatables</h1>
             </div>
@@ -62,7 +62,7 @@
 
     h2{color:#333;font-weight:200;margin:0;font-size:32px;line-height:40px;transition:all,0.1s;}
     h2:hover{font-weight:600;color:#676778;}
-    h2.active{color:#b71540;font-weight:600;}
+    h2.active{color:#bdbdbd;font-weight:600;}
     h2 a{text-decoration:none;}
     ul{margin:0;list-style-type:none;background:#fff;padding:0 16px 0 0;}
     ul li{display:block;margin:0;background:#fff;transition:all,0.1s;padding:0;font-size:16px;color:#676778;font-weight:400;line-height:24px;}

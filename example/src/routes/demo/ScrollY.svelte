@@ -131,5 +131,5 @@
     }
     td{text-align:center;padding:4px 0}
     div.menu{margin:24px 0 8px 0}
-    p{color:var(--primary, #b71540)}
+    p{color:var(--primary, #bdbdbd)}
 </style>

@@ -37,7 +37,7 @@
     div{height:inherit;}
     ul{list-style-type:none;padding:0;margin:0;display:flex;margin-bottom:8px;}
     li{display:block;font-size:16px;color:#676778;line-height:32px;padding:8px 0 0 0;margin:0 24px 0 16px;font-weight:bold;border-bottom:2px solid transprent;transition:color, 0.1s;cursor:pointer;}
-    li.active{color:#b71540;border-bottom:2px solid #b71540;}
+    li.active{color:#bdbdbd;border-bottom:2px solid #bdbdbd;}
     section{height:inherit;background:#fff;position:relative;overflow:auto;height:480px;background:var(--hljs);border-radius:8px;}
     section::-webkit-scrollbar {width:8px;height:8px;}
     section::-webkit-scrollbar-track {background:#eee;}
