@@ -14,5 +14,5 @@
 <br><br><br><br>
 <br><br><br><br>
 
-Old documentation: [here](https://vincjo.fr/svelte-simple-datatables/)
+Old documentation: [here](https://vincjo.fr/datatables.deprecated)
 
